@@ -73,10 +73,11 @@ public class UsuarioControlador extends HttpServlet {
                     
                     usuVO = new UsuarioVO(usuVO.getUsuId(), correo, clave);
                     miSesion.setAttribute("datos", usuVO); 
+                    request.setAttribute("mensajeBienvenida", "Bienvenido");
                     request.getRequestDispatcher("menu.jsp").forward(request, response);
                 }
                 else {
-                      request.setAttribute("mensajeError", "Datos de inicio de sesión incorrectos");
+                      request.setAttribute("mensajeError", "Datos incorrectos");
                       request.getRequestDispatcher("index.jsp").forward(request, response);
                       }
                 break;

@@ -21,6 +21,9 @@
         integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="Css/sweetalert.css" rel="stylesheet" type="text/css"/>
+    <script src="Js/sweetalert.js" type="text/javascript"></script>
+    <script src="Js/sweetalert.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="Css/menu.css">
 
 </head>
@@ -63,7 +66,14 @@
             </div>
         </div>
     </section>
-
+    <% if (request.getAttribute("mensajeBienvenida") != null) {%>
+                    <script  type="text/javascript">
+                        swal({
+                            title: "${mensajeBienvenida}",
+                            type: "success"
+                        });
+                    </script>
+                    <%}%>
 </body>
 
 </html>

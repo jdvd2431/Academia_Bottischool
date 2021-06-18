@@ -196,3 +196,7 @@ section{
 .titulo2{
   margin-top: 40px;
 }
+.confirm btn btn-lg btn-primary{
+    padding: 10px;
+    background: blue;
+}
