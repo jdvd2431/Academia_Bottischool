@@ -76,10 +76,11 @@ animation-delay: calc(-1s * var(--i));
     {
         transform: translateY(-40px);
     }
-    0%
+    50%
     {
         transform: translateY(40px);
     }
+   
 }
 
 .box .square:nth-child(1){

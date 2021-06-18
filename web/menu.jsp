@@ -70,8 +70,14 @@
                     <script  type="text/javascript">
                         swal({
                             title: "${mensajeBienvenida}",
-                            type: "success"
-                        });
+                            type: 'success',
+                            confirmButtonClass: "btn-primary",
+                            confirmButtonText: "OK",
+                            closeOnConfirm: false
+                        },
+                                function () {
+                                    window.location = "menu.jsp";
+                                });
                     </script>
                     <%}%>
 </body>

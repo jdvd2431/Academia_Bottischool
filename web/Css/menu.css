@@ -11,18 +11,22 @@ body {
   overflow: hidden;
 }
 .sidebar {
+  top:15px;
   position: fixed;
-  left: -300px;
+  left: -350px;
   width: 300px;
   height: 100%;
+  max-height: 750px;
   border-radius: 5px;
   background: #85C1E9 ;
+  box-shadow: 10px 10px 10px -6px black;
   transition: all .5s ease;
 }
 #titulo{
     margin-left:40px; 
 }
 .sidebar header {
+  
   font-size: 20px;
   color: white;
   line-height: 70px;
@@ -73,21 +77,24 @@ label #btn{
 label #cancel{
   z-index: 1111;
   left: -195px;
-  top: 17px;
+  top: 5px;
   font-size:35px;
   background: transparent;
   color: white;
   padding: 4px 6px;
-  margin: 20px 10px  0px 60px;
+  margin: 20px 10px  0px 65px;
   transition: all .5s ease;
 }
 #check:checked ~ .sidebar{
-  left: 0;
+   top:15px;
+  left: 20px;
+  bottom:10px;
 }
 #check:checked ~ label #btn {
   left: 250px;
   opacity: 0;
   pointer-events: none;
+  
 }
 #check:checked ~ label #cancel {
   left: 195px;
@@ -154,6 +161,9 @@ section{
   position: relative;
   height: auto;
   transition: transform .2s;
+   box-shadow:0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgb(255,255,255),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
 }
 .uno{
   background-color: #3498DB;

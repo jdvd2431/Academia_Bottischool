@@ -43,6 +43,7 @@ public class UsuarioControlador extends HttpServlet {
         String clave = request.getParameter("txtPassword");
         
         int opcion = Integer.parseInt(request.getParameter("opcion"));
+        
         //paso 2- instanciar VO
         UsuarioVO usuVO = new UsuarioVO(usuId, correo, clave);
         
