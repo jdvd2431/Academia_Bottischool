@@ -150,17 +150,21 @@ animation-delay: calc(-1s * var(--i));
     letter-spacing: 1px;
     margin-bottom: 40px;
 }
-
+.boton-volver{
+    margin-bottom: 20px;
+}
 .form h2::before{
     content: '';
     position: absolute;
-    left: 0;
+    left: 60px;
     bottom: -10px;
-    width: 80px;
+    width: 200px;
     height: 4px;
     background: #666;
 }
-
+h2{
+    text-align: center;
+}
 .form .inputb{
     width: 100%;
     margin-top: 20px;

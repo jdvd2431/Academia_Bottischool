@@ -25,7 +25,7 @@
     <body>
         <nav>
             <ul>
-                <li><a href="menu.jsp" class="btn-bk">Atrás</a></li>
+
         </nav>
         <section>
             <div class="entra"></div>
@@ -35,6 +35,9 @@
 
                 <div class="container2">
                     <div class="form">
+                        <div class="boton-volver">
+                        <a class="boton-volver" href="menu.jsp" style="font-size: 40px;"><i class="fa fa-chevron-circle-left" id="cancel"></i></a>
+                        </div>
                         <h2 for="usu">Registrar Usuario</h2>
                         <form method="POST" action="Usuario">
                             <div class="inputb">
