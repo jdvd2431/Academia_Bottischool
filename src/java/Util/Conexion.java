@@ -22,7 +22,7 @@ public class Conexion {
         driver = "com.mysql.jdbc.Driver";
         user = "root";
         password = "";
-        db = "Academia_b";
+        db = "academiabt";
         puerto = "3306";
         url = "jdbc:mysql://localhost:"+puerto+"/"+db;
 
