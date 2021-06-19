@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="Css/registrarUsu.css" rel="stylesheet" type="text/css"/>
 
-        <title>JSP Page</title>
+        <title>Registrar Usuario</title>
     </head>
     <body>
         <nav>
@@ -46,7 +46,11 @@
                             </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Tipo Usuario</p>
-                                <input type="text" class="form-control" name="txtTipoUsuario" id="Placa" placeholder="Tipo Usuari" id="pass">
+                                <select  name="txtTipoUsuario">
+                                    <option value="Estudiante">Estudiante</option>
+                                    <option value="Profesor">Profesor</option>
+                                    <option value="Administrador">Administrador</option>
+                                </select>
                             </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Celular</p>
@@ -66,10 +70,34 @@
                             </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Estado</p>
-                                <input type="text" class="form-control" name="txtEstado" id="Placa" placeholder="Estado" id="pass">
+                                <select name="txtEstado">
+                                    <option value="Cedula Ciudadana">Cedula Ciudadana</option>
+                                    <option value="Tarjeta Identidad">Tarjeta Identidad</option>
+                                    <option value="Cedula Extranjero">Cedula Extranjero</option>
+                                </select>
+                                
+                            </div>
+                            <div class="inputb">
+                                <p class="cuenta" for="usu">Grupo</p>
+                                <select name="txtEstado">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                                
+                            </div>
+                            <div class="inputb">
+                                <p class="cuenta" for="usu">Tipo usuario</p>
+                                <select name="txtEstado">
+                                    <option value="Profesor">Profesor</option>
+                                    <option value="Estudiante">Estudiante</option>
+                                    <option value="Administrador">Administrador</option>
+                                </select>
+                                
                             </div>
                             <ul class="error" id="error"></ul>
-                            <center><div class="inputb">
+                            <center>
+                                <div class="inputb">
                                 <input type="submit" id="btn" value="Registrar">
                                 <input type="hidden" value="1" name="opcion">
                                 </div></center>
