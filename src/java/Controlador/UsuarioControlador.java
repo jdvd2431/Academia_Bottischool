@@ -79,7 +79,7 @@ public class UsuarioControlador extends HttpServlet {
                 }
                 else {
                       request.setAttribute("mensajeError", "Datos incorrectos");
-                      request.getRequestDispatcher("index.jsp").forward(request, response);
+                      request.getRequestDispatcher("login.jsp").forward(request, response);
                       }
                 break;
            

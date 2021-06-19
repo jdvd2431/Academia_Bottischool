@@ -9,7 +9,7 @@
     HttpSession buscarSession = (HttpSession) request.getSession();
     String correo="";
     if (buscarSession.getAttribute("datos")==null) {
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }else{
             UsuarioVO usuVO = (UsuarioVO)buscarSession.getAttribute("datos");
             correo = usuVO.getCorreo();

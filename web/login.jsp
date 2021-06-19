@@ -65,7 +65,7 @@
                             closeOnConfirm: false
                         },
                                 function () {
-                                    window.location = "index.jsp";
+                                    window.location = "login.jsp";
                                 });
                     </script>
 
