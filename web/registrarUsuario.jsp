@@ -51,9 +51,9 @@
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Tipo Documento</p>
                                 <select name="txtTipoDocumento">
-                                    <option value="Cedula Ciudadana">Cedula Ciudadana</option>
-                                    <option value="Tarjeta Identidad">Tarjeta Identidad</option>
-                                    <option value="Cedula Extranjero">Cedula Extranjero</option>
+                                    <option value="C.C">Cedula Ciudadana</option>
+                                    <option value="T.I">Tarjeta Identidad</option>
+                                    <option value="C.E">Cedula Extranjero</option>
                                 </select>
                             </div>
                             <div class="inputb">
