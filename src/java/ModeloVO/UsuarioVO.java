@@ -10,24 +10,25 @@ package ModeloVO;
  * @author David
  */
 public class UsuarioVO {
-    private String nombre, apellido, tipoDocumento, numDocumento,tipoUsuario,celular,telefono,correo,clave,estado,usuId;
+    private String nombre, apellido, tipoDocumento, numDocumento,celular,telefono,correo,clave,estado,usuId,idGrupo,idTipoUsuario;
     
 
     public UsuarioVO() {
     }
 
-    public UsuarioVO(String nombre, String apellido, String tipoDocumento, String numDocumento, String tipoUsuario, String celular, String telefono, String correo, String clave, String estado, String usuId) {
+    public UsuarioVO(String nombre, String apellido, String tipoDocumento, String numDocumento, String celular, String telefono, String correo, String clave, String estado, String usuId, String idGrupo, String idTipoUsuario) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.tipoDocumento = tipoDocumento;
         this.numDocumento = numDocumento;
-        this.tipoUsuario = tipoUsuario;
         this.celular = celular;
         this.telefono = telefono;
         this.correo = correo;
         this.clave = clave;
         this.estado = estado;
         this.usuId = usuId;
+        this.idGrupo = idGrupo;
+        this.idTipoUsuario = idTipoUsuario;
     }
 
     public UsuarioVO(String correo, String clave, String usuId) {
@@ -68,14 +69,6 @@ public class UsuarioVO {
 
     public void setNumDocumento(String numDocumento) {
         this.numDocumento = numDocumento;
-    }
-
-    public String getTipoUsuario() {
-        return tipoUsuario;
-    }
-
-    public void setTipoUsuario(String tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
     }
 
     public String getCelular() {
@@ -125,6 +118,24 @@ public class UsuarioVO {
     public void setUsuId(String usuId) {
         this.usuId = usuId;
     }
+
+    public String getIdGrupo() {
+        return idGrupo;
+    }
+
+    public void setIdGrupo(String idGrupo) {
+        this.idGrupo = idGrupo;
+    }
+
+    public String getIdTipoUsuario() {
+        return idTipoUsuario;
+    }
+
+    public void setIdTipoUsuario(String idTipoUsuario) {
+        this.idTipoUsuario = idTipoUsuario;
+    }
+    
+    
     
 }
 

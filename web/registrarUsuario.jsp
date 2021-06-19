@@ -38,19 +38,15 @@
                             </div>
                            <div class="inputb">
                                 <p class="cuenta" for="usu">Tipo Documento</p>
-                                <input type="text" class="form-control" name="txtTipoDocumento" id="Placa" placeholder="Tipo Documento" id="pass">
+                                <select name="txtTipoDocumento">
+                                    <option value="Cedula Ciudadana">Cedula Ciudadana</option>
+                                    <option value="Tarjeta Identidad">Tarjeta Identidad</option>
+                                    <option value="Cedula Extranjero">Cedula Extranjero</option>
+                                </select>
                             </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Numero Documento</p>
                                 <input type="text" class="form-control" name="txtNumeroDocumento" id="Placa" placeholder="Tipo Usuario" id="pass">
-                            </div>
-                            <div class="inputb">
-                                <p class="cuenta" for="usu">Tipo Usuario</p>
-                                <select  name="txtTipoUsuario">
-                                    <option value="Estudiante">Estudiante</option>
-                                    <option value="Profesor">Profesor</option>
-                                    <option value="Administrador">Administrador</option>
-                                </select>
                             </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Celular</p>
@@ -71,15 +67,14 @@
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Estado</p>
                                 <select name="txtEstado">
-                                    <option value="Cedula Ciudadana">Cedula Ciudadana</option>
-                                    <option value="Tarjeta Identidad">Tarjeta Identidad</option>
-                                    <option value="Cedula Extranjero">Cedula Extranjero</option>
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
                                 </select>
                                 
                             </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Grupo</p>
-                                <select name="txtEstado">
+                                <select name="txtGrupo">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -88,10 +83,9 @@
                             </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Tipo usuario</p>
-                                <select name="txtEstado">
-                                    <option value="Profesor">Profesor</option>
-                                    <option value="Estudiante">Estudiante</option>
-                                    <option value="Administrador">Administrador</option>
+                                <select name="txtRol">
+                                    <option value="1">Profesor</option>
+                                    <option value="2">Estudiante</option>
                                 </select>
                                 
                             </div>

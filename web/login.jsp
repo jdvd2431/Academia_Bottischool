@@ -39,10 +39,10 @@
                         <h2>Login</h2>
                         <form method="POST" action="Usuario">
                             <div class="inputb">
-                                <input type="text" name="txtUsuario" placeholder="Usuario">
+                                <input type="text" name="txtCorreo" placeholder="Usuario">
                             </div>
                             <div class="inputb">
-                                <input type="password" name="txtPassword" placeholder="Contraseña"  id="pass">
+                                <input type="password" name="txtClave" placeholder="Contraseña"  id="pass">
                             </div>
                             <ul class="error" id="error"></ul>
                             <div class="inputb">
@@ -50,7 +50,6 @@
 
                                 <input type="hidden" value="3" name="opcion">
                             </div>
-                            <p class="cuenta">Aún no tienes cuenta?  <a href="registrarUsuario.jsp">Registrate</a></p>
                         </form>
                     </div>
                     <% if (request.getAttribute("mensajeError") != null) {%>

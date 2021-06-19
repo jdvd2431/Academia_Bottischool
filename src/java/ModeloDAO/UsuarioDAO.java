@@ -28,7 +28,7 @@ public class UsuarioDAO extends Conexion implements Crud{
     private boolean operacion = false;
     private String sql;
     private String  usuId = "", correo = "", clave = "";
-    private String nombre= "", apellido= "",tipoDocumento= "",numDocumento= "",tipoUsuario= "",celular= "",telefono= "",estado= "";
+    private String nombre= "", apellido= "",tipoDocumento= "",numDocumento= "",celular= "",telefono= "",estado= "",idGrupo="",idTipoUsuario="";
 
        public UsuarioDAO(UsuarioVO usuVO) {
         super();
@@ -39,12 +39,13 @@ public class UsuarioDAO extends Conexion implements Crud{
             apellido =usuVO.getApellido();
             tipoDocumento =usuVO.getTipoDocumento();
             numDocumento =usuVO.getNumDocumento();
-            tipoUsuario =usuVO.getTipoUsuario();
             celular =usuVO.getCelular();
             telefono =usuVO.getCelular();
+            estado =usuVO.getEstado();
             correo = usuVO.getCorreo();
             clave = usuVO.getClave();
-            estado =usuVO.getEstado();
+            idGrupo =usuVO.getIdGrupo();
+            idTipoUsuario =usuVO.getIdTipoUsuario();
         } catch (Exception e) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -59,26 +60,28 @@ public class UsuarioDAO extends Conexion implements Crud{
                     + "nombre,"
                     + "apellido,"
                     + "tipoDocumento,"
-                    + "numDocumento,"
-                    + "tipoUsuario,"
+                    + "numeroDocumento,"
                     + "celular,"
                     + "telefono,"
+                    + "estado,"
                     + "correo,"
                     + "clave,"
-                    + "estado)"
-                    + " values(?,?,?,?,?,?,?,?,?,?,?)";
+                    + "idGrupo,"
+                    + "idTipoUsuario)"
+                    + " values(?,?,?,?,?,?,?,?,?,?,?,?)";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, usuId);
             puente.setString(2, nombre);
             puente.setString(3, apellido);
             puente.setString(4, tipoDocumento);
             puente.setString(5, numDocumento);
-            puente.setString(6, tipoUsuario);
-            puente.setString(7, celular);
-            puente.setString(8, telefono);
+            puente.setString(6, celular);
+            puente.setString(7, telefono);
+            puente.setString(8, estado);
             puente.setString(9, correo);
             puente.setString(10, clave);
-            puente.setString(11, estado);
+            puente.setString(11, idGrupo);
+            puente.setString(12, idTipoUsuario);
             puente.executeUpdate();
             operacion = true;
         } catch (SQLException e) {

@@ -37,25 +37,24 @@ public class UsuarioControlador extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String usuId = request.getParameter("txtId");
-        String correo = request.getParameter("txtUsuario");
-        String clave = request.getParameter("txtPassword");
+        String usuId = request.getParameter("txtId");     
         String nombre = request.getParameter("txtNombre");
         String apellido = request.getParameter("txtApellido");
         String tipoDocumento = request.getParameter("txtTipoDocumento");
         String numDocumento = request.getParameter("txtNumeroDocumento");
-        String tipoUsuario = request.getParameter("txtTipoUsuario");
         String celular = request.getParameter("txtCelular");
         String telefono = request.getParameter("txtTelefono");
-        String email = request.getParameter("txtCorreo");
-        String password = request.getParameter("txtClave");
+        String correo = request.getParameter("txtCorreo");
+        String clave = request.getParameter("txtClave");
         String estado = request.getParameter("txtEstado");
+        String idGrupo = request.getParameter("txtGrupo");
+        String idTipoUsuario = request.getParameter("txtRol");
         
         int opcion = Integer.parseInt(request.getParameter("opcion"));
         
         //paso 2- instanciar VO
 
-        UsuarioVO UsuVO = new UsuarioVO(nombre, apellido, tipoDocumento, numDocumento, tipoUsuario, celular, telefono, correo, clave, estado, usuId);
+        UsuarioVO UsuVO = new UsuarioVO(nombre, apellido, tipoDocumento, numDocumento, celular, telefono, correo, clave, estado, usuId,idGrupo,idTipoUsuario);
         
          //instanciar DAO
          
@@ -68,7 +67,7 @@ public class UsuarioControlador extends HttpServlet {
                 } else {
                     request.setAttribute("mensajeError", "El usuario no se registro corectamente");
                 }
-                request.getRequestDispatcher("menu.jsp").forward(request, response);
+                request.getRequestDispatcher("registrarUsuario.jsp").forward(request, response);
                 break;
             case 2://Actualizar Registro
                 if (UsuDAO.actualizarRegistro()) {
