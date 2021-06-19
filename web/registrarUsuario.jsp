@@ -34,7 +34,7 @@
                             </div>
                              <div class="inputb">
                                 <p class="cuenta" for="usu">Apellido</p>
-                                <input type="password" name="txtApellido" placeholder="Apellido"  id="pass">
+                                <input type="text" name="txtApellido" placeholder="Apellido"  id="pass">
                             </div>
                            <div class="inputb">
                                 <p class="cuenta" for="usu">Tipo Documento</p>
@@ -66,7 +66,7 @@
                             </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Clave</p>
-                                <input type="text" class="form-control" name="txtClave" id="Placa" placeholder="Clave" id="pass">
+                                <input type="password" class="form-control" name="txtClave" id="Placa" placeholder="Clave" id="pass">
                             </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Estado</p>

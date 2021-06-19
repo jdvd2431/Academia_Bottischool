@@ -36,15 +36,15 @@ public class UsuarioDAO extends Conexion implements Crud{
             conexion = this.obtenerConexion();
             usuId = usuVO.getUsuId();
             nombre =usuVO.getNombre();
-            nombre =usuVO.getApellido();
-            nombre =usuVO.getTipoDocumento();
-            nombre =usuVO.getNumDocumento();
-            nombre =usuVO.getTipoUsuario();
-            nombre =usuVO.getCelular();
-            nombre =usuVO.getCelular();
+            apellido =usuVO.getApellido();
+            tipoDocumento =usuVO.getTipoDocumento();
+            numDocumento =usuVO.getNumDocumento();
+            tipoUsuario =usuVO.getTipoUsuario();
+            celular =usuVO.getCelular();
+            telefono =usuVO.getCelular();
             correo = usuVO.getCorreo();
             clave = usuVO.getClave();
-            nombre =usuVO.getEstado();
+            estado =usuVO.getEstado();
         } catch (Exception e) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
         }
