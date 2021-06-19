@@ -14,14 +14,14 @@ and open the template in the editor.
     box-sizing: border-box;
 }
 
-body{
-}
+
 
 section{
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    
     background: linear-gradient(to bottom, #f1f4f9,#dff1ff);
 }
 
@@ -119,27 +119,11 @@ animation-delay: calc(-1s * var(--i));
     height: 60px;
 }
 
-.container{
-    position: relative;
-    width: 400px;
-    min-height: 400px;
-    overflow-y: scroll;
-    background:rgba(255,255,255,0.1);
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 25px 45px rgba(0,0,0,0.1);
-    border:1px solid rgba(0, 0, 0, 0.5);
-    border-right:1px solid rgba(0, 0, 0, 0.2);
-    border-bottom:1px solid rgba(0, 0, 0, 0.5);
-}
+
 .container2{
     position: relative;
     width: 400px;
     min-height: 400px;
-    overflow-y: scroll:
     background:rgba(255,255,255,0.1);
     border-radius: 10px;
     display: flex;
