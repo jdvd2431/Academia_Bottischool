@@ -27,15 +27,24 @@ public class UsuarioDAO extends Conexion implements Crud{
     
     private boolean operacion = false;
     private String sql;
-    private String usuId = "", correo = "", clave = "";
+    private String  usuId = "", correo = "", clave = "";
+    private String nombre= "", apellido= "",tipoDocumento= "",numDocumento= "",tipoUsuario= "",celular= "",telefono= "",estado= "";
 
        public UsuarioDAO(UsuarioVO usuVO) {
         super();
         try {
             conexion = this.obtenerConexion();
             usuId = usuVO.getUsuId();
+            nombre =usuVO.getNombre();
+            nombre =usuVO.getApellido();
+            nombre =usuVO.getTipoDocumento();
+            nombre =usuVO.getNumDocumento();
+            nombre =usuVO.getTipoUsuario();
+            nombre =usuVO.getCelular();
+            nombre =usuVO.getCelular();
             correo = usuVO.getCorreo();
             clave = usuVO.getClave();
+            nombre =usuVO.getEstado();
         } catch (Exception e) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -45,10 +54,31 @@ public class UsuarioDAO extends Conexion implements Crud{
     @Override
     public boolean agregarRegistro() {
       try {
-            sql = "insert into usuario(correo,clave) values(?,?)";
+            sql = "insert into usuario("
+                    + "idUsuario,"
+                    + "nombre,"
+                    + "apellido,"
+                    + "tipoDocumento,"
+                    + "numDocumento,"
+                    + "tipoUsuario,"
+                    + "celular,"
+                    + "telefono,"
+                    + "correo,"
+                    + "clave,"
+                    + "estado)"
+                    + " values(?,?,?,?,?,?,?,?,?,?,?)";
             puente = conexion.prepareStatement(sql);
-            puente.setString(1, correo);
-            puente.setString(2, clave);
+            puente.setString(1, usuId);
+            puente.setString(2, nombre);
+            puente.setString(3, apellido);
+            puente.setString(4, tipoDocumento);
+            puente.setString(5, numDocumento);
+            puente.setString(6, tipoUsuario);
+            puente.setString(7, celular);
+            puente.setString(8, telefono);
+            puente.setString(9, correo);
+            puente.setString(10, clave);
+            puente.setString(11, estado);
             puente.executeUpdate();
             operacion = true;
         } catch (SQLException e) {

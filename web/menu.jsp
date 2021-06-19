@@ -41,7 +41,7 @@
         </header>
         <ul >
             <li><a href="#"><i class="fas fa-qrcode"></i>Horario</a></li>
-            <li><a href="#"><i class="fa fa-user-plus"></i>Usuario</a></li>
+            <li><a href="registrarUsuario.jsp"><i class="fa fa-user-plus"></i>Usuario</a></li>
             <li><a href="#"><i class="fas fa-stream"></i>Buscar</a></li>
             <li class="animation">
                 <form method="post" action="Sesiones">
