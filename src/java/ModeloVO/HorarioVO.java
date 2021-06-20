@@ -7,12 +7,12 @@ package ModeloVO;
 
 
 public class HorarioVO {
-    private String idHorario, fechaInicio,fechaFin,horaInicio,horaFin,dia,estado;
+    private String idHorario, fechaInicio,fechaFin,horaInicio,horaFin,dia,estado,idAula;
 
     public HorarioVO() {
     }
 
-    public HorarioVO(String idHorario, String fechaInicio, String fechaFin, String horaInicio, String horaFin, String dia, String estado) {
+    public HorarioVO(String idHorario, String fechaInicio, String fechaFin, String horaInicio, String horaFin, String dia, String estado,String idAula) {
         this.idHorario = idHorario;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
@@ -20,6 +20,7 @@ public class HorarioVO {
         this.horaFin = horaFin;
         this.dia = dia;
         this.estado = estado;
+        this.idAula=idAula;
     }
 
     public String getIdHorario() {
@@ -77,5 +78,14 @@ public class HorarioVO {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    public String getIdAula() {
+        return idAula;
+    }
+
+    public void setIdAula(String idAula) {
+        this.idAula = idAula;
+    }
+    
     
 }

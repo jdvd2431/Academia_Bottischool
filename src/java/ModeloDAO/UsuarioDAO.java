@@ -131,5 +131,29 @@ public class UsuarioDAO extends Conexion implements Crud{
         }
         return operacion;
     }
+    public boolean SelecionarIdAula(String correo, String clave){
+            
+        try{
+            
+            conexion=this.obtenerConexion();
+            sql="SELECT * FROM usuario WHERE correo=? AND clave=?";
+           puente = conexion.prepareStatement(sql);
+           puente.setString(1, correo);
+           puente.setString(2, clave);
+           mensajero= puente.executeQuery();
+           if(mensajero.next()){
+               operacion=true;
+           }
+        }catch(SQLException e){
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+        }finally {
+            try {
+                this.cerrarConexion();
+                
+            } catch (SQLException e) {
+            }
+        }
+        return operacion;
+    }
     
 }
