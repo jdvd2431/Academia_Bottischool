@@ -20,7 +20,7 @@
         <link href="Css/sweetalert.css" rel="stylesheet" type="text/css"/>
         <script src="Js/sweetalert.js" type="text/javascript"></script>
         <script src="Js/sweetalert.min.js" type="text/javascript"></script>
-        <title>Registrar Usuario</title>
+        <title>Registrar Grupo</title>
     </head>
     <body>
         <nav>
@@ -39,7 +39,7 @@
                         <a class="boton-volver" href="menu.jsp" style="font-size: 40px;"><i class="fa fa-chevron-circle-left" id="cancel"></i></a>
                         </div>
                         <h2 for="usu">Registrar Grupo</h2>
-                        <form method="POST" action="Usuario">
+                        <form method="POST" action="Grupo">
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Estado</p>
                                 <select name="txtEstado">
@@ -58,6 +58,16 @@
                                 <input type="date" name="txtFechaFin" id="pass"
                                     value="2021-01-01"
                                     min="2021-01-01" max="2021-12-31">    
+                            </div>
+                            <div class="inputb">
+                                <p class="cuenta" for="usu">Nombre clase</p>
+                                <select name="txtClase">
+                                    <option value="Merengue">Merengue</option>
+                                    <option value="Tango">Tango</option>
+                                    <option value="Salsa">Salsa</option>
+                                    <option value="Bachata">Bachata</option>
+                                    <option value="Samba">Samba</option>
+                                </select> 
                             </div>
 
                             <ul class="error" id="error"></ul>

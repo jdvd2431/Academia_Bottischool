@@ -25,7 +25,7 @@ public class GrupoDAO extends Conexion implements Crud{
     
     private boolean operacion = false;
     private String sql;
-    private  String idGrupo="", estado="",  fechaInicio="",  fechaFin="";
+    private  String idGrupo="", estado="",  fechaInicio="",  fechaFin="",nombre="";
         public GrupoDAO(GrupoVO grupoVO) {
         super();
         try {
@@ -34,6 +34,7 @@ public class GrupoDAO extends Conexion implements Crud{
             estado =grupoVO.getEstado();
             fechaInicio =grupoVO.getFechaInicio();
             fechaFin =grupoVO.getFechaFin();
+            nombre =grupoVO.getNombre();
             
         } catch (Exception e) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -43,12 +44,13 @@ public class GrupoDAO extends Conexion implements Crud{
     @Override
     public boolean agregarRegistro() {
          try {
-           sql ="INSERT INTO `grupo` (`idGrupo`, `estado`, `fechaInicio`, `fechaFin`) VALUES (?,?,?,?)";
+           sql ="INSERT INTO `grupo` (`idGrupo`, `estado`, `fechaInicio`, `fechaFin`, `nombre`) VALUES (?,?,?,?,?)";
            puente = conexion.prepareStatement(sql);
             puente.setString(1, idGrupo);
             puente.setString(2, estado);
             puente.setString(3, fechaInicio);
             puente.setString(4, fechaFin);
+            puente.setString(5, nombre);
             puente.executeUpdate();
             operacion = true;
         } catch (SQLException e) {
