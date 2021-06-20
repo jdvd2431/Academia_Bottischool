@@ -5,6 +5,10 @@
  */
 package Controlador;
 
+import ModeloDAO.AulaDAO;
+import ModeloDAO.UsuarioDAO;
+import ModeloVO.AulaVO;
+import ModeloVO.UsuarioVO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,6 +38,40 @@ public class AulaControlador extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
        
+        String idAula = request.getParameter("txtId");     
+        String capacidad = request.getParameter("txtCapacidad");
+        String nombre = request.getParameter("txtNomAula");
+        String idGrupo = request.getParameter("txtIdGrupo");
+        
+        
+        int opcion = Integer.parseInt(request.getParameter("opcion"));
+        
+          //paso 2- instanciar VO
+          AulaVO auVO = new AulaVO(idAula, capacidad, nombre, idGrupo);
+          
+          //instanciar DAO
+         
+        AulaDAO auDAO = new AulaDAO(auVO);
+        
+         switch (opcion) {
+            case 1://Agregar Registro
+                if (auDAO.agregarRegistro()) {
+                    request.setAttribute("mensajeExito", "El usuario se registro corectamente");
+                } else {
+                    request.setAttribute("mensajeError", "El usuario no se registro corectamente");
+                }
+                request.getRequestDispatcher("registrarAula.jsp").forward(request, response);
+                break;
+            case 2://Actualizar Registro
+                if (auDAO.actualizarRegistro()) {
+                    request.setAttribute("mensajeExito", "El usuario se actualizo corectamente");
+                } else {
+                    request.setAttribute("mensajeError", "El usuario no se actualizo corectamente");
+                }
+                request.getRequestDispatcher("actualizarUsuario.jsp").forward(request, response);
+                break;
+           
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
