@@ -41,9 +41,10 @@
                 <p id="titulo" class="animation">Academia Bottischool</p>
             </header>
             <ul >
-                <li><a href="registrarGrupo.jsp"><i class="fas fa-qrcode"></i>Grupo</a></li>
+                <li><a href="registrarGrupo.jsp"><i class="fas fa-qrcode"></i>Registrar Grupo</a></li>
                 <li><a href="registrarUsuario.jsp"><i class="fa fa-user-plus"></i>Usuario</a></li>
                 <li><a href="registrarAula.jsp"><i class="fa fa-user-plus"></i>Registrar Aula</a></li>
+                <li><a href="registrarClase.jsp"><i class="fa fa-user-plus"></i>Registrar Clase</a></li>
                 <li><a href="#"><i class="fas fa-stream"></i>Buscar</a></li>
                 <li class="animation">
                     <form method="post" action="Sesiones">

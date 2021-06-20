@@ -1,7 +1,7 @@
 <%-- 
-    Document   : registrarUsuario
-    Created on : 18/06/2021, 08:41:45 PM
-    Author     : Julian
+    Document   : registrarClase
+    Created on : 19/06/2021, 08:55:21 PM
+    Author     : Sebas
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -20,7 +20,7 @@
         <link href="Css/sweetalert.css" rel="stylesheet" type="text/css"/>
         <script src="Js/sweetalert.js" type="text/javascript"></script>
         <script src="Js/sweetalert.min.js" type="text/javascript"></script>
-        <title>Registrar Usuario</title>
+        <title>Registrar Clase</title>
     </head>
     <body>
         <nav>
@@ -38,23 +38,19 @@
                         <div class="boton-volver">
                         <a class="boton-volver" href="menu.jsp" style="font-size: 40px;"><i class="fa fa-chevron-circle-left" id="cancel"></i></a>
                         </div>
-                        <h2 for="usu">Registrar Aula</h2>
-                        <form method="POST" action="Aula">
-                            <div class="inputb">
-                                <p class="cuenta" for="usu">Capacidad</p>
-                                <input type="text" name="txtCapacidad" placeholder="Capacidad del grupo" id="usu">
-                            </div>
+                        <h2 for="usu">Registrar Clase</h2>
+                        <form method="POST" action="Clase">
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Nombre</p>
-                                <input type="text" name="txtNomAula" placeholder="Nombre del grupo"  id="pass">
+                                <input type="text" name="txtNombre" placeholder="Nombre" id="usu">
                             </div>
                             <div class="inputb">
-                                <p class="cuenta" for="usu">Grupo</p>
-                                <select name="txtIdGrupo">
-                                    <option value="1">Activo</option>
-                                    <option value="2">Activo</option>
-                                    <option value="3">Activo</option>
+                                <p class="cuenta" for="usu">Estado</p>
+                                <select name="txtEstado">
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
                                 </select>
+
                             </div>
                             <ul class="error" id="error"></ul>
                             <center>
@@ -78,7 +74,7 @@
                                 closeOnConfirm: false
                             },
                                     function () {
-                                        window.location = "registrarAula.jsp";
+                                        window.location = "registrarClase.jsp";
                                     });
                         </script>
 
@@ -94,7 +90,7 @@
                                 closeOnConfirm: false
                             },
                                     function () {
-                                        window.location = "registrarAula.jsp";
+                                        window.location = "registrarClase.jsp";
                                     });
                         </script>
                         <%}%>
@@ -102,6 +98,5 @@
                 </div>
             </div>
         </section>
-
     </body>
 </html>
