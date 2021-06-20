@@ -12,16 +12,17 @@ package ModeloVO;
  * @author David
  */
 public class GrupoVO {
-   private String idGrupo,estado, fechaInicio,fechaFin;
+   private String idGrupo,estado, fechaInicio,fechaFin,nombre;
    
    public GrupoVO() {
     }
 
-    public GrupoVO(String idGrupo, String estado, String fechaInicio, String fechaFin) {
+    public GrupoVO(String idGrupo, String estado, String fechaInicio, String fechaFin,String nombre) {
         this.idGrupo = idGrupo;
         this.estado = estado;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
+        this.nombre = nombre;
     }
     public String getIdGrupo() {
         return idGrupo;
@@ -53,6 +54,14 @@ public class GrupoVO {
 
     public void setFechaFin(String fechaFin) {
         this.fechaFin = fechaFin;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
    
    
