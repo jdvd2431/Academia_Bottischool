@@ -82,11 +82,7 @@ public class UsuarioControlador extends HttpServlet {
                  if (UsuDAO.iniciarSesion(correo, clave)) {
                     
                     HttpSession miSesion = request.getSession(true);
-                    for (int i = 0; i < listaRoles.size(); i++) {
-                        UsuVO= lis.get(i); 
-                        usuId =UsuVO.getUsuId();
-                    }
-                    miSesion.setAttribute("roles", listaRoles);
+                    
                     UsuVO = new UsuarioVO(UsuVO.getUsuId(), correo, clave);
                     miSesion.setAttribute("datos", UsuVO); 
                     request.setAttribute("mensajeBienvenida", "Bienvenido");
