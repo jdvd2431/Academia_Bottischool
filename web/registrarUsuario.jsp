@@ -77,12 +77,7 @@
                                 <input type="password" class="form-control" name="txtClave" id="Placa" placeholder="Clave" id="pass">
                             </div>
                             <div class="inputb">
-                                <p class="cuenta" for="usu">Estado</p>
-                                <select name="txtEstado">
-                                    <option value="Activo">Activo</option>
-                                    <option value="Inactivo">Inactivo</option>
-                                </select>
-
+                                <input type="hidden" name="txtEstado" value="Activo">
                             </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Grupo</p>

@@ -42,7 +42,7 @@
             </header>
             <ul >
                 <li><a href="registrarGrupo.jsp"><i class="fas fa-users"></i>Registrar Grupo</a></li>
-                <li><a href="registrarUsuario.jsp"><i class="fa fa-user-plus"></i>Usuario</a></li>
+                <li><a href="registrarUsuario.jsp"><i class="fa fa-user-plus"></i>Registrar Usuario</a></li>
                 <li><a href="registrarAula.jsp"><i class="fas fa-archway"></i>Registrar Aula</a></li>
                 <li><a href="registrarAsistencia.jsp"><i class="fas fa-clipboard-list"></i>Registrar Asistencia</a></li>
                 <li><a href="registrarClase.jsp"><i class="fas fa-door-open"></i>Registrar Clase</a></li>
@@ -64,7 +64,7 @@
                     <div class="col-md-6">
                         <div class="service-item" id="1">
                             <div class="first-service-icon service-icon"></div>
-                            <h4>Mision</h4>
+                            <h4>Misión</h4>
                             <p>
                                 Somos una escuela de baile dedicada a la formación integral de personas, haciendo uso de la danza como una herramienta de bienestar para fortalecer las áreas física, social y emocional de nuestra comunidad, a través de la creación de espacios que permitan la diversión y el sano entretenimiento.
                             </p>
@@ -73,7 +73,7 @@
                     <div class="col-md-6">
                         <div class="service-item" id="segundo">
                             <div class="second-service-icon service-icon"></div>
-                            <h4>Vision</h4>
+                            <h4>Visión</h4>
                             <p>
                                 Ser reconocidos como la mejor escuela de baile en Bogotá, no solo por la participación de nuestros bailarines en eventos locales y nacionales, sino también por la calidad, excelencia y compromiso en el servicio de enseñanza dirigido a todos nuestros usuarios.
                             </p>

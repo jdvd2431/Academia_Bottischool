@@ -40,7 +40,7 @@ public class UsuarioDAO extends Conexion implements Crud{
             tipoDocumento =usuVO.getTipoDocumento();
             numDocumento =usuVO.getNumDocumento();
             celular =usuVO.getCelular();
-            telefono =usuVO.getCelular();
+            telefono =usuVO.getTelefono();
             estado =usuVO.getEstado();
             correo = usuVO.getCorreo();
             clave = usuVO.getClave();
@@ -48,7 +48,6 @@ public class UsuarioDAO extends Conexion implements Crud{
         } catch (Exception e) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
         }
-
     }
        
     @Override
