@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -151,5 +152,67 @@ public class UsuarioDAO extends Conexion implements Crud{
         }
         return operacion;
     }
-    
+    /*public UsuarioVO consultarNombre(String nombre){
+  
+        UsuarioVO UsuVO= null;
+        
+        try {
+            
+            conexion = this.obtenerConexion();
+            sql="select * from usuario where nombre=?";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, nombre);
+            mensajero= puente.executeQuery();
+            while(mensajero.next()){
+            
+            UsuVO= new UsuarioVO(nombre, mensajero.getString(2),
+                    mensajero.getString(3), mensajero.getString(4),
+                    mensajero.getString(5), mensajero.getString(6),
+                    mensajero.getString(7), mensajero.getString(8),
+                    mensajero.getString(9), mensajero.getString(10));
+            }        
+        } catch (Exception e) {
+          Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+        }finally {
+            try {
+                this.cerrarConexion();
+                
+            } catch (SQLException e) {
+              Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return UsuVO;     
+    }*/
+     public  ArrayList<UsuarioVO> listar(){
+        
+        ArrayList<UsuarioVO>listaUsuario = new ArrayList<>();
+        
+        
+        try {
+            conexion= this.obtenerConexion();
+            sql="select * from usuario";
+            puente = conexion.prepareStatement(sql);
+            mensajero = puente.executeQuery();
+            while (mensajero.next()) {
+                
+                UsuarioVO UsuVO= new UsuarioVO(mensajero.getString(1),mensajero.getString(2),
+                mensajero.getString(3),mensajero.getString(4),mensajero.getString(5),mensajero.getString(6),
+                mensajero.getString(7),mensajero.getString(8),mensajero.getString(9),mensajero.getString(10),
+                mensajero.getString(11));
+                
+                listaUsuario.add(UsuVO);
+            }
+        
+        } catch (Exception e) {
+              Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+        }finally {
+            try {
+                this.cerrarConexion();
+                
+            } catch (SQLException e) {
+              Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return listaUsuario;
+    }
 }

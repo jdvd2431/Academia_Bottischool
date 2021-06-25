@@ -10,24 +10,23 @@ package ModeloVO;
  * @author David
  */
 public class UsuarioVO {
-    private String nombre, apellido, tipoDocumento, numDocumento,celular,telefono,correo,clave,estado,usuId,idGrupo,idTipoUsuario;
+    private String usuId,nombre,apellido,tipoDocumento,numDocumento,celular,telefono,estado,correo,clave,idTipoUsuario;
     
 
     public UsuarioVO() {
     }
 
-    public UsuarioVO(String nombre, String apellido, String tipoDocumento, String numDocumento, String celular, String telefono, String correo, String clave, String estado, String usuId, String idGrupo, String idTipoUsuario) {
+    public UsuarioVO(String usuId,String nombre, String apellido, String tipoDocumento, String numDocumento, String celular, String telefono,String estado, String correo, String clave,String idTipoUsuario) {
+        this.usuId = usuId;
         this.nombre = nombre;
         this.apellido = apellido;
         this.tipoDocumento = tipoDocumento;
         this.numDocumento = numDocumento;
         this.celular = celular;
         this.telefono = telefono;
+        this.estado = estado;
         this.correo = correo;
         this.clave = clave;
-        this.estado = estado;
-        this.usuId = usuId;
-        this.idGrupo = idGrupo;
         this.idTipoUsuario = idTipoUsuario;
     }
 
@@ -36,9 +35,15 @@ public class UsuarioVO {
         this.clave = clave;
         this.usuId = usuId;
     }
-
     
+     public String getUsuId() {
+        return usuId;
+    }
 
+    public void setUsuId(String usuId) {
+        this.usuId = usuId;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -86,6 +91,14 @@ public class UsuarioVO {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+    
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 
     public String getCorreo() {
         return correo;
@@ -102,40 +115,13 @@ public class UsuarioVO {
     public void setClave(String clave) {
         this.clave = clave;
     }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getUsuId() {
-        return usuId;
-    }
-
-    public void setUsuId(String usuId) {
-        this.usuId = usuId;
-    }
-
-    public String getIdGrupo() {
-        return idGrupo;
-    }
-
-    public void setIdGrupo(String idGrupo) {
-        this.idGrupo = idGrupo;
-    }
-
+    
     public String getIdTipoUsuario() {
         return idTipoUsuario;
     }
 
     public void setIdTipoUsuario(String idTipoUsuario) {
         this.idTipoUsuario = idTipoUsuario;
-    }
-    
-    
-    
+    }  
 }
 

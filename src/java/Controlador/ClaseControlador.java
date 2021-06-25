@@ -35,15 +35,16 @@ public class ClaseControlador extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
        
-        String idAula = request.getParameter("txtId");     
+        String idClase = request.getParameter("txtId");     
         String nombre = request.getParameter("txtNombre");
         String estado = request.getParameter("txtEstado");
+        String cantidadSesiones = request.getParameter("txtcantidadSesiones");
         
         
         int opcion = Integer.parseInt(request.getParameter("opcion"));
         
           //paso 2- instanciar VO
-          ClaseVO claVO = new ClaseVO(idAula,nombre,estado);
+          ClaseVO claVO = new ClaseVO(idClase,nombre,estado,cantidadSesiones);
           
           //instanciar DAO
          

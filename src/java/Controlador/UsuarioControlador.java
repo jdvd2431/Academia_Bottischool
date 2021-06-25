@@ -55,7 +55,7 @@ public class UsuarioControlador extends HttpServlet {
         
         //paso 2- instanciar VO
 
-        UsuarioVO UsuVO = new UsuarioVO(nombre, apellido, tipoDocumento, numDocumento, celular, telefono, correo, clave, estado, usuId,idGrupo,idTipoUsuario);
+        UsuarioVO UsuVO = new UsuarioVO(nombre,apellido,tipoDocumento,numDocumento,celular,telefono,correo,clave,estado,usuId,idTipoUsuario);
         
          //instanciar DAO
          
@@ -93,6 +93,17 @@ public class UsuarioControlador extends HttpServlet {
                       request.getRequestDispatcher("login.jsp").forward(request, response);
                       }
                 break;
+            /*case 4://consultar usuario
+                UsuVO = UsuDAO.consultarNombre(nombre);
+                if (UsuVO !=null) {
+                    
+                    request.setAttribute("usuario", UsuVO);
+                    request.getRequestDispatcher("actualizarVehiculo.jsp").forward(request, response);
+                }else{
+                    request.setAttribute("mensajeExito", "El Usuario no existe");
+                     request.getRequestDispatcher("consultarVehiculo.jsp").forward(request, response);
+                }
+                break;*/
         }
     
     }

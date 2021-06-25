@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -80,5 +81,36 @@ public class ClaseDAO extends Conexion implements Crud{
     public boolean cambiarEstado() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+     public  ArrayList<ClaseVO> listar(){
+        
+        ArrayList<ClaseVO>listaClase = new ArrayList<>();
+        
+        
+        try {
+            conexion= this.obtenerConexion();
+            sql="select * from clase";
+            puente = conexion.prepareStatement(sql);
+            mensajero = puente.executeQuery();
+            while (mensajero.next()) {
+                
+                ClaseVO ClaVO= new ClaseVO(mensajero.getString(1),mensajero.getString(2),
+                    mensajero.getString(3), mensajero.getString(4));
+                
+                   listaClase.add(ClaVO);
+            }
+        
+        } catch (Exception e) {
+              Logger.getLogger(ClaseDAO.class.getName()).log(Level.SEVERE, null, e);
+        }finally {
+            try {
+                this.cerrarConexion();
+                
+            } catch (SQLException e) {
+              Logger.getLogger(ClaseDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return listaClase;
+        
     
+    }
 }
