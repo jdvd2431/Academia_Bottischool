@@ -4,6 +4,8 @@
     Author     : David
 --%>
 
+<%@page import="ModeloVO.UsuarioVO"%>
+<%@page import="ModeloDAO.UsuarioDAO"%>
 <%@page import="ModeloDAO.MostrarDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="ModeloVO.AsistenciaVO"%>
@@ -35,40 +37,26 @@
                 <th>Position</th>
                 <th>Office</th>
                 <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                
             </tr>
         </thead>
         <tbody>
                 <%
-                    AsistenciaVO AsiVO = new AsistenciaVO();
-                    MostrarDAO MosDAO = new MostrarDAO();
-                    ArrayList<AsistenciaVO> listaAsistencia = MosDAO.listar();
-                    for (int i = 0; i < listaAsistencia.size(); i++) {
+                    UsuarioVO UsuVO = new UsuarioVO();
+                    UsuarioDAO UsuDAO = new UsuarioDAO(UsuVO);
+                    ArrayList<UsuarioVO> listaRoles = UsuDAO.roles();
+                    {
 
-                        AsiVO = listaAsistencia.get(i);
+                       
 
                 %>
 
                 <tr>
-                    <td><%=MostarDAO.()%></td>
-                    <td><%=vehVO.getDatId()%></td>
-                    <td><%=vehVO.getCatId()%></td>
-                    
-
+                    <td><%=UsuVO.getNombre()%></td>
+                    <td><%=UsuVO.getApellido()%></td>
+                   
                 </tr>
                 <%}%>
-                
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td>$170,750</td>
-            </tr>
-         
-         
         </tbody>
         <tfoot>
             <tr>
@@ -76,8 +64,7 @@
                 <th>Position</th>
                 <th>Office</th>
                 <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                
             </tr>
         </tfoot>
     </table>
@@ -131,7 +118,4 @@
     $('#example').DataTable();
 } );
 </script>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
 </html>

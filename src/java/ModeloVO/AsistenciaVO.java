@@ -65,9 +65,5 @@ public class AsistenciaVO {
 
     public void setIdGrupo(String idGrupo) {
         this.idGrupo = idGrupo;
-    }
-
-  
-   
-   
+    } 
 }
