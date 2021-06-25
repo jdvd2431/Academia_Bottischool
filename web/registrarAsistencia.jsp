@@ -65,7 +65,7 @@
                             </div>
                              <div class="inputb">
                                 <p class="cuenta" for="usu">Novedad</p>
-                                <select name="txtIdNovedad">
+                                <select name="txtIdGrupo">
                                     <option value="1">Problema personal</option>
                                     <option value="2">Cita medica</option>
                                     <option value="3">Problema Familiar</option>

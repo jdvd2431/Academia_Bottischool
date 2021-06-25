@@ -40,12 +40,12 @@ public class AsistenciaControlador extends HttpServlet {
         String asistencia = request.getParameter("txtAsistencia");
         String fecha = request.getParameter("txtFecha");
         String idUsuario = request.getParameter("txtIdUsuario");
-        String idNovedad = request.getParameter("txtIdNovedad");
+        String idGrupo = request.getParameter("txtIdGrupo");
         
           int opcion = Integer.parseInt(request.getParameter("opcion"));
         
           //paso 2- instanciar VO
-          AsistenciaVO AsisVO = new AsistenciaVO(idAsistencia, asistencia, fecha, idUsuario, idNovedad);
+          AsistenciaVO AsisVO = new AsistenciaVO(idAsistencia, asistencia, fecha, idUsuario, idGrupo);
           
           //instanciar DAO
          

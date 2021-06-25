@@ -28,7 +28,7 @@ public class UsuarioDAO extends Conexion implements Crud{
     private boolean operacion = false;
     private String sql;
     private String  usuId = "", correo = "", clave = "";
-    private String nombre= "", apellido= "",tipoDocumento= "",numDocumento= "",celular= "",telefono= "",estado= "",idGrupo="",idTipoUsuario="";
+    private String nombre= "", apellido= "",tipoDocumento= "",numDocumento= "",celular= "",telefono= "",estado= "",idTipoUsuario="";
 
        public UsuarioDAO(UsuarioVO usuVO) {
         super();
@@ -44,7 +44,6 @@ public class UsuarioDAO extends Conexion implements Crud{
             estado =usuVO.getEstado();
             correo = usuVO.getCorreo();
             clave = usuVO.getClave();
-            idGrupo =usuVO.getIdGrupo();
             idTipoUsuario =usuVO.getIdTipoUsuario();
         } catch (Exception e) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -60,15 +59,14 @@ public class UsuarioDAO extends Conexion implements Crud{
                     + "nombre,"
                     + "apellido,"
                     + "tipoDocumento,"
-                    + "numeroDocumento,"
+                    + "documento,"
                     + "celular,"
                     + "telefono,"
                     + "estado,"
                     + "correo,"
                     + "clave,"
-                    + "idGrupo,"
                     + "idTipoUsuario)"
-                    + " values(?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + " values(?,?,?,?,?,?,?,?,?,?,?)";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, usuId);
             puente.setString(2, nombre);
@@ -80,8 +78,7 @@ public class UsuarioDAO extends Conexion implements Crud{
             puente.setString(8, estado);
             puente.setString(9, correo);
             puente.setString(10, clave);
-            puente.setString(11, idGrupo);
-            puente.setString(12, idTipoUsuario);
+            puente.setString(11, idTipoUsuario);
             puente.executeUpdate();
             operacion = true;
         } catch (SQLException e) {

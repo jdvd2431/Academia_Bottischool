@@ -29,7 +29,7 @@ public class AsistenciaDAO extends Conexion implements Crud{
     
     private String sql;
     
-     private String  idAsistencia = "", asistencia = "", fecha = "", idUsuario = "", idNovedad = "";
+     private String  idAsistencia = "", asistencia = "", fecha = "", idUsuario = "", idGrupo = "";
      
       public AsistenciaDAO(AsistenciaVO AsisVO){
      
@@ -40,7 +40,7 @@ public class AsistenciaDAO extends Conexion implements Crud{
             asistencia =AsisVO.getAsistencia();
             fecha =AsisVO.getFecha();
             idUsuario =AsisVO.getIdUsuario();
-            idNovedad =AsisVO.getIdNovedad();
+            idGrupo =AsisVO.getIdGrupo();
         } catch (Exception e) {
             Logger.getLogger(AsistenciaDAO.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -54,15 +54,15 @@ public class AsistenciaDAO extends Conexion implements Crud{
                     + "idAsistencia,"
                     + "asistencia,"
                     + "fecha,"
-                    + "idUsuario,"
-                    + "idNovedad)"
+                    + "estudiante,"
+                    + "idGrupo)"
                     + " values(?,?,?,?,?)";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, idAsistencia);
             puente.setString(2, asistencia);
             puente.setString(3, fecha);
             puente.setString(4, idUsuario);
-            puente.setString(5, idNovedad);
+            puente.setString(5, idGrupo);
             puente.executeUpdate();
             operacion = true;
         } catch (SQLException e) {
