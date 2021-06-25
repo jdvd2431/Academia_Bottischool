@@ -215,7 +215,6 @@ ul{
 .container.active .links a{
     animation: appear 0.5s forwards ease var(--i);
 }
-
 @keyframes appear{
     from{
         opacity: 0;

@@ -92,7 +92,6 @@ public class UsuarioControlador extends HttpServlet {
                       request.getRequestDispatcher("login.jsp").forward(request, response);
                       }
                 break;
-           
         }
     
     }
