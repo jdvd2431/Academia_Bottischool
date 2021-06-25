@@ -28,7 +28,7 @@
                    <div class="overlay">
                        <div class="inner">
                            <h2 class="title">Bienvenido</h2>
-                           <p>jajajaj</p>
+                           <p></p>
                            <br>
                        </div>
                    </div>

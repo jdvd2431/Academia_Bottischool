@@ -34,11 +34,10 @@ public class Sesiones extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-          HttpSession buscarSesion = request.getSession();
+        HttpSession buscarSesion = request.getSession();
         buscarSesion.removeAttribute("datos");
-         buscarSesion.removeAttribute("roles");
         buscarSesion.invalidate();
-        request.getRequestDispatcher("login.jsp").forward(request, response); 
+        request.getRequestDispatcher("index.jsp").forward(request, response); 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

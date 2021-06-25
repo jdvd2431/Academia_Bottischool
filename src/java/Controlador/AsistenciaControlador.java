@@ -45,11 +45,12 @@ public class AsistenciaControlador extends HttpServlet {
           int opcion = Integer.parseInt(request.getParameter("opcion"));
         
           //paso 2- instanciar VO
-          AsistenciaVO AsisVO = new AsistenciaVO(idAsistencia, asistencia, fecha, idUsuario, idGrupo);
+          AsistenciaVO AsiVO = new AsistenciaVO(idAsistencia, asistencia, fecha, idUsuario, idGrupo);
           
           //instanciar DAO
+          
+          AsistenciaDAO AsisDAO = new AsistenciaDAO(AsiVO);
          
-          AsistenciaDAO AsisDAO = new AsistenciaDAO(AsisVO);
           
             switch (opcion) {
             case 1://Agregar Registro

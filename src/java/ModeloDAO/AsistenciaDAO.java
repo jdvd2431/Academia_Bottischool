@@ -12,8 +12,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 
 /**
  *
@@ -30,17 +32,17 @@ public class AsistenciaDAO extends Conexion implements Crud{
     private String sql;
     
      private String  idAsistencia = "", asistencia = "", fecha = "", idUsuario = "", idGrupo = "";
-     
-      public AsistenciaDAO(AsistenciaVO AsisVO){
-     
+    
+      public AsistenciaDAO(AsistenciaVO AsiVO){
+    
          super();
         try {
             conexion = this.obtenerConexion();
-            idAsistencia = AsisVO.getIdAsistencia();
-            asistencia =AsisVO.getAsistencia();
-            fecha =AsisVO.getFecha();
-            idUsuario =AsisVO.getIdUsuario();
-            idGrupo =AsisVO.getIdGrupo();
+            idAsistencia = AsiVO.getIdAsistencia();
+            asistencia =AsiVO.getAsistencia();
+            fecha =AsiVO.getFecha();
+            idUsuario =AsiVO.getIdUsuario();
+            idGrupo =AsiVO.getIdGrupo();
         } catch (Exception e) {
             Logger.getLogger(AsistenciaDAO.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -48,8 +50,7 @@ public class AsistenciaDAO extends Conexion implements Crud{
     
     @Override
     public boolean agregarRegistro() {
-       
-         try {
+        try {
             sql = "insert into asistencia("
                     + "idAsistencia,"
                     + "asistencia,"
@@ -86,7 +87,4 @@ public class AsistenciaDAO extends Conexion implements Crud{
     public boolean cambiarEstado() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
-    
-}
+   }
