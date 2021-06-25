@@ -152,7 +152,7 @@ public class UsuarioDAO extends Conexion implements Crud{
         }
         return operacion;
     }
-    public ArrayList<UsuarioVO> roles(String idTipoUsuario){
+    public ArrayList<UsuarioVO> roles(){
         ArrayList<UsuarioVO> listaRoles = new ArrayList<>();
     try{
         sql="SELECT usuario.nombre,usuario.apellido,usuario.idTipoUsuario from usuario INNER join grupo_usuario on usuario.idUsuario=grupo_usuario.idUsuario INNER JOIN grupo on grupo_usuario.idGrupo=grupo.idGrupo where idTipoUsuario=idTipoUsuario";

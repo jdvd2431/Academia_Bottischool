@@ -42,20 +42,19 @@
         </thead>
         <tbody>
                 <%
-                    UsuarioDAO usuarioDAO = new UsuarioDAO(usuVO);
-                            for (UsuarioVO usuVO : usuarioDAO()) {
+                    UsuarioVO UsuVO = new UsuarioVO();
+                    UsuarioDAO UsuDAO = new UsuarioDAO(UsuVO);
+                    ArrayList<UsuarioVO> listaRoles = UsuDAO.roles();
+                    {
+
+                       
 
                 %>
 
                 <tr>
-                    <td><%=AsiVO.getNombre()%></td>
-                    <td><%=AsiVO.getApellido()%></td>
-                    <td><input type="checkbox" name="si" value="Asistio"> Asistio<br></td>
-                    <td><input type="checkbox" name="no" value="No Asistio"> No Asistio<br></td>
-                    <td>
-                        
-                    </td>
-
+                    <td><%=UsuVO.getNombre()%></td>
+                    <td><%=UsuVO.getApellido()%></td>
+                   
                 </tr>
                 <%}%>
         </tbody>
@@ -119,7 +118,4 @@
     $('#example').DataTable();
 } );
 </script>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
 </html>
