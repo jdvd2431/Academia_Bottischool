@@ -4,6 +4,8 @@
     Author     : David
 --%>
 
+<%@page import="ModeloVO.UsuarioVO"%>
+<%@page import="ModeloDAO.UsuarioDAO"%>
 <%@page import="ModeloDAO.MostrarDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="ModeloVO.AsistenciaVO"%>
@@ -35,40 +37,27 @@
                 <th>Position</th>
                 <th>Office</th>
                 <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                
             </tr>
         </thead>
         <tbody>
                 <%
-                    AsistenciaVO AsiVO = new AsistenciaVO();
-                    MostrarDAO MosDAO = new MostrarDAO();
-                    ArrayList<AsistenciaVO> listaAsistencia = MosDAO.listar();
-                    for (int i = 0; i < listaAsistencia.size(); i++) {
-
-                        AsiVO = listaAsistencia.get(i);
+                    UsuarioDAO usuarioDAO = new UsuarioDAO(usuVO);
+                            for (UsuarioVO usuVO : usuarioDAO()) {
 
                 %>
 
                 <tr>
-                    <td><%=MostarDAO.()%></td>
-                    <td><%=vehVO.getDatId()%></td>
-                    <td><%=vehVO.getCatId()%></td>
-                    
+                    <td><%=AsiVO.getNombre()%></td>
+                    <td><%=AsiVO.getApellido()%></td>
+                    <td><input type="checkbox" name="si" value="Asistio"> Asistio<br></td>
+                    <td><input type="checkbox" name="no" value="No Asistio"> No Asistio<br></td>
+                    <td>
+                        
+                    </td>
 
                 </tr>
                 <%}%>
-                
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td>$170,750</td>
-            </tr>
-         
-         
         </tbody>
         <tfoot>
             <tr>
@@ -76,8 +65,7 @@
                 <th>Position</th>
                 <th>Office</th>
                 <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                
             </tr>
         </tfoot>
     </table>
