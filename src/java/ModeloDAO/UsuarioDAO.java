@@ -152,37 +152,6 @@ public class UsuarioDAO extends Conexion implements Crud{
         }
         return operacion;
     }
-    /*public UsuarioVO consultarNombre(String nombre){
-  
-        UsuarioVO UsuVO= null;
-        
-        try {
-            
-            conexion = this.obtenerConexion();
-            sql="select * from usuario where nombre=?";
-            puente = conexion.prepareStatement(sql);
-            puente.setString(1, nombre);
-            mensajero= puente.executeQuery();
-            while(mensajero.next()){
-            
-            UsuVO= new UsuarioVO(nombre, mensajero.getString(2),
-                    mensajero.getString(3), mensajero.getString(4),
-                    mensajero.getString(5), mensajero.getString(6),
-                    mensajero.getString(7), mensajero.getString(8),
-                    mensajero.getString(9), mensajero.getString(10));
-            }        
-        } catch (Exception e) {
-          Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
-        }finally {
-            try {
-                this.cerrarConexion();
-                
-            } catch (SQLException e) {
-              Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
-            }
-        }
-        return UsuVO;     
-    }*/
      public  ArrayList<UsuarioVO> listar(){
         
         ArrayList<UsuarioVO>listaUsuario = new ArrayList<>();
@@ -233,4 +202,7 @@ public class UsuarioDAO extends Conexion implements Crud{
     return listaRoles;
     
 }
+    
 }
+
+
