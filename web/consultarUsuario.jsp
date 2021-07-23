@@ -119,5 +119,6 @@
                 $('#usuario').DataTable();
             });
         </script>
+        
     </body>
 </html>
