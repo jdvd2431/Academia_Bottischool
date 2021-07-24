@@ -18,6 +18,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar Usuario</title>
     </head>
@@ -30,7 +31,7 @@
                 justify-content: center;
                 margin: auto;
                 background:#fefefe;
-                padding: 5px;
+                padding: 15px;
                 margin-radius:5px; 
             }
             body{
@@ -38,7 +39,7 @@
             }
             h2{
                 width:100%;
-                max-width: 150px;
+                max-width: 300px;
                 display: flex;
                 justify-content: center;
                 margin: auto;
@@ -46,8 +47,8 @@
                 background: #007bff;
                 border-radius:7px;
                 padding: 5px;
-                margin-bottom: 5px;
-                margin-top: 5px;
+                margin-bottom: 25px;
+                margin-top: 35px;
                 color: white;
             }
             h2:hover{
@@ -55,9 +56,9 @@
                 color: white;
             }
         </style>
-        <h2 class="text-center mt-20">Usuarios</h2>
+        <h2 class="text-center mt-20">Gestion de Usuarios</h2>
         <div class="contenedor">
-            <table id="usuario" class="table table-striped" style="width:100%">
+            <table id="usuario" class="table table-striped w-100" style="width:100%">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -114,11 +115,41 @@
                 </tfoot>
             </table>
         </div>
+
         <script>
             $(document).ready(function () {
-                $('#usuario').DataTable();
+                $('#usuario').DataTable({
+                    scrollY: 400,
+                    language: {
+                        "sProcessing": "Procesando...",
+                        "sLengthMenu": "Mostrar _MENU_ registros",
+                        "sZeroRecords": "No se encontraron resultados",
+                        "sEmptyTable": "NingÃºn dato disponible en esta tabla",
+                        "sInfo": "Mostrando usuarios del _START_ al _END_ de un total de _TOTAL_ usuarios",
+                        "sInfoEmpty": "Mostrando usuarios del 0 al 0 de un total de 0 usuarios",
+                        "sInfoFiltered": "(filtrado de un total de _MAX_ usuarios)",
+                        "sInfoPostFix": "",
+                        "sSearch": "Buscar:",
+                        "sUrl": "",
+                        "sInfoThousands": ",",
+                        "sLoadingRecords": "Cargando...",
+                        "oPaginate": {
+                            "sFirst": "Primero",
+                            "sLast": "Ãšltimo",
+                            "sNext": "Siguiente",
+                            "sPrevious": "Anterior"
+                        },
+                        "oAria": {
+                            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                        },
+                        "buttons": {
+                            "copy": "Copiar",
+                            "colvis": "Visibilidad"
+                        }
+                    }
+                });
             });
         </script>
-        
     </body>
 </html>
