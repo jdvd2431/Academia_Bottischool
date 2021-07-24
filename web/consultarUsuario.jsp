@@ -47,7 +47,7 @@
                 background: #007bff;
                 border-radius:7px;
                 padding: 5px;
-                margin-bottom: 25px;
+                margin-bottom: 15px;
                 margin-top: 35px;
                 color: white;
             }
@@ -55,10 +55,19 @@
                 background: #4CA3FF;
                 color: white;
             }
+            .verde{
+                background: green;
+                color: white;
+                border-radius:5px; 
+            }
+            .rojo{
+                background:brown;
+                color: white;
+            }
         </style>
         <h2 class="text-center mt-20">Gestion de Usuarios</h2>
         <div class="contenedor">
-            <table id="usuario" class="table table-striped w-100" style="width:100%">
+            <table id="usuario" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -91,7 +100,11 @@
                         <td><%=UsuVO.getNumDocumento()%></td>
                         <td><%=UsuVO.getCelular()%></td>
                         <td><%=UsuVO.getTelefono()%></td>
-                        <td><%=UsuVO.getEstado()%></td>
+                        <%if (UsuVO.getEstado()!="Inactivo") {%>
+                        <td class="verde text-center"><%=UsuVO.getEstado()%></td>
+                        <%}else if(UsuVO.getEstado()=="Inactivo"){%>
+                        <td class="rojo"><%=UsuVO.getEstado()%></td>
+                        <%}%>
                         <td><%=UsuVO.getCorreo()%></td>
                         <td><%=UsuVO.getClave()%></td>
                         <td><%=UsuVO.getIdTipoUsuario()%></td>           
