@@ -68,6 +68,11 @@
                                 <p class="cuenta" for="usu">Telefono</p>
                                 <input type="text" class="form-control" name="txtTelefono" id="Placa" placeholder="Telefono" id="pass">
                             </div>
+                            
+                            <div class="inputb">
+                                <input type="hidden" name="txtEstado" value="Activo">
+                            </div>
+                            
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Correo</p>
                                 <input type="text" class="form-control" name="txtCorreo" id="Placa" placeholder="Correo" id="pass">
@@ -76,9 +81,7 @@
                                 <p class="cuenta" for="usu">Clave</p>
                                 <input type="password" class="form-control" name="txtClave" id="Placa" placeholder="Clave" id="pass">
                             </div>
-                            <div class="inputb">
-                                <input type="hidden" name="txtEstado" value="Activo">
-                            </div>
+                          
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Grupo</p>
                                 <select name="txtGrupo">
