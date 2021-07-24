@@ -55,7 +55,7 @@ public class UsuarioControlador extends HttpServlet {
         
         //paso 2- instanciar VO
 
-        UsuarioVO UsuVO = new UsuarioVO(nombre,apellido,tipoDocumento,numDocumento,celular,telefono,correo,clave,estado,usuId,idTipoUsuario);
+        UsuarioVO UsuVO = new UsuarioVO(usuId,nombre,apellido,tipoDocumento,numDocumento,celular,telefono,correo,clave,estado,idTipoUsuario);
         
          //instanciar DAO
          
