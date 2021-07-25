@@ -93,17 +93,17 @@ public class UsuarioControlador extends HttpServlet {
                       request.getRequestDispatcher("login.jsp").forward(request, response);
                       }
                 break;
-            /*case 4://consultar usuario
-                UsuVO = UsuDAO.consultarNombre(nombre);
+            case 4://consultar usuario
+                UsuVO = UsuDAO.ConsultarDocumento(numDocumento);
                 if (UsuVO !=null) {
                     
-                    request.setAttribute("usuario", UsuVO);
-                    request.getRequestDispatcher("actualizarVehiculo.jsp").forward(request, response);
+                    request.setAttribute("documento", UsuVO);
+                    request.getRequestDispatcher("actualizarUsuario.jsp").forward(request, response);
                 }else{
                     request.setAttribute("mensajeExito", "El Usuario no existe");
-                     request.getRequestDispatcher("consultarVehiculo.jsp").forward(request, response);
+                     request.getRequestDispatcher("consultarUsuario.jsp").forward(request, response);
                 }
-                break;*/
+                break;
         }
     
     }

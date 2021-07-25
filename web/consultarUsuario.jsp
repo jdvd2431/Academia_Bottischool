@@ -66,6 +66,7 @@
             }
         </style>
         <h2 class="text-center mt-20">Gestion de Usuarios</h2>
+        <a href="actualizarUsuario.jsp" class="btn btn-success">Actualizar Usuario</a>
         <div class="contenedor">
             <table id="usuario" class="table table-striped" style="width:100%">
                 <thead>
@@ -102,8 +103,8 @@
                         <td><%=UsuVO.getTelefono()%></td>
                         <%if (UsuVO.getEstado()!="Inactivo") {%>
                         <td class="verde text-center"><%=UsuVO.getEstado()%></td>
-                        <%}else if(UsuVO.getEstado()=="Inactivo"){%>
-                        <td class="rojo"><%=UsuVO.getEstado()%></td>
+                        <%}else if(UsuVO.getEstado()!="Activo"){%>
+                        <td class="btn btn-danger"><%=UsuVO.getEstado()%></td>
                         <%}%>
                         <td><%=UsuVO.getCorreo()%></td>
                         <td><%=UsuVO.getClave()%></td>
