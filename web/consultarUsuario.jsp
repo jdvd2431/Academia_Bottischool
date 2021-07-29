@@ -27,7 +27,7 @@
         <style>
             .contenedor{
                 width: 100%;
-                max-width: 1500px;
+                max-width: 1550px;
                 display: flex;
                 justify-content: center;
                 margin: auto;
@@ -56,15 +56,7 @@
                 background: #4CA3FF;
                 color: white;
             }
-            .verde{
-                background: green;
-                color: white;
-                border-radius:5px; 
-            }
-            .rojo{
-                background:brown;
-                color: white;
-            }
+            
         </style>
         <h2 class="text-center mt-20">Gestion de Usuarios</h2>
         
@@ -105,9 +97,13 @@
                         <td><%=UsuVO.getCelular()%></td>
                         <td><%=UsuVO.getTelefono()%></td>
                         <%if (UsuVO.getEstado()!="Inactivo") {%>
-                        <td class="verde text-center"><%=UsuVO.getEstado()%></td>
-                        <%}else if(UsuVO.getEstado()!="Activo"){%>
-                        <td class="btn btn-danger"><%=UsuVO.getEstado()%></td>
+                        <td>
+                            <a class="btn btn-success"><%=UsuVO.getEstado()%></a>
+                        </td>
+                        <%}else if (UsuVO.getEstado()!="Activo"){%>
+                        <td>
+                            <a  class="btn btn-danger"><%=UsuVO.getEstado()%></a>
+                        </td>
                         <%}%>
                         <td><%=UsuVO.getCorreo()%></td>
                         <td><%=UsuVO.getClave()%></td>
