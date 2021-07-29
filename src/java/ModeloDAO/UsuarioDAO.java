@@ -126,11 +126,28 @@ public class UsuarioDAO extends Conexion implements Crud{
         }
         return operacion;
     }
-
     @Override
     public boolean cambiarEstado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            sql = "UPDATE `usuario` SET `estado`=? WHERE `idUsuario`=?";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, estado);
+            puente.setString(2, usuId);
+            puente.executeUpdate();
+            operacion = true;
+        } catch (SQLException e) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+                
+            } catch (SQLException e) {
+            }
+        }
+        return operacion;
     }
+
+
     
     public boolean iniciarSesion(String correo, String clave){
             
@@ -215,6 +232,7 @@ public class UsuarioDAO extends Conexion implements Crud{
     
     
     }
+    
     
      public  ArrayList<UsuarioVO> listar(){
         
