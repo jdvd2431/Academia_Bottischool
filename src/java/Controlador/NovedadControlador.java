@@ -5,9 +5,8 @@
  */
 package Controlador;
 
-import ModeloDAO.AsistenciaDAO;
-import ModeloDAO.AulaDAO;
-import ModeloVO.AsistenciaVO;
+import ModeloDAO.NovedadDAO;
+import ModeloVO.NovedadVO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -15,13 +14,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author David
+ * @author Sebas
  */
-@WebServlet(name = "AsistenciaControlador", urlPatterns = {"/Asistencia"})
-public class AsistenciaControlador extends HttpServlet {
+@WebServlet(name = "NovedadControlador", urlPatterns = {"/Novedad"})
+public class NovedadControlador extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,42 +35,35 @@ public class AsistenciaControlador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String idAsistencia = request.getParameter("txtId");     
-        String asistencia = request.getParameter("txtAsistencia");
-        String fecha = request.getParameter("txtFecha");
-        String idUsuario = request.getParameter("txtIdUsuario");
-        String idGrupo = request.getParameter("txtIdGrupo");
-        
-          int opcion = Integer.parseInt(request.getParameter("opcion"));
-        
-          //paso 2- instanciar VO
-          AsistenciaVO AsiVO = new AsistenciaVO(idAsistencia, asistencia, fecha, idUsuario, idGrupo);
-          
-          //instanciar DAO
-          
-          AsistenciaDAO AsisDAO = new AsistenciaDAO(AsiVO);
-         
-          
-            switch (opcion) {
+        String idGrupo = request.getParameter("txtId");
+        String descripcion = request.getParameter("txtDescripcion");    
+        String fechaInicio = request.getParameter("txtFechaInicio");
+        String fechaFin = request.getParameter("txtFechaFin");
+        String idTipoNovedad = request.getParameter("txtTipoNovedad");
+        String idAsistencia = request.getParameter("txtAsistencia");
+        int opcion = Integer.parseInt(request.getParameter("opcion"));
+        NovedadVO NovVO= new NovedadVO(idGrupo,descripcion, fechaInicio, fechaFin, idTipoNovedad,idAsistencia);
+        NovedadDAO NovDAO = new NovedadDAO(NovVO);
+        switch (opcion) {
             case 1://Agregar Registro
-                if (AsisDAO.agregarRegistro()) {
-                    request.setAttribute("mensajeExito", "La Asistencia se registro corectamente");
+                if (NovDAO.agregarRegistro()) {
+                    request.setAttribute("mensajeExito", "La Novedad se registro corectamente");
                 } else {
-                    request.setAttribute("mensajeError", "La Asistencia no se registro corectamente");
+                    request.setAttribute("mensajeError", "La novedad no se registro corectamente");
                 }
-                request.getRequestDispatcher("registrarAsistencia.jsp").forward(request, response);
+                request.getRequestDispatcher("registrarNovedad.jsp").forward(request, response);
                 break;
             case 2://Actualizar Registro
-                if (AsisDAO.actualizarRegistro()) {
-                    request.setAttribute("mensajeExito", "La Asistencia se actualizo corectamente");
+                if (NovDAO.actualizarRegistro()) {
+                    request.setAttribute("mensajeExito", "La Novedad se actualizo corectamente");
                 } else {
-                    request.setAttribute("mensajeError", "La Asistencia no se actualizo corectamente");
+                    request.setAttribute("mensajeError", "La NOvedad no se actualizo corectamente");
                 }
-                request.getRequestDispatcher("registrarAsistencia.jsp").forward(request, response);
+                request.getRequestDispatcher("actualizarNovedad.jsp").forward(request, response);
                 break;
            
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

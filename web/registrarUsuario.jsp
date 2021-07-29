@@ -58,7 +58,7 @@
                             </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Numero Documento</p>
-                                <input type="text" class="form-control" name="txtNumeroDocumento"  placeholder="Tipo Usuario" >
+                                <input type="text" class="form-control" name="txtNumeroDocumento"  placeholder="Numero de Documento" >
                             </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Celular</p>
@@ -145,6 +145,5 @@
                 </div>
             </div>
         </section>
-
     </body>
 </html>

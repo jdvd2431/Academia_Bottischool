@@ -55,7 +55,7 @@ public class AsistenciaDAO extends Conexion implements Crud{
                     + "idAsistencia,"
                     + "asistencia,"
                     + "fecha,"
-                    + "estudiante,"
+                    + "idUsuario,"
                     + "idGrupo)"
                     + " values(?,?,?,?,?)";
             puente = conexion.prepareStatement(sql);

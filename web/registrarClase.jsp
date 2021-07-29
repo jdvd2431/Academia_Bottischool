@@ -46,13 +46,12 @@
                                 <input type="text" name="txtNombre" placeholder="Nombre" id="usu">
                             </div>
                             <div class="inputb">
-                                <p class="cuenta" for="usu">Estado</p>
-                                <select name="txtEstado">
-                                    <option value="Activo">Activo</option>
-                                    <option value="Inactivo">Inactivo</option>
-                                </select>
-
+                            <input type="hidden" name="txtEstado" value="Activo">
                             </div>
+                            <div class="inputb">
+                                <p class="cuenta" for="usu">Cantidad de Sesiones</p>
+                                <input type="number" name="txtcantidadSesiones" placeholder="Cantidad de Sesiones" id="usu">
+                            </div>     
                             <ul class="error" id="error"></ul>
                             <center>
                                 <div class="inputb">

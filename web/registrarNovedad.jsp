@@ -1,9 +1,8 @@
 <%-- 
-    Document   : registrarUsuario
-    Created on : 18/06/2021, 08:41:45 PM
-    Author     : Julian
+    Document   : registrarNovedad
+    Created on : 29/07/2021, 02:42:20 PM
+    Author     : Sebas
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="Sesiones.jsp" %>
 <!DOCTYPE html>
@@ -21,7 +20,7 @@
         <link href="Css/sweetalert.css" rel="stylesheet" type="text/css"/>
         <script src="Js/sweetalert.js" type="text/javascript"></script>
         <script src="Js/sweetalert.min.js" type="text/javascript"></script>
-        <title>Registrar Grupo</title>
+        <title>Registrar Novedad</title>
     </head>
     <body>
         <nav>
@@ -39,14 +38,11 @@
                         <div class="boton-volver">
                         <a class="boton-volver" href="menu.jsp" style="font-size: 40px;"><i class="fa fa-chevron-circle-left" id="cancel"></i></a>
                         </div>
-                        <h2 for="usu">Registrar Grupo</h2>
-                        <form method="POST" action="Grupo">
+                        <h2 for="usu">Registrar Novedad</h2>
+                        <form method="POST" action="Novedad">
                             <div class="inputb">
-                                <p class="cuenta" for="usu">Nombre</p>
-                                <input type="text" name="txtNombre" id="pass" placeholder="Nombre">    
-                            </div>
-                            <div class="inputb">
-                                <input type="hidden" name="txtEstado" value="Activo">
+                                <p class="cuenta" for="usu">Descripcion</p>
+                                <input type="text" name="txtDescripcion" placeholder="Descripcion" id="usu">
                             </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Fecha de Inicio</p>
@@ -60,12 +56,33 @@
                                     value="2021-01-01"
                                     min="2021-01-01" max="2021-12-31">    
                             </div>
+                            <div class="inputb">
+                                <p class="cuenta" for="usu">Tipo de Novedad</p>
+                                <select name="txtTipoNovedad">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <div class="inputb">
+                                <p class="cuenta" for="usu">Asistencia</p>
+                                <select name="txtAsistencia">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
                             <ul class="error" id="error"></ul>
                             <center>
                                 <div class="inputb">
                                     <input type="submit" id="btn" value="Registrar">
                                     <input type="hidden" value="1" name="opcion">
                                 </div></center>
+
                         </form>
                     </div>
                     <div>
@@ -81,7 +98,7 @@
                                 closeOnConfirm: false
                             },
                                     function () {
-                                        window.location = "registrarGrupo.jsp";
+                                        window.location = "registrarNovedad.jsp";
                                     });
                         </script>
 
@@ -97,7 +114,7 @@
                                 closeOnConfirm: false
                             },
                                     function () {
-                                        window.location = "registrarGrupo.jsp";
+                                        window.location = "registrarNovedad.jsp";
                                     });
                         </script>
                         <%}%>
@@ -105,7 +122,5 @@
                 </div>
             </div>
         </section>
-
     </body>
 </html>
-

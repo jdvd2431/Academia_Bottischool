@@ -30,20 +30,20 @@ public class HorarioDAO extends Conexion implements Crud {
     private String sql;
     private String idHorario = "", fechaInicio = "", fechaFin = "", dia = "",horaInicio = "", horaFin = "", estado = "",idGrupo="",idAula="",idClase="";
 
-    public HorarioDAO(HorarioVO horVO) {
+    public HorarioDAO(HorarioVO HorVO) {
         super();
         try {
             conexion = this.obtenerConexion();
-            idHorario = horVO.getIdHorario();
-            fechaInicio = horVO.getFechaInicio();
-            fechaFin = horVO.getFechaFin();
-            dia = horVO.getDia();
-            horaInicio = horVO.getHoraInicio();
-            horaFin = horVO.getHoraFin();
-            estado = horVO.getEstado();
-            idGrupo=horVO.getIdGrupo();
-            idAula=horVO.getIdAula();
-            idClase=horVO.getIdClase();
+            idHorario = HorVO.getIdHorario();
+            fechaInicio = HorVO.getFechaInicio();
+            fechaFin = HorVO.getFechaFin();
+            dia = HorVO.getDia();
+            horaInicio = HorVO.getHoraInicio();
+            horaFin = HorVO.getHoraFin();
+            estado = HorVO.getEstado();
+            idGrupo = HorVO.getIdGrupo();
+            idAula = HorVO.getIdAula();
+            idClase = HorVO.getIdClase();
 
         } catch (Exception e) {
             Logger.getLogger(HorarioDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -53,7 +53,7 @@ public class HorarioDAO extends Conexion implements Crud {
     @Override
     public boolean agregarRegistro() {
         try{
-        sql = "INSERT INTO `horario` (`idHorario`, `fechaInicio`, `fechaFin`,`dia`, `horaInicio`, `horaFin`, `estado`, `idGrupo,`idAula`,`idClase) VALUES (?,?,?,?,?,?,?,?)";
+        sql = "INSERT INTO `horario` (`idHorario`, `fechaInicio`, `fechaFin`,`dia`, `horaInicio`, `horaFin`, `estado`, `idGrupo,`idAula`,`idClase) VALUES (?,?,?,?,?,?,?,?,?,?)";
         puente = conexion.prepareStatement(sql);
             puente.setString(1, idHorario);
             puente.setString(2, fechaInicio);

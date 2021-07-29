@@ -45,47 +45,53 @@
                         <a class="boton-volver" href="menu.jsp" style="font-size: 40px;"><i class="fa fa-chevron-circle-left" id="cancel"></i></a>
                         </div>
                         <h2 for="usu">Registrar Horario</h2>
-                        <form method="POST" action="HorarioControlador">
+                        <form method="POST" action="Horario">
                             
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Fecha de Inicio</p>
-                                <input type="date" name="txtFechaInicio" id="pass"
-                                    value="2021-01-01"
-                                    min="2021-01-01" max="2021-12-31">    
+                                <input type="date" name="txtFechaInicio" id="pass">  
                             </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Fecha de Fin</p>
-                                <input type="date" name="txtFechaFin" id="pass"
-                                    value="2021-01-01"
-                                    min="2021-01-01" max="2021-12-31">    
-                            </div>
-                            <div class="inputb">
-                                <p class="cuenta" for="usu">Hora de Inicio</p>
-                                <input type="time" name="txtHoraInicio" id="pass"
-                                    value="2021-01-01"
-                                    min="2021-01-01" max="2021-12-31">    
-                            </div>
-                            <div class="inputb">
-                                <p class="cuenta" for="usu">Hora de Fin</p>
-                                <input type="time" name="txtHoraFin" id="pass"
-                                    value="10:00 am"
-                                    >    
+                                <input type="date" name="txtFechaFin" id="pass">
                             </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">dia</p>
-                                <input type="date" name="txtDia" id="pass"
-                                    value="2021-01-01"
-                                    min="2021-01-01" max="2021-12-31">   
+                                <input type="date" name="txtDia" id="pass">   
                             </div>
                             <div class="inputb">
-                                <p class="cuenta" for="usu">Estado</p>
-                                <select name="txtEstado">
-                                    <option value="Activo">Activo</option>
-                                    <option value="Inactivo">Inactivo</option>
-                                </select>
+                                <p class="cuenta" for="usu">Hora de Inicio</p>
+                                <input type="text" name="txtHoraInicio" id="pass">
+                            </div>
+                            <div class="inputb">
+                                <p class="cuenta" for="usu">Hora de Fin</p>
+                                <input type="text" name="txtHoraFin" id="pass">    
+                            </div>
+                            <div class="inputb">
+                                <input type="hidden" name="txtEstado" value="Activo">
+                            </div>
+                            <div class="inputb">
+                                <p class="cuenta" for="usu">Grupo</p>
+                                <select name="txtGrupo">
+                                    <option value="1">Merengue</option>
+                                    <option value="2">Tango</option>
+                                    <option value="3">Salsa</option>
+                                    <option value="4">Bachata</option>
+                                    <option value="5">Samba</option>
+                                </select> 
                             </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Aula</p>
+                                <select name="txtAula">
+                                    <option value="1">Merengue</option>
+                                    <option value="2">Tango</option>
+                                    <option value="3">Salsa</option>
+                                    <option value="4">Bachata</option>
+                                    <option value="5">Samba</option>
+                                </select> 
+                            </div>
+                            <div class="inputb">
+                                <p class="cuenta" for="usu">Clase</p>
                                 <select name="txtClase">
                                     <option value="1">Merengue</option>
                                     <option value="2">Tango</option>
@@ -94,7 +100,6 @@
                                     <option value="5">Samba</option>
                                 </select> 
                             </div>
-                            
                             <ul class="error" id="error"></ul>
                             <center>
                                 <div class="inputb">
@@ -117,7 +122,7 @@
                                 closeOnConfirm: false
                             },
                                     function () {
-                                        window.location = "registrarGrupo.jsp";
+                                        window.location = "registrarHorario.jsp";
                                     });
                         </script>
 

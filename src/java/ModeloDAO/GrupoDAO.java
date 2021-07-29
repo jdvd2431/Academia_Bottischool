@@ -45,13 +45,13 @@ public class GrupoDAO extends Conexion implements Crud{
     @Override
     public boolean agregarRegistro() {
          try {
-           sql ="INSERT INTO `grupo` (`idGrupo`, `estado`, `fechaInicio`, `fechaFin`, `nombre`) VALUES (?,?,?,?,?)";
+           sql ="INSERT INTO `grupo` (`idGrupo`,`nombre`, `estado`, `fechaInicio`, `fechaFin` ) VALUES (?,?,?,?,?)";
            puente = conexion.prepareStatement(sql);
             puente.setString(1, idGrupo);
-            puente.setString(2, estado);
-            puente.setString(3, fechaInicio);
-            puente.setString(4, fechaFin);
-            puente.setString(5, nombre);
+            puente.setString(2, nombre);
+            puente.setString(3, estado);
+            puente.setString(4, fechaInicio);
+            puente.setString(5, fechaFin);
             puente.executeUpdate();
             operacion = true;
         } catch (SQLException e) {
@@ -79,9 +79,10 @@ public class GrupoDAO extends Conexion implements Crud{
         
         ArrayList<GrupoVO>listaGrupo = new ArrayList<>();
         
+        
         try {
             conexion= this.obtenerConexion();
-            sql="select * from grupo";
+            sql="SELECT * FROM `grupo`";
             puente = conexion.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {
@@ -103,6 +104,6 @@ public class GrupoDAO extends Conexion implements Crud{
             }
         }
         return listaGrupo;
-       
+          
     }
 }

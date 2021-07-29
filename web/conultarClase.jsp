@@ -107,7 +107,6 @@
                 </tfoot>
             </table>
         </div>
-
         <script>
             $(document).ready(function () {
                 $('#usuario').DataTable({

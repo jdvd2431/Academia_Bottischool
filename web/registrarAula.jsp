@@ -42,19 +42,19 @@
                         <h2 for="usu">Registrar Aula</h2>
                         <form method="POST" action="Aula">
                             <div class="inputb">
-                                <p class="cuenta" for="usu">Capacidad</p>
-                                <input type="text" name="txtCapacidad" placeholder="Capacidad del grupo" id="usu">
+                                <p class="cuenta" for="usu">Nombre</p>
+                                <input type="text" name="txtNomAula" placeholder="Nombre de la Aula"  id="pass">
                             </div>
                             <div class="inputb">
-                                <p class="cuenta" for="usu">Nombre</p>
-                                <input type="text" name="txtNomAula" placeholder="Nombre del grupo"  id="pass">
+                                <p class="cuenta" for="usu">Capacidad</p>
+                                <input type="text" name="txtCapacidad" placeholder="Capacidad de la Aula" id="usu">
                             </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Grupo</p>
                                 <select name="txtIdGrupo">
-                                    <option value="1">Activo</option>
-                                    <option value="2">Activo</option>
-                                    <option value="3">Activo</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
                                 </select>
                             </div>
                             <ul class="error" id="error"></ul>

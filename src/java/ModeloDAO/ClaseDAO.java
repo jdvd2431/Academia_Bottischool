@@ -31,7 +31,7 @@ public class ClaseDAO extends Conexion implements Crud{
     
     private String sql;
     
-    private String  idClase = "", nombre = "", estado = "";
+    private String  idClase = "", nombre = "", estado = "", cantidadSesiones ="";
     
     public ClaseDAO(ClaseVO claVO){
      
@@ -41,6 +41,7 @@ public class ClaseDAO extends Conexion implements Crud{
             idClase = claVO.getIdClase();
             nombre =claVO.getNombre();
             estado =claVO.getEstado();
+            cantidadSesiones=claVO.getCantidadSesiones();
         } catch (Exception e) {
             Logger.getLogger(ClaseDAO.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -52,12 +53,14 @@ public class ClaseDAO extends Conexion implements Crud{
             sql = "insert into clase("
                     + "idClase,"
                     + "nombre,"
-                    + "estado)"
-                    + " values(?,?,?)";
+                    + "estado,"
+                    + "cantidadSesiones)"
+                    + " values(?,?,?,?)";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, idClase);
             puente.setString(2, nombre);
             puente.setString(3, estado);
+            puente.setString(4, cantidadSesiones);
             puente.executeUpdate();
             operacion = true;
         } catch (SQLException e) {

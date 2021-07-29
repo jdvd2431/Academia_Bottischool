@@ -66,6 +66,8 @@
             }
         </style>
         <h2 class="text-center mt-20">Gestion de los Grupos</h2>
+        <form method="post">
+        </form>
         <div class="contenedor">
             <table id="usuario" class="table table-striped" style="width:100%">
                 <thead>
@@ -83,13 +85,14 @@
                         GrupoDAO GruDAO = new GrupoDAO(GruVO);
                         ArrayList<GrupoVO> listaGrupo = GruDAO.listar();
                         for (int i = 0; i < listaGrupo.size(); i++) {
-
+                            
                              GruVO = listaGrupo.get(i);
                     %>               
                     <tr>
                         <td><%=GruVO.getIdGrupo()%></td>
                         <td><%=GruVO.getNombre()%></td>
-                        <%if (GruVO.getEstado()!="Inactivo") {%>
+                        <%if (GruVO.getEstado()!="Inactivo") {
+                        %>
                         <td class="verde text-center"><%=GruVO.getEstado()%></td>
                         <%}else if(GruVO.getEstado()=="Inactivo"){%>
                         <td class="rojo"><%=GruVO.getEstado()%></td>
@@ -110,7 +113,7 @@
                 </tfoot>
             </table>
         </div>
-
+                
         <script>
             $(document).ready(function () {
                 $('#usuario').DataTable({

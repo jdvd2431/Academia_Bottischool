@@ -70,13 +70,13 @@
             <li><a href="#"><i class="icono izquierda fas fa-users"></i>Horario<i class="icono derecha fas fa-chevron-down"></i></a>
             <ul>
                 <li class=""><a href="consultarHorario.jsp"><i class="icono izquierda fas fa-search"></i>Buscar Horario</a></li>
-                <li class=""><a href="#"><i class="icono izquierda fas fa-plus-circle"></i>Registrar Horario</a></li>
+                <li class=""><a href="registrarHorario.jsp"><i class="icono izquierda fas fa-plus-circle"></i>Registrar Horario</a></li>
             </ul>
             </li>
             <li><a href="#"><i class="icono izquierda fas fa-users"></i>Novedad<i class="icono derecha fas fa-chevron-down"></i></a>
             <ul>
                 <li class=""><a href="consultarNovedad.jsp"><i class="icono izquierda fas fa-search"></i>Buscar Novedad</a></li> 
-                <li class=""><a href="#"><i class="icono izquierda fas fa-plus-circle"></i>Registrar Novead</a></li>
+                <li class=""><a href="registrarNovedad.jsp"><i class="icono izquierda fas fa-plus-circle"></i>Registrar Novead</a></li>
             </ul>
             </li>
             <li><a href="#"><i class="icono izquierda fa fa-user-plus"></i>Usuario<i class="icono derecha fas fa-chevron-down"></i></a>

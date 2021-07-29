@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Julian
  */
-@WebServlet(name = "HorarioControlador", urlPatterns = {"/HorarioControlador"})
+@WebServlet(name = "HorarioControlador", urlPatterns = {"/Horario"})
 public class HorarioControlador extends HttpServlet {
 
     /**
@@ -53,19 +53,19 @@ public class HorarioControlador extends HttpServlet {
         switch (opcion) {
             case 1://Agregar Registro
                 if (HorDAO.agregarRegistro()) {
-                    request.setAttribute("mensajeExito", "El usuario se registro corectamente");
+                    request.setAttribute("mensajeExito", "El Horario se registro corectamente");
                 } else {
-                    request.setAttribute("mensajeError", "El usuario no se registro corectamente");
+                    request.setAttribute("mensajeError", "El Horario no se registro corectamente");
                 }
                 request.getRequestDispatcher("registrarHorario.jsp").forward(request, response);
                 break;
             case 2://Actualizar Registro
                 if (HorDAO.actualizarRegistro()) {
-                    request.setAttribute("mensajeExito", "El usuario se actualizo corectamente");
+                    request.setAttribute("mensajeExito", "El Horario se actualizo corectamente");
                 } else {
-                    request.setAttribute("mensajeError", "El usuario no se actualizo corectamente");
+                    request.setAttribute("mensajeError", "El horario no se actualizo corectamente");
                 }
-                request.getRequestDispatcher("actualizarUsuario.jsp").forward(request, response);
+                request.getRequestDispatcher("actualizarHorario.jsp").forward(request, response);
                 break;
            
         }

@@ -6,9 +6,7 @@
 package Controlador;
 
 import ModeloDAO.AulaDAO;
-import ModeloDAO.UsuarioDAO;
 import ModeloVO.AulaVO;
-import ModeloVO.UsuarioVO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -39,15 +37,15 @@ public class AulaControlador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
        
         String idAula = request.getParameter("txtId");     
-        String capacidad = request.getParameter("txtCapacidad");
         String nombre = request.getParameter("txtNomAula");
+        String capacidad = request.getParameter("txtCapacidad");
         String idGrupo = request.getParameter("txtIdGrupo");
         
         
         int opcion = Integer.parseInt(request.getParameter("opcion"));
         
           //paso 2- instanciar VO
-          AulaVO auVO = new AulaVO(idAula, capacidad, nombre, idGrupo);
+          AulaVO auVO = new AulaVO(idAula,nombre, capacidad, idGrupo);
           
           //instanciar DAO
          
@@ -56,19 +54,19 @@ public class AulaControlador extends HttpServlet {
          switch (opcion) {
             case 1://Agregar Registro
                 if (auDAO.agregarRegistro()) {
-                    request.setAttribute("mensajeExito", "El usuario se registro corectamente");
+                    request.setAttribute("mensajeExito", "El Aula se registro corectamente");
                 } else {
-                    request.setAttribute("mensajeError", "El usuario no se registro corectamente");
+                    request.setAttribute("mensajeError", "El Aula no se registro corectamente");
                 }
                 request.getRequestDispatcher("registrarAula.jsp").forward(request, response);
                 break;
             case 2://Actualizar Registro
                 if (auDAO.actualizarRegistro()) {
-                    request.setAttribute("mensajeExito", "El usuario se actualizo corectamente");
+                    request.setAttribute("mensajeExito", "El Aula se actualizo corectamente");
                 } else {
-                    request.setAttribute("mensajeError", "El usuario no se actualizo corectamente");
+                    request.setAttribute("mensajeError", "El Aula no se actualizo corectamente");
                 }
-                request.getRequestDispatcher("actualizarUsuario.jsp").forward(request, response);
+                request.getRequestDispatcher("actualizarAula.jsp").forward(request, response);
                 break;
            
         }

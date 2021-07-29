@@ -61,11 +61,11 @@ public class ClaseControlador extends HttpServlet {
                 break;
             case 2://Actualizar Registro
                 if (claDAO.actualizarRegistro()) {
-                    request.setAttribute("mensajeExito", "El usuario se actualizo corectamente");
+                    request.setAttribute("mensajeExito", "La clase se actualizo corectamente");
                 } else {
-                    request.setAttribute("mensajeError", "El usuario no se actualizo corectamente");
+                    request.setAttribute("mensajeError", "La clase no se actualizo corectamente");
                 }
-                request.getRequestDispatcher("actualizarUsuario.jsp").forward(request, response);
+                request.getRequestDispatcher("actualizarClase.jsp").forward(request, response);
                 break;
            
         }

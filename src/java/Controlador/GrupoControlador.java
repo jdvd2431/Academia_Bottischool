@@ -7,7 +7,6 @@ package Controlador;
 
 import ModeloDAO.GrupoDAO;
 import ModeloVO.GrupoVO;
-import ModeloVO.UsuarioVO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -36,30 +35,30 @@ public class GrupoControlador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         String idGrupo = request.getParameter("txtId");
+        String idGrupo = request.getParameter("txtId");
+        String nombre = request.getParameter("txtNombre"); 
         String estado = request.getParameter("txtEstado");     
         String fechaInicio = request.getParameter("txtFechaInicio");
         String fechaFin = request.getParameter("txtFechaFin");
-        String nombre = request.getParameter("txtClase");
         int opcion = Integer.parseInt(request.getParameter("opcion"));
-        GrupoVO grupoVO= new GrupoVO(idGrupo, estado, fechaInicio, fechaFin,nombre);
+        GrupoVO grupoVO= new GrupoVO(idGrupo,nombre, estado, fechaInicio, fechaFin);
         GrupoDAO grupoDAO = new GrupoDAO(grupoVO);
         switch (opcion) {
             case 1://Agregar Registro
                 if (grupoDAO.agregarRegistro()) {
-                    request.setAttribute("mensajeExito", "El usuario se registro corectamente");
+                    request.setAttribute("mensajeExito", "El Grupo se registro corectamente");
                 } else {
-                    request.setAttribute("mensajeError", "El usuario no se registro corectamente");
+                    request.setAttribute("mensajeError", "El Grupo no se registro corectamente");
                 }
                 request.getRequestDispatcher("registrarGrupo.jsp").forward(request, response);
                 break;
             case 2://Actualizar Registro
                 if (grupoDAO.actualizarRegistro()) {
-                    request.setAttribute("mensajeExito", "El usuario se actualizo corectamente");
+                    request.setAttribute("mensajeExito", "El Grupo se actualizo corectamente");
                 } else {
-                    request.setAttribute("mensajeError", "El usuario no se actualizo corectamente");
+                    request.setAttribute("mensajeError", "El Grupo no se actualizo corectamente");
                 }
-                request.getRequestDispatcher("actualizarUsuario.jsp").forward(request, response);
+                request.getRequestDispatcher("actualizarGrupo.jsp").forward(request, response);
                 break;
            
         }
