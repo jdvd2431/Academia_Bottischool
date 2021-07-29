@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css"/>
         <link rel="stylesheet" href="../Css/consultar.css"/>
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
         <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
         <script src="https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"></script>
@@ -26,7 +27,7 @@
         <style>
             .contenedor{
                 width: 100%;
-                max-width: 1400px;
+                max-width: 1500px;
                 display: flex;
                 justify-content: center;
                 margin: auto;
@@ -66,7 +67,7 @@
             }
         </style>
         <h2 class="text-center mt-20">Gestion de Usuarios</h2>
-        <a href="actualizarUsuario.jsp" class="btn btn-success">Actualizar Usuario</a>
+        
         <div class="contenedor">
             <table id="usuario" class="table table-striped" style="width:100%">
                 <thead>
@@ -82,6 +83,8 @@
                         <th>Correo</th>
                         <th>Clave</th>
                         <th>Tipo Usuario</th>
+                        <th>Estado</th>
+                        <th>Actualizar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -108,7 +111,12 @@
                         <%}%>
                         <td><%=UsuVO.getCorreo()%></td>
                         <td><%=UsuVO.getClave()%></td>
-                        <td><%=UsuVO.getIdTipoUsuario()%></td>           
+                        <td><%=UsuVO.getIdTipoUsuario()%></td>  
+                        <td>
+                            <a class="btn btn-success" href="cambiarEstado.jsp?idUsuario=<%=UsuVO.getUsuId()%>&estado=<%=UsuVO.getEstado()%>"><i class="fas fa-pen"></i></a>
+                            
+                        </td>
+                        <td><a href="actualizarUsuario.jsp" class="btn btn-success"><i class="fas fa-pen"></i></a></td>
                     </tr>
                     <%}%>  
                 </tbody>
@@ -125,6 +133,8 @@
                         <th>Correo</th>
                         <th>Clave</th>
                         <th>Tipo Usuario</th>
+                        <th>Estado</th>
+                        <th>Actualizar</th>
                     </tr>
                 </tfoot>
             </table>
