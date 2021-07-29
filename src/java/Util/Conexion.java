@@ -13,6 +13,7 @@ import java.sql.SQLException;
  *
  * @author David
  */
+
 public class Conexion {
      private String user, password, db, url, puerto, driver;
     private Connection conexion;

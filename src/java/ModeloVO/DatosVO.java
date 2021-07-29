@@ -9,13 +9,13 @@ package ModeloVO;
  *
  * @author David
  */
-public class DatosPVO {
+public class DatosVO {
     private String datId,usuId,datNombre ;
 
-    public DatosPVO() {
+    public DatosVO() {
     }
 
-    public DatosPVO(String datId, String usuId, String datNombre) {
+    public DatosVO(String datId, String usuId, String datNombre) {
         this.datId = datId;
         this.usuId = usuId;
         this.datNombre = datNombre;

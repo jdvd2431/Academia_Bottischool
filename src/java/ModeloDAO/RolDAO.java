@@ -28,9 +28,7 @@ public class RolDAO extends Conexion{
         
         try {
             conexion = this.obtenerConexion();
-            sql = "SELECT usuario.USUID, rol.ROLTIPO FROM usuario INNER JOIN \n" +
-"                usuario_rol on usuario.USUID = usuario_rol.USUID INNER JOIN \n" +
-"                rol on rol.ROLID= usuario_rol.ROLID WHERE USULOGIN = ? ";
+            sql = "SELECT idTipoUsuario FROM `usuario` WHERE correo=?;";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, usuario);
             mensajero = puente.executeQuery();
