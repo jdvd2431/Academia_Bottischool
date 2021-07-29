@@ -5,8 +5,8 @@
 --%>
 
 <%@page import="java.util.ArrayList"%>
-<%@page import="ModeloDAO.ClaseDAO"%>
-<%@page import="ModeloVO.ClaseVO"%>
+<%@page import="ModeloDAO.AulaDAO"%>
+<%@page import="ModeloVO.AulaVO"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
         <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
         <script src="https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Consultar Clase</title>
+        <title>Consultar Aula</title>
     </head>
     <body >
         <style>
@@ -65,35 +65,35 @@
                 color: white;
             }
         </style>
-        <h2 class="text-center mt-20">Gestion de Clases</h2>
+        <h2 class="text-center mt-20">Gestion de Aulas</h2>
         <div class="contenedor">
             <table id="usuario" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Nombre</th>
+                        <th>Capacidad</th>
                         <th>Estado</th>
-                        <th>Cantidad de Sesiones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <%
-                        ClaseVO ClaVO = new ClaseVO();
-                        ClaseDAO ClaDAO = new ClaseDAO(ClaVO);
-                        ArrayList<ClaseVO> listaClase = ClaDAO.listar();
-                        for (int i = 0; i < listaClase.size(); i++) {
+                        AulaVO AuVO = new AulaVO();
+                        AulaDAO AuDAO = new AulaDAO(AuVO);
+                        ArrayList<AulaVO> listaAula=  AuDAO.listar();
+                        for (int i = 0; i < listaAula.size(); i++) {
 
-                            ClaVO = listaClase.get(i);
+                            AuVO = listaAula.get(i);
                     %>               
                     <tr>
-                        <td><%=ClaVO.getIdClase()%></td>
-                        <td><%=ClaVO.getNombre()%></td>
-                        <%if (ClaVO.getEstado()!="Inactivo") {%>
-                        <td class="verde text-center"><%=ClaVO.getEstado()%></td>
-                        <%}else if(ClaVO.getEstado()=="Inactivo"){%>
-                        <td class="rojo"><%=ClaVO.getEstado()%></td>
-                        <%}%>  
-                        <td class="text-center"><%=ClaVO.getCantidadSesiones()%></td> 
+                        <td><%=AuVO.getIdAula()%></td>
+                        <td><%=AuVO.getNombre()%></td>
+                        <td><%=AuVO.getCapacidad()%></td>
+                        <%if (AuVO.getEstado()!="Inactivo") {%>
+                        <td class="verde text-center"><%=AuVO.getEstado()%></td>
+                        <%}else if(AuVO.getEstado()=="Inactivo"){%>
+                        <td class="rojo"><%=AuVO.getEstado()%></td>
+                        <%}%>
                     </tr>
                     <%}%>  
                 </tbody>
@@ -101,8 +101,8 @@
                     <tr>
                         <th>Id</th>
                         <th>Nombre</th>
+                        <th>Capacidad</th>
                         <th>Estado</th>
-                        <th>Cantidad de Sesiones</th>
                     </tr>
                 </tfoot>
             </table>

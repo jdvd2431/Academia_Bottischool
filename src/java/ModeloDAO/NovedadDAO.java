@@ -5,7 +5,7 @@
  */
 package ModeloDAO;
 
-import ModeloVO.AulaVO;
+import ModeloVO.NovedadVO;
 import Util.Conexion;
 import Util.Crud;
 import java.sql.Connection;
@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  *
  * @author Sebas
  */
-public class AulaDAO extends Conexion implements Crud{
+public class NovedadDAO extends Conexion implements Crud{
     
     private Connection conexion;
     private PreparedStatement puente;
@@ -30,17 +30,19 @@ public class AulaDAO extends Conexion implements Crud{
     
     private String sql;
     
-    private String  idAula = "", nombre = "", capacidad  = "", estado = "";
+    private String  idNovedad = "", descripcion = "", fechaInicio  = "", fechaFin="", idTipoNovedad = "" ,idAsistencia = "";
      
-    public AulaDAO(AulaVO AuVO){
+    public NovedadDAO(NovedadVO NovVO){
      
          super();
         try {
             conexion = this.obtenerConexion();
-            idAula = AuVO.getIdAula();
-            nombre =AuVO.getNombre();
-            capacidad =AuVO.getCapacidad();
-            estado =AuVO.getEstado();
+            idNovedad = NovVO.getIdNovedad();
+            descripcion =NovVO.getDescripcion();
+            fechaInicio =NovVO.getFechaInicio();
+            fechaFin =NovVO.getFechaFin();
+            idTipoNovedad=NovVO.getIdTipoNovedad();
+            idAsistencia=NovVO.getIdAsistencia();
         } catch (Exception e) {
             Logger.getLogger(AulaDAO.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -50,21 +52,25 @@ public class AulaDAO extends Conexion implements Crud{
     public boolean agregarRegistro() {
     
         try {
-            sql = "insert into aula("
-                    + "idAula,"
-                    + "nombre,"
-                    + "capacidad,"
-                    + "estado)"
-                    + " values(?,?,?,?)";
+            sql = "insert into Novedad("
+                    + "idNovedad,"
+                    + "descripcion,"
+                    + "fechaInicio,"
+                    + "fechaFin,"
+                    + "idTipoNovedad,"
+                    + "idAsistencia)"
+                    + " values(?,?,?,?,?,?)";
             puente = conexion.prepareStatement(sql);
-            puente.setString(1, idAula);
-            puente.setString(2, nombre);
-            puente.setString(3, capacidad);
-            puente.setString(4, estado);
+            puente.setString(1, idNovedad);
+            puente.setString(2, descripcion);
+            puente.setString(3, fechaInicio);
+            puente.setString(4, fechaFin);
+            puente.setString(5, idTipoNovedad);
+            puente.setString(6, idAsistencia);
             puente.executeUpdate();
             operacion = true;
         } catch (SQLException e) {
-            Logger.getLogger(AulaDAO.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(NovedadDAO.class.getName()).log(Level.SEVERE, null, e);
         } finally {
             try {
                 this.cerrarConexion();
@@ -84,35 +90,35 @@ public class AulaDAO extends Conexion implements Crud{
     public boolean cambiarEstado() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-     public  ArrayList<AulaVO> listar(){
+     public  ArrayList<NovedadVO> listar(){
         
-        ArrayList<AulaVO>listaAula = new ArrayList<>();
+        ArrayList<NovedadVO>listaNovedad = new ArrayList<>();
         
         
         try {
             conexion= this.obtenerConexion();
-            sql="select * from aula";
+            sql="select * from novedad";
             puente = conexion.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {
                 
-                AulaVO AuVO= new AulaVO(mensajero.getString(1),mensajero.getString(2),
-                    mensajero.getString(3), mensajero.getString(4));
+                NovedadVO AuVO= new NovedadVO(mensajero.getString(1),mensajero.getString(2),
+                    mensajero.getString(3), mensajero.getString(4),mensajero.getString(5),mensajero.getString(6));
                 
-                   listaAula.add(AuVO);
+                   listaNovedad.add(AuVO);
             }
         
         } catch (Exception e) {
-              Logger.getLogger(AulaDAO.class.getName()).log(Level.SEVERE, null, e);
+              Logger.getLogger(NovedadDAO.class.getName()).log(Level.SEVERE, null, e);
         }finally {
             try {
                 this.cerrarConexion();
                 
             } catch (SQLException e) {
-              Logger.getLogger(AulaDAO.class.getName()).log(Level.SEVERE, null, e);
+              Logger.getLogger(NovedadDAO.class.getName()).log(Level.SEVERE, null, e);
             }
         }
-        return listaAula;
+        return listaNovedad;
         
     }
       

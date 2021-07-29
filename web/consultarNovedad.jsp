@@ -5,8 +5,8 @@
 --%>
 
 <%@page import="java.util.ArrayList"%>
-<%@page import="ModeloDAO.ClaseDAO"%>
-<%@page import="ModeloVO.ClaseVO"%>
+<%@page import="ModeloDAO.NovedadDAO"%>
+<%@page import="ModeloVO.NovedadVO"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
         <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
         <script src="https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Consultar Clase</title>
+        <title>Consultar Novedad</title>
     </head>
     <body >
         <style>
@@ -65,44 +65,46 @@
                 color: white;
             }
         </style>
-        <h2 class="text-center mt-20">Gestion de Clases</h2>
+        <h2 class="text-center mt-20">Gestion de las Novedades</h2>
         <div class="contenedor">
             <table id="usuario" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nombre</th>
-                        <th>Estado</th>
-                        <th>Cantidad de Sesiones</th>
+                        <th>Descripcion</th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Fin</th>
+                        <th>Tipo de Novedad</th>
+                        <th>Asistencia</th>
                     </tr>
                 </thead>
                 <tbody>
                     <%
-                        ClaseVO ClaVO = new ClaseVO();
-                        ClaseDAO ClaDAO = new ClaseDAO(ClaVO);
-                        ArrayList<ClaseVO> listaClase = ClaDAO.listar();
-                        for (int i = 0; i < listaClase.size(); i++) {
+                        NovedadVO NovVO = new NovedadVO();
+                        NovedadDAO NovDAO = new NovedadDAO (NovVO);
+                        ArrayList<NovedadVO> listaNovedad=  NovDAO.listar();
+                        for (int i = 0; i < listaNovedad.size(); i++) {
 
-                            ClaVO = listaClase.get(i);
+                            NovVO = listaNovedad.get(i);
                     %>               
                     <tr>
-                        <td><%=ClaVO.getIdClase()%></td>
-                        <td><%=ClaVO.getNombre()%></td>
-                        <%if (ClaVO.getEstado()!="Inactivo") {%>
-                        <td class="verde text-center"><%=ClaVO.getEstado()%></td>
-                        <%}else if(ClaVO.getEstado()=="Inactivo"){%>
-                        <td class="rojo"><%=ClaVO.getEstado()%></td>
-                        <%}%>  
-                        <td class="text-center"><%=ClaVO.getCantidadSesiones()%></td> 
+                        <td><%=NovVO.getIdNovedad()%></td>
+                        <td><%=NovVO.getDescripcion()%></td>
+                        <td><%=NovVO.getFechaInicio()%></td>
+                        <td><%=NovVO.getFechaFin()%></td>
+                        <td><%=NovVO.getIdTipoNovedad()%></td>
+                        <td><%=NovVO.getIdAsistencia()%></td>
                     </tr>
                     <%}%>  
                 </tbody>
                 <tfoot>
                     <tr>
                         <th>Id</th>
-                        <th>Nombre</th>
-                        <th>Estado</th>
-                        <th>Cantidad de Sesiones</th>
+                        <th>Descripcion</th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Fin</th>
+                        <th>Tipo de Novedad</th>
+                        <th>Asistencia</th>
                     </tr>
                 </tfoot>
             </table>

@@ -5,8 +5,8 @@
 --%>
 
 <%@page import="java.util.ArrayList"%>
-<%@page import="ModeloDAO.ClaseDAO"%>
-<%@page import="ModeloVO.ClaseVO"%>
+<%@page import="ModeloDAO.GrupoDAO"%>
+<%@page import="ModeloVO.GrupoVO"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
         <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
         <script src="https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Consultar Clase</title>
+        <title>Consultar Grupo</title>
     </head>
     <body >
         <style>
@@ -65,7 +65,7 @@
                 color: white;
             }
         </style>
-        <h2 class="text-center mt-20">Gestion de Clases</h2>
+        <h2 class="text-center mt-20">Gestion de los Grupos</h2>
         <div class="contenedor">
             <table id="usuario" class="table table-striped" style="width:100%">
                 <thead>
@@ -73,27 +73,29 @@
                         <th>Id</th>
                         <th>Nombre</th>
                         <th>Estado</th>
-                        <th>Cantidad de Sesiones</th>
+                        <th>Fecha de Inicio</th>
+                        <th>Fecha de Fin</th>
                     </tr>
                 </thead>
                 <tbody>
                     <%
-                        ClaseVO ClaVO = new ClaseVO();
-                        ClaseDAO ClaDAO = new ClaseDAO(ClaVO);
-                        ArrayList<ClaseVO> listaClase = ClaDAO.listar();
-                        for (int i = 0; i < listaClase.size(); i++) {
+                        GrupoVO GruVO = new GrupoVO();
+                        GrupoDAO GruDAO = new GrupoDAO(GruVO);
+                        ArrayList<GrupoVO> listaGrupo = GruDAO.listar();
+                        for (int i = 0; i < listaGrupo.size(); i++) {
 
-                            ClaVO = listaClase.get(i);
+                             GruVO = listaGrupo.get(i);
                     %>               
                     <tr>
-                        <td><%=ClaVO.getIdClase()%></td>
-                        <td><%=ClaVO.getNombre()%></td>
-                        <%if (ClaVO.getEstado()!="Inactivo") {%>
-                        <td class="verde text-center"><%=ClaVO.getEstado()%></td>
-                        <%}else if(ClaVO.getEstado()=="Inactivo"){%>
-                        <td class="rojo"><%=ClaVO.getEstado()%></td>
+                        <td><%=GruVO.getIdGrupo()%></td>
+                        <td><%=GruVO.getNombre()%></td>
+                        <%if (GruVO.getEstado()!="Inactivo") {%>
+                        <td class="verde text-center"><%=GruVO.getEstado()%></td>
+                        <%}else if(GruVO.getEstado()=="Inactivo"){%>
+                        <td class="rojo"><%=GruVO.getEstado()%></td>
                         <%}%>  
-                        <td class="text-center"><%=ClaVO.getCantidadSesiones()%></td> 
+                        <td class="text-center"><%=GruVO.getFechaInicio()%></td> 
+                        <td class="text-center"><%=GruVO.getFechaFin()%></td> 
                     </tr>
                     <%}%>  
                 </tbody>
@@ -102,7 +104,8 @@
                         <th>Id</th>
                         <th>Nombre</th>
                         <th>Estado</th>
-                        <th>Cantidad de Sesiones</th>
+                        <th>Fecha de Inicio</th>
+                        <th>Fecha de Fin</th>
                     </tr>
                 </tfoot>
             </table>

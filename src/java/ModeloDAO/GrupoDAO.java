@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,17 +26,17 @@ public class GrupoDAO extends Conexion implements Crud{
     
     private boolean operacion = false;
     private String sql;
-    private  String idGrupo="", estado="",  fechaInicio="",  fechaFin="",nombre="";
+    private  String idGrupo="", nombre="", estado="",  fechaInicio="",  fechaFin="";
         public GrupoDAO(GrupoVO grupoVO) {
         super();
         try {
             conexion = this.obtenerConexion();
             idGrupo = grupoVO.getIdGrupo();
+            nombre =grupoVO.getNombre();
             estado =grupoVO.getEstado();
             fechaInicio =grupoVO.getFechaInicio();
             fechaFin =grupoVO.getFechaFin();
-            nombre =grupoVO.getNombre();
-            
+           
         } catch (Exception e) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -73,5 +74,35 @@ public class GrupoDAO extends Conexion implements Crud{
     @Override
     public boolean cambiarEstado() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public  ArrayList<GrupoVO> listar(){
+        
+        ArrayList<GrupoVO>listaGrupo = new ArrayList<>();
+        
+        try {
+            conexion= this.obtenerConexion();
+            sql="select * from grupo";
+            puente = conexion.prepareStatement(sql);
+            mensajero = puente.executeQuery();
+            while (mensajero.next()) {
+                
+                GrupoVO GruVO= new GrupoVO(mensajero.getString(1),mensajero.getString(2),
+                    mensajero.getString(3), mensajero.getString(4),mensajero.getString(5));
+                
+                   listaGrupo.add(GruVO);
+            }
+        
+        } catch (Exception e) {
+              Logger.getLogger(GrupoDAO.class.getName()).log(Level.SEVERE, null, e);
+        }finally {
+            try {
+                this.cerrarConexion();
+                
+            } catch (SQLException e) {
+              Logger.getLogger(GrupoDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return listaGrupo;
+       
     }
 }

@@ -87,4 +87,35 @@ public class AsistenciaDAO extends Conexion implements Crud{
     public boolean cambiarEstado() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+     public  ArrayList<AsistenciaVO> listar(){
+        
+        ArrayList<AsistenciaVO>listaAsistencia = new ArrayList<>();
+        
+        
+        try {
+            conexion= this.obtenerConexion();
+            sql="select * from asistencia";
+            puente = conexion.prepareStatement(sql);
+            mensajero = puente.executeQuery();
+            while (mensajero.next()) {
+                
+                AsistenciaVO AsisVO= new AsistenciaVO(mensajero.getString(1),mensajero.getString(2),
+                    mensajero.getString(3), mensajero.getString(4),mensajero.getString(5));
+                
+                   listaAsistencia.add(AsisVO);
+            }
+        
+        } catch (Exception e) {
+              Logger.getLogger(AsistenciaDAO.class.getName()).log(Level.SEVERE, null, e);
+        }finally {
+            try {
+                this.cerrarConexion();
+                
+            } catch (SQLException e) {
+              Logger.getLogger(AsistenciaDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return listaAsistencia;
+        
+    }
    }

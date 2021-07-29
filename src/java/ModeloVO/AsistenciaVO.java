@@ -20,13 +20,6 @@ public class AsistenciaVO {
         this.idGrupo = idGrupo;
     }
 
-    public AsistenciaVO(String idUsuario, String idGrupo) {
-        this.idUsuario = idUsuario;
-        this.idGrupo = idGrupo;
-    }
-    
-    
-
     public String getIdAsistencia() {
         return idAsistencia;
     }

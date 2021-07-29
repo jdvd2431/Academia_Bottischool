@@ -1,12 +1,12 @@
 <%-- 
-    Document   : conultarClase.jsp
-    Created on : 25/06/2021, 02:40:36 PM
+    Document   : ConsultarUsuario
+    Created on : 25/06/2021, 11:22:07 AM
     Author     : Sebas
 --%>
 
 <%@page import="java.util.ArrayList"%>
-<%@page import="ModeloDAO.ClaseDAO"%>
-<%@page import="ModeloVO.ClaseVO"%>
+<%@page import="ModeloDAO.HorarioDAO"%>
+<%@page import="ModeloVO.HorarioVO"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,18 +14,18 @@
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css"/>
-        <link rel="stylesheet" href="../Css/consultarClase.css"/>
+        <link rel="stylesheet" href="../Css/consultar.css"/>
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
         <script src="https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Consultar Clase</title>
+        <title>Consultar Horario</title>
     </head>
     <body >
         <style>
             .contenedor{
-                width: 60%;
+                width: 100%;
                 max-width: 1400px;
                 display: flex;
                 justify-content: center;
@@ -65,44 +65,62 @@
                 color: white;
             }
         </style>
-        <h2 class="text-center mt-20">Gestion de Clases</h2>
+        <h2 class="text-center mt-20">Gestion de los Horarios</h2>
         <div class="contenedor">
             <table id="usuario" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nombre</th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Fin</th>
+                        <th>Dia</th>
+                        <th>Hora Inicio</th>
+                        <th>Hora Fin</th>
                         <th>Estado</th>
-                        <th>Cantidad de Sesiones</th>
+                        <th>Grupo</th>
+                        <th>Aula</th>
+                        <th>Clase</th>
                     </tr>
                 </thead>
                 <tbody>
                     <%
-                        ClaseVO ClaVO = new ClaseVO();
-                        ClaseDAO ClaDAO = new ClaseDAO(ClaVO);
-                        ArrayList<ClaseVO> listaClase = ClaDAO.listar();
-                        for (int i = 0; i < listaClase.size(); i++) {
+                        HorarioVO HorVO = new HorarioVO();
+                        HorarioDAO HorDAO = new HorarioDAO(HorVO);
+                        ArrayList<HorarioVO> listaHorario = HorDAO.listar();
+                        for (int i = 0; i < listaHorario.size(); i++) {
 
-                            ClaVO = listaClase.get(i);
+                            HorVO = listaHorario.get(i);
                     %>               
                     <tr>
-                        <td><%=ClaVO.getIdClase()%></td>
-                        <td><%=ClaVO.getNombre()%></td>
-                        <%if (ClaVO.getEstado()!="Inactivo") {%>
-                        <td class="verde text-center"><%=ClaVO.getEstado()%></td>
-                        <%}else if(ClaVO.getEstado()=="Inactivo"){%>
-                        <td class="rojo"><%=ClaVO.getEstado()%></td>
-                        <%}%>  
-                        <td class="text-center"><%=ClaVO.getCantidadSesiones()%></td> 
+                        <td><%=HorVO.getIdHorario()%></td>
+                        <td><%=HorVO.getFechaInicio()%></td>
+                        <td><%=HorVO.getFechaFin()%></td>
+                        <td><%=HorVO.getDia()%></td>
+                        <td><%=HorVO.getHoraInicio()%></td>
+                        <td><%=HorVO.getHoraFin()%></td>
+                        <%if (HorVO.getEstado()!="Inactivo") {%>
+                        <td class="verde text-center"><%=HorVO.getEstado()%></td>
+                        <%}else if(HorVO.getEstado()=="Inactivo"){%>
+                        <td class="rojo"><%=HorVO.getEstado()%></td>
+                        <%}%>
+                        <td><%=HorVO.getIdGrupo()%></td>
+                        <td><%=HorVO.getIdAula()%></td>
+                        <td><%=HorVO.getIdGrupo()%></td>           
                     </tr>
                     <%}%>  
                 </tbody>
                 <tfoot>
                     <tr>
                         <th>Id</th>
-                        <th>Nombre</th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Fin</th>
+                        <th>Dia</th>
+                        <th>Hora Inicio</th>
+                        <th>Hora Fin</th>
                         <th>Estado</th>
-                        <th>Cantidad de Sesiones</th>
+                        <th>Grupo</th>
+                        <th>Aula</th>
+                        <th>Clase</th>
                     </tr>
                 </tfoot>
             </table>
@@ -145,4 +163,3 @@
         </script>
     </body>
 </html>
-

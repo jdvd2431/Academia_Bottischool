@@ -1192,5 +1192,4 @@ if (typeof define === 'function' && define.amd) {
 } else if (typeof module !== 'undefined' && module.exports) {
   module.exports = sweetAlert;
 }
-
 })(window, document);

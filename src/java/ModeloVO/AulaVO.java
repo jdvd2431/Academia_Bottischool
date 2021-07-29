@@ -6,16 +6,16 @@
 package ModeloVO;
 
 public class AulaVO {
-    private String idAula, capacidad, nombre, idGrupo;
+    private String idAula, nombre, capacidad, estado;
 
     public AulaVO() {
     }
 
-    public AulaVO(String idAula, String capacidad, String nombre, String idGrupo) {
+    public AulaVO(String idAula, String nombre, String capacidad, String estado) {
         this.idAula = idAula;
-        this.capacidad = capacidad;
         this.nombre = nombre;
-        this.idGrupo = idGrupo;
+        this.capacidad = capacidad;
+        this.estado = estado;
     }
 
     public String getIdAula() {
@@ -26,6 +26,14 @@ public class AulaVO {
         this.idAula = idAula;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getCapacidad() {
         return capacidad;
     }
@@ -34,20 +42,12 @@ public class AulaVO {
         this.capacidad = capacidad;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    
-    public String getIdGrupo() {
-        return idGrupo;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public void setIdGrupo(String idGrupo) {
-        this.idGrupo = idGrupo;
-    }
-    
 }

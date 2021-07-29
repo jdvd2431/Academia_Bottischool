@@ -37,19 +37,22 @@ public class HorarioControlador extends HttpServlet {
         String idHorario = request.getParameter("txtId");
         String fechaInicio = request.getParameter("txtFechaInicio");     
         String fechaFin = request.getParameter("txtFechaFin");
-        String horaInicio = request.getParameter("txtHoraInicio");
-        String horaFin = request.getParameter("txtHoraFin");
         String dia = request.getParameter("txtDia");
+        String horaInicio = request.getParameter("txtHoraInicio");
+        String horaFin = request.getParameter("txtHoraFin");     
         String estado = request.getParameter("txtEstado");
+        String idGrupo = request.getParameter("txtGrupo");
+        String idClase = request.getParameter("txtAula");
         String idAula = request.getParameter("txtClase");
         
         int opcion = Integer.parseInt(request.getParameter("opcion"));
-        HorarioVO horarioVO= new HorarioVO(idHorario, fechaInicio, fechaFin, horaInicio, horaFin,dia, estado, idAula);
-        HorarioDAO horarioDAO=new HorarioDAO(horarioVO);
-        
+        //Instanciar el VO
+        HorarioVO HorVO =new HorarioVO(idHorario,fechaInicio,fechaFin,dia,horaInicio,horaFin,estado,idGrupo,idAula,idClase);
+        //Instanciar el DAO
+        HorarioDAO HorDAO =new HorarioDAO(HorVO);
         switch (opcion) {
             case 1://Agregar Registro
-                if (horarioDAO.agregarRegistro()) {
+                if (HorDAO.agregarRegistro()) {
                     request.setAttribute("mensajeExito", "El usuario se registro corectamente");
                 } else {
                     request.setAttribute("mensajeError", "El usuario no se registro corectamente");
@@ -57,7 +60,7 @@ public class HorarioControlador extends HttpServlet {
                 request.getRequestDispatcher("registrarHorario.jsp").forward(request, response);
                 break;
             case 2://Actualizar Registro
-                if (horarioDAO.actualizarRegistro()) {
+                if (HorDAO.actualizarRegistro()) {
                     request.setAttribute("mensajeExito", "El usuario se actualizo corectamente");
                 } else {
                     request.setAttribute("mensajeError", "El usuario no se actualizo corectamente");
