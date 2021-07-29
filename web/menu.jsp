@@ -81,7 +81,7 @@
             <li><a href="#"><i class="icono izquierda fa fa-user-plus"></i>Usuario<i class="icono derecha fas fa-chevron-down"></i></a>
             <ul>
                 <li class=""><a href="consultarUsuario.jsp"><i class="icono izquierda fas fa-search"></i>Buscar Usuarios</a></li>
-                <li class=""><a href="registrarUsuario.jsp"<i class="icono izquierda fas fa-plus-circle"></i>Registrar Usuario</a></li>
+                <li class=""><a href="registrarUsuario.jsp"><i class="icono izquierda fas fa-plus-circle"></i>Registrar Usuario</a></li>
             </ul>
             </li>
             <li class="animation">
