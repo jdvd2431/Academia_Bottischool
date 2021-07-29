@@ -57,16 +57,18 @@ ul li:hover a{
 }*/
 .sidebar ul {
     list-style: none;
+    text-decoration: none;
 }
 .sidebar .menu li a {
     color: #494949;
     display: block;
     padding: 15px 20px;
     background-color: #e9e9e9;
+    text-decoration: none;
 }
 .sidebar .menu li a:hover{
-    padding-left: 50px;
-    text-decoration: none;
+    padding-left: 40px;
+    transition: .2s;
 }
 .sidebar .menu .icono {
     font-size: 12px;
@@ -82,10 +84,12 @@ ul li:hover a{
 }
 .sidebar .menu ul {
      display: none;
+     text-decoration: none;
 }
 .sidebar .menu ul li a{
     background: #424242;
     color: #e9e9e9;
+    text-decoration: none;
 }
 .sidebar .menu .activado > a{
     background: #B2B2B2;
