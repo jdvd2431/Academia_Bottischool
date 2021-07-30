@@ -61,13 +61,9 @@
 
                             <div class="inputb">
                                 <select name="txtEstado">
-                                    <%if (estado != "Inactivo") {%>
                                     <option value="<%=estado%>"><%=estado%></option>
-                                    <option>Inactivo</option>
-                                    <%} else {%>
-                                    <option value="<%=estado%>"><%=estado%></option>
-                                    <option>Activo</option>
-                                    <%}%>
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
                                 </select>
                             </div>
                             <div>
@@ -107,7 +103,7 @@
                                 <ul class="error" id="error"></ul>
                                 <center>
                                     <div class="inputb">
-                                        <input type="submit" id="btn" value="Actualizar">
+                                        <input class="p-10px" type="submit" id="btn" value="Cambiar">
                                         <input type="hidden" value="5" name="opcion">
                                     </div></center>
                         </form>

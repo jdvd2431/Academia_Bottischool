@@ -69,7 +69,7 @@ ul li:hover a{
 }
 .sidebar .menu li a:hover{
     padding-left: 40px;
-    transition: .2s;
+    transition: .5s;
 }
 .sidebar .menu .icono {
     font-size: 20px;

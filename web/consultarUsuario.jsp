@@ -27,7 +27,7 @@
         <style>
             .contenedor{
                 width: 100%;
-                max-width: 1550px;
+                max-width: 1500px;
                 display: flex;
                 justify-content: center;
                 margin: auto;
@@ -56,7 +56,15 @@
                 background: #4CA3FF;
                 color: white;
             }
-            
+            .verde{
+                background: green;
+                color: white;
+                border-radius:5px; 
+            }
+            .rojo{
+                background:brown;
+                color: white;
+            }
         </style>
         <h2 class="text-center mt-20">Gestion de Usuarios</h2>
         
