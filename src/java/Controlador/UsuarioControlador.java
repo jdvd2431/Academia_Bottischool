@@ -91,12 +91,14 @@ public class UsuarioControlador extends HttpServlet {
                 }
                 break;
                 case 4://Actualizar Estado
-                UsuVO = UsuDAO.ConsultarDocumento(numDocumento);
+                UsuVO = UsuDAO.ConsultarId(usuId);
                 if (UsuVO !=null) {
                     
-                    request.setAttribute("documento", UsuVO);
+                    request.setAttribute("id", UsuVO);
+                    request.getRequestDispatcher("actualizarUsuario.jsp").forward(request, response);
                 } else {
-                    request.setAttribute("mensajeError", "El usuario no se actualizo corectamente");
+                     request.setAttribute("mensajeExito", "El Usuario no existe");
+                     request.getRequestDispatcher("consultarUsuario.jsp").forward(request, response);
                 }
                 request.getRequestDispatcher("consultarUsuario.jsp").forward(request, response);
                 break;
@@ -107,7 +109,7 @@ public class UsuarioControlador extends HttpServlet {
                 } else {
                     request.setAttribute("mensajeError", "El usuario no se actualizo corectamente");
                 }
-                request.getRequestDispatcher("cambiarEstado.jsp").forward(request, response);
+                request.getRequestDispatcher("consultarUsuario.jsp").forward(request, response);
                 break;
                 
                

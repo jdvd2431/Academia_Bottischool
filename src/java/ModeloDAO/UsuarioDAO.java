@@ -198,21 +198,21 @@ public class UsuarioDAO extends Conexion implements Crud{
         return operacion;
     }
     
-    public UsuarioVO ConsultarDocumento(String documento){
+    public UsuarioVO ConsultarId(String usuId){
     
             UsuarioVO UsuVO = null;
             
             try {
                   conexion = this.obtenerConexion();
-            sql="select * from usuario where documento=?";
+            sql="select * from usuario where idUsuario=?";
             puente = conexion.prepareStatement(sql);
-            puente.setString(1, documento);
+            puente.setString(1, usuId);
             mensajero= puente.executeQuery();
             while(mensajero.next()){
                 
-                 UsuVO= new UsuarioVO(mensajero.getString(1), mensajero.getString(2),
+                 UsuVO= new UsuarioVO(usuId, mensajero.getString(2),
                     mensajero.getString(3), mensajero.getString(4),
-                    documento , mensajero.getString(6),
+                    mensajero.getString(5) , mensajero.getString(6),
                     mensajero.getString(7),mensajero.getString(8), 
                     mensajero.getString(9), mensajero.getString(10),
                     mensajero.getString(11));

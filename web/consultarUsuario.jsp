@@ -16,10 +16,16 @@
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css"/>
         <link rel="stylesheet" href="../Css/consultar.css"/>
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+        <!-- jQuery Modal -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
         <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
         <script src="https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"></script>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar Usuario</title>
     </head>
@@ -48,8 +54,20 @@
                 background: #007bff;
                 border-radius:7px;
                 padding: 5px;
-                margin-bottom: 15px;
-                margin-top: 35px;
+                margin-bottom: 10px;
+                color: white;
+            }
+            .modal-h2{
+                width:100%;
+                max-width: 300px;
+                display: flex;
+                justify-content: center;
+                margin: auto;
+                text-align: center;
+                background: #007bff;
+                border-radius:7px;
+                padding: 5px;
+                margin-bottom: 30px;
                 color: white;
             }
             h2:hover{
@@ -65,10 +83,22 @@
                 background:brown;
                 color: white;
             }
+            .modal{
+                height: 100%;
+                max-height: 210px;
+            }
+            .modal a.close-modal{
+                top:1px;
+                right: 1px;
+            }
         </style>
+        <div class="boton-volver">
+            <a class="boton-volver" href="menu.jsp" style="font-size: 40px; margin-left: 50px;"><i class="fa fa-chevron-circle-left" id="cancel"></i></a>
+        </div>
         <h2 class="text-center mt-20">Gestion de Usuarios</h2>
-        
+
         <div class="contenedor">
+            
             <table id="usuario" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
@@ -104,23 +134,39 @@
                         <td><%=UsuVO.getNumDocumento()%></td>
                         <td><%=UsuVO.getCelular()%></td>
                         <td><%=UsuVO.getTelefono()%></td>
-                        <%if (UsuVO.getEstado()!="Inactivo") {%>
                         <td>
-                            <a class="btn btn-success"><%=UsuVO.getEstado()%></a>
+                            <a><%=UsuVO.getEstado()%></a>
                         </td>
-                        <%}else if (UsuVO.getEstado()!="Activo"){%>
-                        <td>
-                            <a  class="btn btn-danger"><%=UsuVO.getEstado()%></a>
-                        </td>
-                        <%}%>
                         <td><%=UsuVO.getCorreo()%></td>
                         <td><%=UsuVO.getClave()%></td>
                         <td><%=UsuVO.getIdTipoUsuario()%></td>  
                         <td>
-                            <a class="btn btn-success" href="cambiarEstado.jsp?idUsuario=<%=UsuVO.getUsuId()%>&estado=<%=UsuVO.getEstado()%>"><i class="fas fa-pen"></i></a>
+                            <div id="ex1" class="modal">
+                                <div class="inputb">
+                                    <h2 class="modal-h">Estado</h2>
+                                </div>
+                                <form method="POST" action="Usuario">
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="hidden" name="txtId" placeholder="Nombre" value="<%=UsuVO.getUsuId()%>">
+                                            <select class="custom-select" name="txtEstado">
+                                                <option selected>Seleciona el nuevo estado</option>
+                                                <option value="Activo">Activo</option>
+                                                <option value="Inactivo">Inactivo</option>
+                                            </select>
+                                            <center>
+                                    <div class="inputb">
+                                        <button class="btn btn-primary mt-3" type="submit" id="btn" >Cambiar</button>
+                                        <input type="hidden" value="5" name="opcion">
+                                    </div></center>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <p><a  class="btn btn-info" href="#ex1" rel="modal:open"><i class="fas fa-pen"></i></a></p>
                             
                         </td>
-                        <td><a href="actualizarUsuario.jsp" class="btn btn-success"><i class="fas fa-pen"></i></a></td>
+                        <td><a href="actualizarUsuario.jsp?idUsuario=<%=UsuVO.getUsuId()%>" class="btn btn-success"><i class="fas fa-pen"></i></a></td>
                     </tr>
                     <%}%>  
                 </tbody>
@@ -143,8 +189,14 @@
                 </tfoot>
             </table>
         </div>
-
+               
         <script>
+            $('a.open-modal').click(function (event) {
+                $(this).modal({
+                    fadeDuration: 250
+                });
+                return false;
+            });
             $(document).ready(function () {
                 $('#usuario').DataTable({
                     scrollY: 400,

@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="Css/registrarUsu.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -25,6 +26,15 @@
         <title>Actualizar Usuario</title>
     </head>
     <body>
+        <style>
+            body{
+                width: 100%
+                
+            }
+            .boton{
+                margin-top: 10px;
+            }
+        </style>
         <section>
             <div class="entra"></div>
             <div class="entra"></div>
@@ -41,13 +51,16 @@
                         <form method="POST" action="Usuario">
                             <div class="inputb">
                                 <h2>Documento</h2>
-
-                                <input type="text" name="txtNumeroDocumento">
-                                <input type="submit"  value="Buscar">
+                                 <%
+                            String idUsuario = request.getParameter("idUsuario");
+                        %>
+                                <input type="text" name="txtId" value="<%=idUsuario%>">
+                                <center><input class="boton" type="submit"  value="Buscar"></center>
                                 <input type="hidden" value="4" name="opcion">
                             </div>                
                         </form>
-                        <%            UsuarioVO UsuVO = (UsuarioVO) request.getAttribute("documento");
+                        
+                        <%            UsuarioVO UsuVO = (UsuarioVO) request.getAttribute("id");
                             if (UsuVO != null) {
 
                         %>
@@ -138,7 +151,7 @@
                                 closeOnConfirm: false
                             },
                                     function () {
-                                        window.location = "actualizarUsuario.jsp";
+                                        window.location = "consultarUsuario.jsp";
                                     });
                         </script>
                         <%}%>
