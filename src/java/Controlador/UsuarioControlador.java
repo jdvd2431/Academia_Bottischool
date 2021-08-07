@@ -7,6 +7,7 @@ package Controlador;
 
 import ModeloDAO.UsuarioDAO;
 import ModeloDAO.AsistenciaDAO;
+import ModeloDAO.RolDAO;
 import ModeloVO.UsuarioVO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -80,11 +81,26 @@ public class UsuarioControlador extends HttpServlet {
                 if (UsuDAO.iniciarSesion(correo, clave)) {
 
                     HttpSession miSesion = request.getSession(true);
-
-                    UsuVO = new UsuarioVO(UsuVO.getUsuId(), correo, clave);
+                    RolDAO rolDAO = new RolDAO();
+                    ArrayList<UsuarioVO> listaRoles = rolDAO.roles(correo);
+                    
+                    UsuVO = new UsuarioVO(UsuVO.getUsuId(),correo,clave, UsuVO.getIdTipoUsuario());
                     miSesion.setAttribute("datos", UsuVO);
-                    request.setAttribute("mensajeBienvenida", "Bienvenido");
-                    request.getRequestDispatcher("menu.jsp").forward(request, response);
+                    
+                    for (int i = 0; i < listaRoles.size(); i++) {
+                        UsuVO= listaRoles.get(i);   
+                    }
+                    miSesion.setAttribute("roles", listaRoles);
+                    if (listaRoles.size()>=1) {
+                         request.setAttribute("mensajeBienvenida", "Bienvenido");
+                         request.getRequestDispatcher("menu.jsp").forward(request, response);
+                    }else {
+                    request.setAttribute("mensajeError", "Datos incorrectos");
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                }
+                    
+                    /*request.setAttribute("mensajeBienvenida", "Bienvenido");
+                    request.getRequestDispatcher("menu.jsp").forward(request, response);*/
                 } else {
                     request.setAttribute("mensajeError", "Datos incorrectos");
                     request.getRequestDispatcher("login.jsp").forward(request, response);

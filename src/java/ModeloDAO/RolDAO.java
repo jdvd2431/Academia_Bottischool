@@ -22,20 +22,20 @@ public class RolDAO extends Conexion{
     private ResultSet mensajero;
     private String sql;
     
-    public ArrayList<UsuarioVO> rol (String usuario) {
+    public ArrayList<UsuarioVO> roles (String idTipoUsuario) {
         
         ArrayList<UsuarioVO> listaRoles = new ArrayList<>();
         
         try {
             conexion = this.obtenerConexion();
-            sql = "SELECT idTipoUsuario FROM `usuario` WHERE correo=?;";
+            sql = "SELECT usuario.idUsuario, tipousuario.tipoUsuario from usuario INNER JOIN tipousuario on usuario.idTipoUsuario= tipousuario.idTipoUsuario where correo = ?";
             puente = conexion.prepareStatement(sql);
-            puente.setString(1, usuario);
+            puente.setString(1, idTipoUsuario);
             mensajero = puente.executeQuery();
             
             while(mensajero.next()){
-                UsuarioVO usuVO = new UsuarioVO(mensajero.getString(1), mensajero.getString(2));
-                listaRoles.add(usuVO);
+                UsuarioVO UsuVO = new UsuarioVO( mensajero.getString(1), mensajero.getString(2));
+                listaRoles.add(UsuVO);
                 
             }
             

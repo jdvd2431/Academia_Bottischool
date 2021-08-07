@@ -10,12 +10,11 @@ package ModeloVO;
  * @author David
  */
 public class UsuarioVO {
-    private String usuId,nombre,apellido,tipoDocumento,numDocumento,celular,telefono,estado,correo,clave,idTipoUsuario;
+    private String nombre,apellido,tipoDocumento,numDocumento,celular,telefono,estado,correo,clave;
+    private String usuId,idTipoUsuario;
     
 
-    public UsuarioVO() {
-    }
-
+   
     public UsuarioVO(String usuId,String nombre, String apellido, String tipoDocumento, String numDocumento, String celular, String telefono,String estado, String correo, String clave,String idTipoUsuario) {
         this.usuId = usuId;
         this.nombre = nombre;
@@ -30,16 +29,24 @@ public class UsuarioVO {
         this.idTipoUsuario = idTipoUsuario;
     }
 
-    public UsuarioVO(String correo, String clave, String usuId) {
+    public UsuarioVO( String usuId,String idTipoUsuario) {
+        this.usuId = usuId;
+        this.idTipoUsuario = idTipoUsuario;
+    }
+
+    public UsuarioVO(String correo, String clave, String usuId, String idTipoUsuario) {
         this.correo = correo;
         this.clave = clave;
         this.usuId = usuId;
+        this.idTipoUsuario = idTipoUsuario;
     }
 
-    public UsuarioVO(String string, String string0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   
+
+    public UsuarioVO() {
     }
 
+    
     
      public String getUsuId() {
         return usuId;
