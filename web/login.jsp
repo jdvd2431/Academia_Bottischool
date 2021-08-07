@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="Css/login.css">
         <title>Iniciar Sesión</title>
     </head>
-    <body>
+    <body style="overflow: hidden;"> 
         <section>
             <div class="entra"></div>
             <div class="entra"></div>

@@ -25,11 +25,18 @@
         <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
         <script src="https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"></script>
-        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+        <link href="Css/sweetalert.css" rel="stylesheet" type="text/css"/>
+        <script src="Js/sweetalert.js" type="text/javascript"></script>
+        <script src="Js/sweetalert.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+ 
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar Usuario</title>
     </head>
     <body >
+
         <style>
             .contenedor{
                 width: 100%;
@@ -83,9 +90,13 @@
                 background:brown;
                 color: white;
             }
-            .modal{
+            #ex1{
                 height: 100%;
                 max-height: 210px;
+            }
+            .modal2{
+                height: 100%;
+                max-height: 450px;
             }
             .modal a.close-modal{
                 top:1px;
@@ -98,7 +109,7 @@
         <h2 class="text-center mt-20">Gestion de Usuarios</h2>
 
         <div class="contenedor">
-            
+
             <table id="usuario" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
@@ -155,18 +166,97 @@
                                                 <option value="Inactivo">Inactivo</option>
                                             </select>
                                             <center>
-                                    <div class="inputb">
-                                        <button class="btn btn-primary mt-3" type="submit" id="btn" >Cambiar</button>
-                                        <input type="hidden" value="5" name="opcion">
-                                    </div></center>
+                                                <div class="inputb">
+                                                    <button class="btn btn-primary mt-3" type="submit" id="btn" >Cambiar</button>
+                                                    <input type="hidden" value="5" name="opcion">
+                                                </div></center>
+                                                <% if (request.getAttribute("mensajeError") == null) {%>
+                                            <script  type="text/javascript">
+
+                                                swal({
+                                                title: "Error",
+                                                        text: "${mensajeError}",
+                                                        type: 'error',
+                                                        confirmButtonClass: "btn-primary",
+                                                        confirmButtonText: "OK",
+                                                        closeOnConfirm: false
+                                                }
+                                            </script>
+
+                                            <%} else if (request.getAttribute("mensajeExito") != null) {%>
+                                            <script  type="text/javascript">
+
+                                                swal({
+                                                title: "Correcto",
+                                                        text: "${mensajeExito}",
+                                                        type: 'success',
+                                                        confirmButtonClass: "btn-primary",
+                                                        confirmButtonText: "OK",
+                                                        closeOnConfirm: false
+                                                }
+                                            </script>
+                                            <%}%>
                                         </div>
                                     </div>
                                 </form>
+
                             </div>
                             <p><a  class="btn btn-info" href="#ex1" rel="modal:open"><i class="fas fa-pen"></i></a></p>
-                            
+
                         </td>
-                        <td><a href="actualizarUsuario.jsp?idUsuario=<%=UsuVO.getUsuId()%>" class="btn btn-success"><i class="fas fa-pen"></i></a></td>
+
+                        <td>
+                            <div id="editar" class="modal modal2" >
+                                <div class="inputb">
+                                    <h2 class="modal-h">Editar Usuario</h2>
+                                </div>
+                                <form class="row g-3" method="POST" action="Usuario">
+                                    <input type="hidden" name="txtId" placeholder="Nombre" value="<%=UsuVO.getUsuId()%>">
+                                    <div class="col-md-6">
+                                        <label for="inputEmail4" class="form-label">Nombre</label>
+                                        <input type="text"id="inputEmail4" name="txtNombre"class="form-control" placeholder="Nombre" value="<%=UsuVO.getNombre()%>">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="inputPassword4" class="form-label">Apellido</label>
+                                        <input type="text"class="form-control" id="inputPassword4" name="txtApellido" placeholder="Apellido" value="<%=UsuVO.getApellido()%>" >
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="inputEmail4" class="form-label">Tipo Docuemento</label>
+                                        <input type="text" class="form-control" id="inputEmail4" name="txtTipoDocumento" placeholder="Apellido" value="<%=UsuVO.getTipoDocumento()%>">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="inputPassword4" class="form-label">Numero Documento</label>
+                                        <input type="text"  class="form-control" id="inputPassword4" name="txtNumeroDocumento" placeholder="Tipo Usuario"  value="<%=UsuVO.getNumDocumento()%>" >
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="inputEmail4" class="form-label">Celular</label>
+                                        <input type="text"  class="form-control" id="inputEmail4" name="txtCelular"  placeholder="Celular" value="<%=UsuVO.getCelular()%>">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="inputPassword4" class="form-label">Telefono</label>
+                                        <input type="text" class="form-control" id="inputPassword4" name="txtTelefono"  placeholder="Telefono" value="<%=UsuVO.getTelefono()%>">
+                                    </div>
+                                    <input type="hidden" name="txtEstado" value="Activo" value="<%=UsuVO.getEstado()%>"> 
+                                    <div class="col-md-6">
+                                        <label for="inputEmail4" class="form-label">Correo</label>
+                                        <input type="text" class="form-control" id="inputEmail4" name="txtCorreo"  placeholder="Correo" value="<%=UsuVO.getCorreo()%>">
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="inputPassword4" class="form-label">Clave</label>
+                                        <input type="password"class="form-control" id="inputPassword4" name="txtClave" placeholder="Clave" value="<%=UsuVO.getClave()%>">
+                                    </div>
+                                    <input type="hidden" class="form-control" name="txtRol" placeholder="Clave" value="<%=UsuVO.getIdTipoUsuario()%>">
+                                    <div class="col-12">
+                                        <input type="submit" class="btn btn-primary  d-flex justify-conted-center m-auto" id="btn" value="Actualizar">
+                                    <input type="hidden" value="2" name="opcion">
+                                    </div>
+                                </form>
+
+                            </div>
+                            <p><a  class="btn btn-primary" href="#editar" rel="modal:open"><i class="fas fa-pen"></i></a></p>
+                        </td>
+                        
                     </tr>
                     <%}%>  
                 </tbody>
@@ -189,47 +279,43 @@
                 </tfoot>
             </table>
         </div>
-               
+
         <script>
-            $('a.open-modal').click(function (event) {
-                $(this).modal({
-                    fadeDuration: 250
-                });
-                return false;
-            });
+
             $(document).ready(function () {
-                $('#usuario').DataTable({
-                    scrollY: 400,
+            $('#usuario').DataTable({
+            scrollY: 400,
                     language: {
-                        "sProcessing": "Procesando...",
-                        "sLengthMenu": "Mostrar _MENU_ registros",
-                        "sZeroRecords": "No se encontraron resultados",
-                        "sEmptyTable": "NingÃºn dato disponible en esta tabla",
-                        "sInfo": "Mostrando usuarios del _START_ al _END_ de un total de _TOTAL_ usuarios",
-                        "sInfoEmpty": "Mostrando usuarios del 0 al 0 de un total de 0 usuarios",
-                        "sInfoFiltered": "(filtrado de un total de _MAX_ usuarios)",
-                        "sInfoPostFix": "",
-                        "sSearch": "Buscar:",
-                        "sUrl": "",
-                        "sInfoThousands": ",",
-                        "sLoadingRecords": "Cargando...",
-                        "oPaginate": {
+                    "sProcessing": "Procesando...",
+                            "sLengthMenu": "Mostrar _MENU_ registros",
+                            "sZeroRecords": "No se encontraron resultados",
+                            "sEmptyTable": "NingÃºn dato disponible en esta tabla",
+                            "sInfo": "Mostrando usuarios del _START_ al _END_ de un total de _TOTAL_ usuarios",
+                            "sInfoEmpty": "Mostrando usuarios del 0 al 0 de un total de 0 usuarios",
+                            "sInfoFiltered": "(filtrado de un total de _MAX_ usuarios)",
+                            "sInfoPostFix": "",
+                            "sSearch": "Buscar:",
+                            "sUrl": "",
+                            "sInfoThousands": ",",
+                            "sLoadingRecords": "Cargando...",
+                            "oPaginate": {
                             "sFirst": "Primero",
-                            "sLast": "Ãšltimo",
-                            "sNext": "Siguiente",
-                            "sPrevious": "Anterior"
-                        },
-                        "oAria": {
+                                    "sLast": "Ãšltimo",
+                                    "sNext": "Siguiente",
+                                    "sPrevious": "Anterior"
+                            },
+                            "oAria": {
                             "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                        },
-                        "buttons": {
+                                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                            },
+                            "buttons": {
                             "copy": "Copiar",
-                            "colvis": "Visibilidad"
-                        }
+                                    "colvis": "Visibilidad"
+                            }
                     }
-                });
+            });
             });
         </script>
+        
     </body>
 </html>

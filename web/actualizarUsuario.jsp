@@ -26,102 +26,8 @@
         <title>Actualizar Usuario</title>
     </head>
     <body>
-        <style>
-            body{
-                width: 100%
-                
-            }
-            .boton{
-                margin-top: 10px;
-            }
-        </style>
-        <section>
-            <div class="entra"></div>
-            <div class="entra"></div>
-            <div class="entra"></div>
-            <div class="box">
+        
 
-
-                <div class="container2">
-
-                    <div class="form">
-                        <div class="boton-volver">
-                            <a class="boton-volver" href="consultarUsuario.jsp" style="font-size: 40px;"><i class="fa fa-chevron-circle-left" id="cancel"></i></a>
-                        </div>
-                        <form method="POST" action="Usuario">
-                            <div class="inputb">
-                                <h2>Documento</h2>
-                                 <%
-                            String idUsuario = request.getParameter("idUsuario");
-                        %>
-                                <input type="text" name="txtId" value="<%=idUsuario%>">
-                                <center><input class="boton" type="submit"  value="Buscar"></center>
-                                <input type="hidden" value="4" name="opcion">
-                            </div>                
-                        </form>
-                        
-                        <%            UsuarioVO UsuVO = (UsuarioVO) request.getAttribute("id");
-                            if (UsuVO != null) {
-
-                        %>
-                        <h2 for="usu">Actualizar Usuario</h2>
-                        <form method="POST" action="Usuario">
-                            
-                            <div class="inputb">
-                                <input type="hidden" name="txtId" placeholder="Nombre" value="<%=UsuVO.getUsuId()%>">
-                            </div>
-                            
-                            <div class="inputb">
-                                <p class="cuenta" for="usu">Nombre</p>
-                                <input type="text" name="txtNombre" placeholder="Nombre" value="<%=UsuVO.getNombre()%>">
-                            </div>
-                            <div class="inputb">
-                                <p class="cuenta" for="usu">Apellido</p>
-                                <input type="text" name="txtApellido" placeholder="Apellido" value="<%=UsuVO.getApellido()%>" >
-                            </div>
-                            <div class="inputb">
-                                <p class="cuenta" for="usu">Tipo Documento</p>
-                                <input type="text" name="txtTipoDocumento" placeholder="Apellido" value="<%=UsuVO.getTipoDocumento()%>">
-                            </div>
-                            <div class="inputb">
-                                <p class="cuenta" for="usu">Numero Documento</p>
-                                <input type="text" class="form-control" name="txtNumeroDocumento" placeholder="Tipo Usuario"  value="<%=UsuVO.getNumDocumento()%>" >
-                            </div>
-                            <div class="inputb">
-                                <p class="cuenta" for="usu">Celular</p>
-                                <input type="text" class="form-control" name="txtCelular"  placeholder="Celular" value="<%=UsuVO.getCelular()%>">
-                            </div>
-                            <div class="inputb">
-                                <p class="cuenta" for="usu">Telefono</p>
-                                <input type="text" class="form-control" name="txtTelefono"  placeholder="Telefono" value="<%=UsuVO.getTelefono()%>">
-                            </div>
-                            
-                            <div class="inputb">
-                                <input type="hidden" name="txtEstado" value="Activo" value="<%=UsuVO.getEstado()%>"> 
-                            </div>
-
-                            <div class="inputb">
-                                <p class="cuenta" for="usu">Correo</p>
-                                <input type="text" class="form-control" name="txtCorreo"  placeholder="Correo" value="<%=UsuVO.getCorreo()%>">
-                            </div>
-                            <div class="inputb">
-                                <p class="cuenta" for="usu">Clave</p>
-                                <input type="password" class="form-control" name="txtClave" placeholder="Clave" value="<%=UsuVO.getClave()%>">
-                            </div>
-                             <div class="inputb">
-                                <p class="cuenta" for="usu">Tipo usuario</p>
-                                <input type="text" class="form-control" name="txtRol" placeholder="Clave" value="<%=UsuVO.getIdTipoUsuario()%>">
-
-                            </div>
-                            <ul class="error" id="error"></ul>
-                            <center>
-                                <div class="inputb">
-                                    <input type="submit" id="btn" value="Actualizar">
-                                    <input type="hidden" value="2" name="opcion">
-                                </div></center>
-                        </form>
-                        <%}%>
-                    </div>
                     <div>
                         <% if (request.getAttribute("mensajeError") != null) {%>
                         <script  type="text/javascript">
@@ -156,9 +62,7 @@
                         </script>
                         <%}%>
                     </div>
-                </div>
-            </div>
-        </section>
+                
 
     </body>
 </html>
