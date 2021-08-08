@@ -24,49 +24,14 @@
         <link href="Css/sweetalert.css" rel="stylesheet" type="text/css"/>
         <script src="Js/sweetalert.js" type="text/javascript"></script>
         <script src="Js/sweetalert.min.js" type="text/javascript"></script>
-        <title>Cambiar Estado</title>
+        <title></title>
     </head>
     <body>
         <nav>
             <ul>
 
         </nav>
-        <section>
-            <div class="entra"></div>
-            <div class="entra"></div>
-            <div class="entra"></div>
-            <div class="box">
-
-                <div class="container2">
-                    <div class="form">
-                        <div class="boton-volver">
-                            <a class="boton-volver" href="consultarUsuario.jsp" style="font-size: 40px;"><i class="fa fa-chevron-circle-left" id="cancel"></i></a>
-                        </div>
-
-                        <form method="POST" action="Usuario">
-
-                        </form>
-                        <%
-                            String idUsuario = request.getParameter("idUsuario");
-                            String estado = request.getParameter("estado");
-                        %>
-                        <h2 for="usu">Actualizar Estado</h2>
-                        <form method="POST" action="Usuario">
-
-                            <div class="inputb">
-                                <input type="hidden" name="txtId" placeholder="Nombre" value="<%=idUsuario%>">
-                            </div>
-
-
-
-                            <div class="inputb">
-                                <select name="txtEstado">
-                                    <option value="<%=estado%>"><%=estado%></option>
-                                    <option value="Activo">Activo</option>
-                                    <option value="Inactivo">Inactivo</option>
-                                </select>
-                            </div>
-                            <div>
+        
                                 <% if (request.getAttribute("mensajeError") != null) {%>
                                 <script  type="text/javascript">
 
@@ -99,19 +64,6 @@
                                             });
                                 </script>
                                 <%}%>
-
-                                <ul class="error" id="error"></ul>
-                                <center>
-                                    <div class="inputb">
-                                        <input class="p-10px" type="submit" id="btn" value="Cambiar">
-                                        <input type="hidden" value="5" name="opcion">
-                                    </div></center>
-                        </form>
-
-
-                    </div>
-                </div>
-        </section>
 
     </body>
 </html>
