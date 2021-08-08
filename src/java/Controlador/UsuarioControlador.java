@@ -66,7 +66,7 @@ public class UsuarioControlador extends HttpServlet {
                 } else {
                     request.setAttribute("mensajeError", "El usuario no se registro corectamente");
                 }
-                request.getRequestDispatcher("registrarUsuario.jsp").forward(request, response);
+                request.getRequestDispatcher("consultarUsuario.jsp").forward(request, response);
                 break;
             case 2://Actualizar Registro
                 if (UsuDAO.actualizarRegistro()) {

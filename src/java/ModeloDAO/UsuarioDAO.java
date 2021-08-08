@@ -20,43 +20,40 @@ import java.util.logging.Logger;
  *
  * @author David
  */
-public class UsuarioDAO extends Conexion implements Crud{
-   
+public class UsuarioDAO extends Conexion implements Crud {
+
     private Connection conexion;
     private PreparedStatement puente;
     private ResultSet mensajero;
-    
+
     private boolean operacion = false;
     private String sql;
-    private String  usuId = "", correo = "", clave = "";
-    private String nombre= "", apellido= "",tipoDocumento= "",numDocumento= "",celular= "",telefono= "",estado= "",idTipoUsuario="";
-    
+    private String usuId = "", correo = "", clave = "";
+    private String nombre = "", apellido = "", tipoDocumento = "", numDocumento = "", celular = "", telefono = "", estado = "", idTipoUsuario = "";
 
-       public UsuarioDAO(UsuarioVO usuVO) {
+    public UsuarioDAO(UsuarioVO usuVO) {
         super();
         try {
             conexion = this.obtenerConexion();
             usuId = usuVO.getUsuId();
-            nombre =usuVO.getNombre();
-            apellido =usuVO.getApellido();
-            tipoDocumento =usuVO.getTipoDocumento();
-            numDocumento =usuVO.getNumDocumento();
-            celular =usuVO.getCelular();
-            telefono =usuVO.getTelefono();
-            estado =usuVO.getEstado();
+            nombre = usuVO.getNombre();
+            apellido = usuVO.getApellido();
+            tipoDocumento = usuVO.getTipoDocumento();
+            numDocumento = usuVO.getNumDocumento();
+            celular = usuVO.getCelular();
+            telefono = usuVO.getTelefono();
+            estado = usuVO.getEstado();
             correo = usuVO.getCorreo();
             clave = usuVO.getClave();
-            idTipoUsuario =usuVO.getIdTipoUsuario();
+            idTipoUsuario = usuVO.getIdTipoUsuario();
         } catch (Exception e) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-       
-        
-       
+
     @Override
     public boolean agregarRegistro() {
-      try {
+        try {
             sql = "insert into usuario("
                     + "idUsuario,"
                     + "nombre,"
@@ -89,12 +86,11 @@ public class UsuarioDAO extends Conexion implements Crud{
         } finally {
             try {
                 this.cerrarConexion();
-                
+
             } catch (SQLException e) {
             }
         }
         return operacion;
-        
     }
 
     @Override
@@ -120,12 +116,13 @@ public class UsuarioDAO extends Conexion implements Crud{
         } finally {
             try {
                 this.cerrarConexion();
-                
+
             } catch (SQLException e) {
             }
         }
         return operacion;
     }
+
     @Override
     public boolean cambiarEstado() {
         try {
@@ -140,151 +137,146 @@ public class UsuarioDAO extends Conexion implements Crud{
         } finally {
             try {
                 this.cerrarConexion();
-                
+
             } catch (SQLException e) {
             }
         }
         return operacion;
     }
 
+    public boolean iniciarSesion(String correo, String clave) {
 
-    
-    public boolean iniciarSesion(String correo, String clave){
-            
-        try{
-            
-            conexion=this.obtenerConexion();
-            sql="SELECT * FROM usuario WHERE correo=? AND clave=?";
-           puente = conexion.prepareStatement(sql);
-           puente.setString(1, correo);
-           puente.setString(2, clave);
-           mensajero= puente.executeQuery();
-           if(mensajero.next()){
-               operacion=true;
-           }
-        }catch(SQLException e){
+        try {
+
+            conexion = this.obtenerConexion();
+            sql = "SELECT * FROM usuario WHERE correo=? AND clave=?";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, correo);
+            puente.setString(2, clave);
+            mensajero = puente.executeQuery();
+            if (mensajero.next()) {
+                operacion = true;
+            }
+        } catch (SQLException e) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
-        }finally {
+        } finally {
             try {
                 this.cerrarConexion();
-                
+
             } catch (SQLException e) {
             }
         }
         return operacion;
     }
-    public boolean SelecionarIdAula(String correo, String clave){
-            
-        try{
-            
-            conexion=this.obtenerConexion();
-            sql="SELECT * FROM usuario WHERE correo=? AND clave=?";
-           puente = conexion.prepareStatement(sql);
-           puente.setString(1, correo);
-           puente.setString(2, clave);
-           mensajero= puente.executeQuery();
-           if(mensajero.next()){
-               operacion=true;
-           }
-        }catch(SQLException e){
+
+    public boolean SelecionarIdAula(String correo, String clave) {
+
+        try {
+
+            conexion = this.obtenerConexion();
+            sql = "SELECT * FROM usuario WHERE correo=? AND clave=?";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, correo);
+            puente.setString(2, clave);
+            mensajero = puente.executeQuery();
+            if (mensajero.next()) {
+                operacion = true;
+            }
+        } catch (SQLException e) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
-        }finally {
+        } finally {
             try {
                 this.cerrarConexion();
-                
+
             } catch (SQLException e) {
             }
         }
         return operacion;
     }
-    
-    public UsuarioVO ConsultarId(String usuId){
-    
-            UsuarioVO UsuVO = null;
-            
-            try {
-                  conexion = this.obtenerConexion();
-            sql="select * from usuario where idUsuario=?";
+
+    public UsuarioVO ConsultarId(String usuId) {
+
+        UsuarioVO UsuVO = null;
+
+        try {
+            conexion = this.obtenerConexion();
+            sql = "select * from usuario where idUsuario=?";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, usuId);
-            mensajero= puente.executeQuery();
-            while(mensajero.next()){
-                
-                 UsuVO= new UsuarioVO(usuId, mensajero.getString(2),
-                    mensajero.getString(3), mensajero.getString(4),
-                    mensajero.getString(5) , mensajero.getString(6),
-                    mensajero.getString(7),mensajero.getString(8), 
-                    mensajero.getString(9), mensajero.getString(10),
-                    mensajero.getString(11));
-                
+            mensajero = puente.executeQuery();
+            while (mensajero.next()) {
+
+                UsuVO = new UsuarioVO(usuId, mensajero.getString(2),
+                        mensajero.getString(3), mensajero.getString(4),
+                        mensajero.getString(5), mensajero.getString(6),
+                        mensajero.getString(7), mensajero.getString(8),
+                        mensajero.getString(9), mensajero.getString(10),
+                        mensajero.getString(11));
+
             }
         } catch (Exception e) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
-        }finally {
+        } finally {
             try {
                 this.cerrarConexion();
-                
+
             } catch (SQLException e) {
-              Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
             }
         }
         return UsuVO;
-    
-    
+
     }
-    
-    
-     public  ArrayList<UsuarioVO> listar(){
-        
-        ArrayList<UsuarioVO>listaUsuario = new ArrayList<>();
-        
-        
+
+    public ArrayList<UsuarioVO> listar() {
+
+        ArrayList<UsuarioVO> listaUsuario = new ArrayList<>();
+
         try {
-            conexion= this.obtenerConexion();
-            sql="select * from usuario";
+            conexion = this.obtenerConexion();
+            sql = "select * from usuario";
             puente = conexion.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {
-                
-                UsuarioVO UsuVO= new UsuarioVO(mensajero.getString(1),mensajero.getString(2),
-                mensajero.getString(3),mensajero.getString(4),mensajero.getString(5),mensajero.getString(6),
-                mensajero.getString(7),mensajero.getString(8),mensajero.getString(9),mensajero.getString(10),
-                mensajero.getString(11));
-                
+
+                UsuarioVO UsuVO = new UsuarioVO(mensajero.getString(1), mensajero.getString(2),
+                        mensajero.getString(3), mensajero.getString(4), mensajero.getString(5), mensajero.getString(6),
+                        mensajero.getString(7), mensajero.getString(8), mensajero.getString(9), mensajero.getString(10),
+                        mensajero.getString(11));
+
                 listaUsuario.add(UsuVO);
             }
-        
+
         } catch (Exception e) {
-              Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
-        }finally {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
             try {
                 this.cerrarConexion();
-                
+
             } catch (SQLException e) {
-              Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
             }
         }
         return listaUsuario;
     }
-    public ArrayList<UsuarioVO> roles(){
+
+    public ArrayList<UsuarioVO> roles() {
         ArrayList<UsuarioVO> listaRoles = new ArrayList<>();
-    try{
-        sql="SELECT usuario.nombre,usuario.apellido,usuario.idTipoUsuario from usuario INNER join grupo_usuario on usuario.idUsuario=grupo_usuario.idUsuario INNER JOIN grupo on grupo_usuario.idGrupo=grupo.idGrupo where idTipoUsuario=idTipoUsuario";
-        puente=conexion.prepareStatement(sql);
-        puente.setString(1, idTipoUsuario);
-        mensajero= puente.executeQuery();
-        while (mensajero.next()) {
-                UsuarioVO usuVO = new UsuarioVO(mensajero.getString(1),mensajero.getString(2));
+        try {
+            sql = "SELECT usuario.nombre,usuario.apellido,usuario.idTipoUsuario from usuario INNER join grupo_usuario on usuario.idUsuario=grupo_usuario.idUsuario INNER JOIN grupo on grupo_usuario.idGrupo=grupo.idGrupo where idTipoUsuario=idTipoUsuario";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, idTipoUsuario);
+            mensajero = puente.executeQuery();
+            while (mensajero.next()) {
+                UsuarioVO usuVO = new UsuarioVO(mensajero.getString(1), mensajero.getString(2));
                 listaRoles.add(usuVO);
-            
-        }
-    }catch(SQLException e){
+
+            }
+        } catch (SQLException e) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
         }
-    return listaRoles;
-    
-}
-    
-}
+        return listaRoles;
 
+    }
 
+}

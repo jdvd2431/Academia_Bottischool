@@ -25,7 +25,7 @@
         <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
         <script src="https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"></script>
-        
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar Usuario</title>
     </head>
@@ -98,7 +98,7 @@
         <h2 class="text-center mt-20">Gestion de Usuarios</h2>
 
         <div class="contenedor">
-            
+
             <table id="usuario" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
@@ -155,16 +155,16 @@
                                                 <option value="Inactivo">Inactivo</option>
                                             </select>
                                             <center>
-                                    <div class="inputb">
-                                        <button class="btn btn-primary mt-3" type="submit" id="btn" >Cambiar</button>
-                                        <input type="hidden" value="5" name="opcion">
-                                    </div></center>
+                                                <div class="inputb">
+                                                    <button class="btn btn-primary mt-3" type="submit" id="btn" >Cambiar</button>
+                                                    <input type="hidden" value="5" name="opcion">
+                                                </div></center>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                             <p><a  class="btn btn-info" href="#ex1" rel="modal:open"><i class="fas fa-pen"></i></a></p>
-                            
+
                         </td>
                         <td><a href="actualizarUsuario.jsp?idUsuario=<%=UsuVO.getUsuId()%>" class="btn btn-success"><i class="fas fa-pen"></i></a></td>
                     </tr>
@@ -188,8 +188,7 @@
                     </tr>
                 </tfoot>
             </table>
-        </div>
-               
+        </div>        
         <script>
             $('a.open-modal').click(function (event) {
                 $(this).modal({
@@ -231,5 +230,87 @@
                 });
             });
         </script>
+        <button class="abrir-registrar" id="abrir-registrar">Registrar</button>
+        <div class="overlay activado " id="overlay">
+            <form action="Usuario" method="POST" class="form-registro">
+                <div class="tituloR">
+                    <a href="#" class="cerrar-registro" id="cerrar-registro"><i class="fas fa-times"></i></a>
+                    <h2>Registrar Usuario</h2>
+                </div>
+                <div class="cuerpo">
+                    <div class="formulario">
+                        <input type="text" id="nombre" name="txtNombre" placeholder="Nombre" required class="input-50">
+                        <input type="text" id="apellido" name="txtApellido" placeholder="Apellido" required class="input-50">
+                        <div class="selector">
+                            <select id="TipoDocumento" name="txtTipoDocumento" class="estilo-selector">
+                                <option selected>Tipo de Documento</option>
+                                <option value="C.C">Cedula de Ciudadania</option>
+                                <option value="T.I">Tarjeta de Identidad</option>
+                                <option value="C.E">Cedula de Extranjeria</option>
+                            </select>
+                        </div>
+                        <input type="number" id="numeroDocumento" name="txtNumeroDocumento" placeholder="Documento" required class="input-50">
+                        <input type="number" id="celular" name="txtCelular" placeholder="Celular" required class="input-50">
+                        <input type="number" id="telefono" name="txtTelefono" placeholder="Telefono" class="input-50">
+                        <input type="hidden" value="Activo" name="txtEstado" required>
+                        <input type="email" id="correo" name="txtCorreo" placeholder="Correo" required class="input-50">
+                        <input type="password" name="txtClave" placeholder="Contraseña" required class="input-50">
+                        <div class="selector">
+                            <select name="txtGrupo" id="grupo" class="estilo-selector">
+                                <option selected>Grupo</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="selector">
+                            <select id="tipoUsuario" name="txtRol" class="estilo-selector">
+                                <option selected>Tipo Usuario</option>
+                                <option value="3">Administrador</option>
+                                <option value="2">Estudiante</option>
+                                <option value="1">Profesor</option>
+                            </select>
+                        </div>
+                        <input type="submit" class="btn" id="btn" value="Registrar">
+                        <input type="hidden" value="1" name="opcion">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <% if (request.getAttribute("mensajeError") != null) {%>
+        <script  type="text/javascript">
+
+            swal({
+                title: "Error",
+                text: "${mensajeError}",
+                type: 'error',
+                confirmButtonClass: "btn-primary",
+                confirmButtonText: "OK",
+                closeOnConfirm: false
+            },
+                    function () {
+                        window.location = "consultarUsuario.jsp";
+                    });
+        </script>
+
+        <%} else if (request.getAttribute("mensajeExito") != null) {%>
+        <script  type="text/javascript">
+
+            swal({
+                title: "Correcto",
+                text: "${mensajeExito}",
+                type: 'success',
+                confirmButtonClass: "btn-primary",
+                confirmButtonText: "OK",
+                closeOnConfirm: false
+            },
+                    function () {
+                        window.location = "consultarUsuario.jsp";
+                    });
+        </script>
+        <%}%>
+        <script src="Js/consultarUsuario.js"></script>
     </body>
 </html>
