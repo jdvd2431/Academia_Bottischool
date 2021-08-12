@@ -44,4 +44,5 @@ public class RolDAO extends Conexion{
         }
         return listaRoles;
     }
+    
 }
