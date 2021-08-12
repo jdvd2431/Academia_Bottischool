@@ -137,11 +137,15 @@
                         <td><%=UsuVO.getCelular()%></td>
                         <td><%=UsuVO.getTelefono()%></td>
                         <td>
-                            <a><%=UsuVO.getEstado()%></a>
+                            <button class="<%=UsuVO.getEstado().equals("Activo") ? "btn btn-success": "btn btn-danger" %>">
+                                <%=UsuVO.getEstado()%>
+                            </button>
                         </td>
                         <td><%=UsuVO.getCorreo()%></td>
                         <td><%=UsuVO.getClave()%></td>
-                        <td><%=UsuVO.getIdTipoUsuario()%></td>  
+                        <td>
+                                <%=UsuVO.getIdTipoUsuario().equals("1") ? "Profesor" : "Estudiante"%>
+                           </td>  
                         <td>
                              <a  class="btn btn-primary edit"href="cambiarEstado.jsp?usuid=<%=UsuVO.getUsuId()%>&estado=<%=UsuVO.getEstado()%>"><i class="fas fa-pen"></i></a>
                         </td>
