@@ -70,18 +70,21 @@
                                         }
                                     </script>
 
-                                    <%} else if (request.getAttribute("mensajeExito") != null) {%>
-                                    <script  type="text/javascript">
+                        <%} else if (request.getAttribute("mensajeExito") != null) {%>
+                        <script  type="text/javascript">
 
-                                        swal({
-                                        title: "Correcto",
-                                                text: "${mensajeExito}",
-                                                type: 'success',
-                                                confirmButtonClass: "btn-primary",
-                                                confirmButtonText: "OK",
-                                                closeOnConfirm: false
-                                        }
-                                    </script>
+                            swal({
+                                title: "Correcto",
+                                text: "${mensajeExito}",
+                                type: 'success',
+                                confirmButtonClass: "btn-primary",
+                                confirmButtonText: "OK",
+                                closeOnConfirm: false
+                            },
+                                    function () {
+                                        window.location = "consultarUsuario.jsp";
+                                    });
+                        </script>
                                     <%}%>
                                 </div>
                             </div>
@@ -89,6 +92,7 @@
                     </div>
                 </div>
         </section>
+
     </body>
 </html>
 
