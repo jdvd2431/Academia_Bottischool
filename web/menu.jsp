@@ -40,7 +40,7 @@
         </label>
         <div class="sidebar">
             <header>
-                <p id="titulo" class="animation">Academia Bottischool</p>
+                <p id="titulo" class="animation">Academia Bottie school</p>
             </header>
             <ul class="menu">
             <li><a href="#"><i class="icono izquierda fas fa-clipboard-list"></i>Asistencia<i class="icono derecha fas fa-chevron-down"></i></a>
