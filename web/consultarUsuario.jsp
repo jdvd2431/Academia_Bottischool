@@ -7,25 +7,20 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="ModeloDAO.UsuarioDAO"%>
 <%@page import="ModeloVO.UsuarioVO"%>
-<%@page import="ModeloVO.TipoUsuarioVO" %>
-<%@page import="ModeloDAO.TipoUsuarioDAO" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-       <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css"/>
-        <link rel="stylesheet" href="Css/consultar.css"/>
+        <link rel="stylesheet" href="../Css/consultar.css"/>
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-        <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <!-- jQuery Modal -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
         <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
@@ -34,8 +29,6 @@
         <link href="Css/sweetalert.css" rel="stylesheet" type="text/css"/>
         <script src="Js/sweetalert.js" type="text/javascript"></script>
         <script src="Js/sweetalert.min.js" type="text/javascript"></script>
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar Usuario</title>
@@ -44,8 +37,8 @@
 
         <style>
             .contenedor{
-                width: 1400px;
-                max-width: 1350px;
+                width: 100%;
+                max-width: 1500px;
                 display: flex;
                 justify-content: center;
                 margin: auto;
@@ -82,10 +75,10 @@
                 margin-bottom: 30px;
                 color: white;
             }
-            /*h2:hover{
+            h2:hover{
                 background: #4CA3FF;
                 color: white;
-            }*/
+            }
             .verde{
                 background: green;
                 color: white;
@@ -95,18 +88,11 @@
                 background:brown;
                 color: white;
             }
-            #ex1{
-                height: 100%;
-                max-height: 210px;
+            .edit{
+                padding: 7px;
+                color: white;
             }
-            .modal2{
-                height: 100%;
-                max-height: 450px;
-            }
-            .modal a.close-modal{
-                top:1px;
-                right: 1px;
-            }
+            
         </style>
         <div class="boton-volver">
             <a class="boton-volver" href="menu.jsp" style="font-size: 40px; margin-left: 50px;"><i class="fa fa-chevron-circle-left" id="cancel"></i></a>
@@ -115,7 +101,7 @@
 
         <div class="contenedor">
 
-            <table id="usuario" class=" table-striped" style="max-width: 100%">
+            <table id="usuario" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -157,111 +143,11 @@
                         <td><%=UsuVO.getClave()%></td>
                         <td><%=UsuVO.getIdTipoUsuario()%></td>  
                         <td>
-                            <div id="ex1" class="modal">
-                                <div class="inputb">
-                                    <h2 class="modal-h">Estado</h2>
-                                </div>
-                                <form method="POST" action="Usuario">
-                                    <div class="row">
-                                        <div class="col">
-                                            <input type="hidden" name="txtId" placeholder="Nombre" value="<%=UsuVO.getUsuId()%>">
-                                            <select class="custom-select" name="txtEstado">
-                                                <option selected>Seleciona el nuevo estado</option>
-                                                <option value="Activo">Activo</option>
-                                                <option value="Inactivo">Inactivo</option>
-                                            </select>
-                                            <center>
-                                                <div class="inputb">
-                                                    <button class="btn btn-primary mt-3" type="submit" id="btn" >Cambiar</button>
-                                                    <input type="hidden" value="5" name="opcion">
-                                                </div></center>
-                                                <% if (request.getAttribute("mensajeError") == null) {%>
-                                            <script  type="text/javascript">
-
-                                                swal({
-                                                title: "Error",
-                                                        text: "${mensajeError}",
-                                                        type: 'error',
-                                                        confirmButtonClass: "btn-primary",
-                                                        confirmButtonText: "OK",
-                                                        closeOnConfirm: false
-                                                }
-                                            </script>
-
-                                            <%} else if (request.getAttribute("mensajeExito") != null) {%>
-                                            <script  type="text/javascript">
-
-                                                swal({
-                                                title: "Correcto",
-                                                        text: "${mensajeExito}",
-                                                        type: 'success',
-                                                        confirmButtonClass: "btn-primary",
-                                                        confirmButtonText: "OK",
-                                                        closeOnConfirm: false
-                                                }
-                                            </script>
-                                            <%}%>
-                                        </div>
-                                    </div>
-                                </form>
-
-                            </div>
-                            <p><a  class="btn btn-info" href="#ex1" rel="modal:open"><i class="fas fa-pen"></i></a></p>
-
+                             <a  class="btn btn-primary edit"href="cambiarEstado.jsp?usuid=<%=UsuVO.getUsuId()%>&estado=<%=UsuVO.getEstado()%>"><i class="fas fa-pen"></i></a>
                         </td>
-
                         <td>
-                            <div id="editar" class="modal modal2" >
-                                <div class="inputb">
-                                    <h2 class="modal-h">Editar Usuario</h2>
-                                </div>
-                                <form class="row g-3" method="POST" action="Usuario">
-                                    <input type="hidden" name="txtId" placeholder="Nombre" value="<%=UsuVO.getUsuId()%>">
-                                    <div class="col-md-6">
-                                        <label for="inputEmail4" class="form-label">Nombre</label>
-                                        <input type="text"id="inputEmail4" name="txtNombre"class="form-control" placeholder="Nombre" value="<%=UsuVO.getNombre()%>">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="inputPassword4" class="form-label">Apellido</label>
-                                        <input type="text"class="form-control" id="inputPassword4" name="txtApellido" placeholder="Apellido" value="<%=UsuVO.getApellido()%>" >
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="inputEmail4" class="form-label">Tipo Docuemento</label>
-                                        <input type="text" class="form-control" id="inputEmail4" name="txtTipoDocumento" placeholder="Apellido" value="<%=UsuVO.getTipoDocumento()%>">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="inputPassword4" class="form-label">Numero Documento</label>
-                                        <input type="text"  class="form-control" id="inputPassword4" name="txtNumeroDocumento" placeholder="Tipo Usuario"  value="<%=UsuVO.getNumDocumento()%>" >
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="inputEmail4" class="form-label">Celular</label>
-                                        <input type="text"  class="form-control" id="inputEmail4" name="txtCelular"  placeholder="Celular" value="<%=UsuVO.getCelular()%>">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="inputPassword4" class="form-label">Telefono</label>
-                                        <input type="text" class="form-control" id="inputPassword4" name="txtTelefono"  placeholder="Telefono" value="<%=UsuVO.getTelefono()%>">
-                                    </div>
-                                    <input type="hidden" name="txtEstado" value="Activo" value="<%=UsuVO.getEstado()%>"> 
-                                    <div class="col-md-6">
-                                        <label for="inputEmail4" class="form-label">Correo</label>
-                                        <input type="text" class="form-control" id="inputEmail4" name="txtCorreo"  placeholder="Correo" value="<%=UsuVO.getCorreo()%>">
-                                    </div>
-                                    <div class="col-md-6 mb-4">
-                                        <label for="inputPassword4" class="form-label">Clave</label>
-                                        <input type="password"class="form-control" id="inputPassword4" name="txtClave" placeholder="Clave" value="<%=UsuVO.getClave()%>">
-                                    </div>
-                                    <input type="hidden" class="form-control" name="txtRol" placeholder="Clave" value="<%=UsuVO.getIdTipoUsuario()%>">
-                                    <div class="col-12">
-                                        <input type="submit" class="btn btn-primary  d-flex justify-conted-center m-auto" id="btn" value="Actualizar">
-                                        <input type="hidden" value="2" name="opcion">
-                                    </div>
-                                </form>
-
-                            </div>
-                            <p><a  class="btn btn-primary" href="#editar" rel="modal:open"><i class="fas fa-pen"></i></a></p>
+                            <a class="btn btn-primary edit"href="actualizarUsuario.jsp?usuid=<%=UsuVO.getUsuId()%>&nombre=<%=UsuVO.getNombre()%>&apellido=<%=UsuVO.getApellido()%>&tipodoc=<%=UsuVO.getTipoDocumento()%>&numdoc=<%=UsuVO.getNumDocumento()%>&celular=<%=UsuVO.getCelular()%>&telefono=<%=UsuVO.getTelefono()%>&estado=<%=UsuVO.getEstado()%>&correo=<%=UsuVO.getCorreo()%>&clave=<%=UsuVO.getClave()%>&tipousu=<%=UsuVO.getIdTipoUsuario()%>"><i class="fas fa-pen"></i></a>
                         </td>
-
                     </tr>
                     <%}%>  
                 </tbody>
@@ -321,82 +207,7 @@
             });
             });
         </script>
-        <button class="abrir-registrar" id="abrir-registrar">Registrar</button>
-        <div class="overlay" id="overlay">
-            <form method="POST" action="Usuario" class="form-registro">
-                <div class="tituloR">
-                    <a href="#" class="cerrar-registro" id="cerrar-registro"><i class="fas fa-times"></i></a>
-                    <h2>Registrar Usuario</h2>
-                </div>
-                <div class="cuerpo">
-                    <div class="formulario">
-                        <input type="text" id="nombre" name="txtNombre" placeholder="Nombre" required class="input-50">
-                        <input type="text" id="apellido" name="txtApellido" placeholder="Apellido" required class="input-50">
-                        <div class="selector">
-                            <select id="TipoDocumento" name="txtTipoDocumento" class="estilo-selector">
-                                <option selected>Tipo de Documento</option>
-                                <option value="C.C">Cedula de Ciudadania</option>
-                                <option value="T.I">Tarjeta de Identidad</option>
-                                <option value="C.E">Cedula de Extranjeria</option>
-                            </select>
-                        </div>
-                        <input type="number" id="numeroDocumento" class="input-50" name="txtNumeroDocumento" required placeholder="Numero de Documento">
-                        <input type="number" id="celular" name="txtCelular" placeholder="Celular" required class="input-50">
-                        <input type="number" id="telefono" name="txtTelefono" placeholder="Telefono" class="input-50" >
-                        <input type="hidden" value="Activo" name="txtEstado" required>
-                        <input type="email" id="correo" name="txtCorreo" placeholder="Correo" required class="input-50">
-                        <input type="password" name="txtClave" placeholder="Contraseña" required class="input-50">
-                        <div class="selector">
-                            <select name="txtRol" class="estilo-selector">
-                                <option selected>Seleciona un opcion</option>
-                                <%
-                                    TipoUsuarioDAO TipDAO = new TipoUsuarioDAO();
-                                    for (TipoUsuarioVO TipVO : TipDAO.listar()) {
-                                %>
-                                <option value="<%=TipVO.getIdTipoUsuario()%>"><%=TipVO.getTipoUsuario()%></option>
-                                <% }%>
-                            </select>
-                        </div>
-                        <div class="selector">
-                            <input type="submit" class="btn" id="btn" value="Registrar">
-                            <input type="hidden" value="1" name="opcion">
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <% if (request.getAttribute("mensajeError") != null) {%>
-        <script  type="text/javascript">
 
-            swal({
-            title: "Error",
-                    text: "${mensajeError}",
-                    type: 'error',
-                    confirmButtonClass: "btn-primary",
-                    confirmButtonText: "OK",
-                    closeOnConfirm: false
-            },
-                    function () {
-                    window.location = "consultarUsuario.jsp";
-                    });
-        </script>
-
-        <%} else if (request.getAttribute("mensajeExito") != null) {%>
-        <script  type="text/javascript">
-
-            swal({
-            title: "Correcto",
-                    text: "${mensajeExito}",
-                    type: 'success',
-                    confirmButtonClass: "btn-primary",
-                    confirmButtonText: "OK",
-                    closeOnConfirm: false
-            },
-                    function () {
-                    window.location = "consultarUsuario.jsp";
-                    });
-        </script>
-        <%}%>
-         <script src="Js/consutarUsuario.js" type="text/javascript"></script>
     </body>
 </html>
+
