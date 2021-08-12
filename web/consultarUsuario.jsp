@@ -112,7 +112,7 @@
 
         <div class="contenedor">
 
-            <table id="usuario" class="table table-striped">
+            <table id="usuario" class="table-striped">
                 <thead>
                     <tr>
                         <th>Id</th>
