@@ -31,40 +31,64 @@
             <ul>
 
         </nav>
-        
-                                <% if (request.getAttribute("mensajeError") != null) {%>
-                                <script  type="text/javascript">
 
-                                    swal({
+        <section>
+                <%
+                    String usuid = request.getParameter("usuid");
+                    String estado = request.getParameter("estado");
+                %>
+                <div class="container2">
+                    <div class="form">
+                        <div class="boton-volver">
+                            <a class="boton-volver" href="consultarUsuario.jsp" style="font-size: 40px;"><i class="fa fa-chevron-circle-left" id="cancel"></i></a>
+                        </div>
+                        <h2 for="usu">Cambiar Estado</h2>
+                        <form method="POST" action="Usuario">
+                            <div class="row">
+                                <div class="col">
+                                    <input type="hidden" name="txtId" placeholder="Nombre" value="<%=usuid%>">
+                                    <select class="custom-select" name="txtEstado">
+                                        <option selected>Seleciona el nuevo estado</option>
+                                        <option value="Activo">Activo</option>
+                                        <option value="Inactivo">Inactivo</option>
+                                    </select>
+                                    <center>
+                                        <div class="inputb">
+                                            <button class="btn btn-primary mt-3" type="submit" id="btn" >Cambiar</button>
+                                            <input type="hidden" value="5" name="opcion">
+                                        </div></center>
+                                        <% if (request.getAttribute("mensajeError") == null) {%>
+                                    <script  type="text/javascript">
+
+                                        swal({
                                         title: "Error",
-                                        text: "${mensajeError}",
-                                        type: 'error',
-                                        confirmButtonClass: "btn-primary",
-                                        confirmButtonText: "OK",
-                                        closeOnConfirm: false
-                                    },
-                                            function () {
-                                                window.location = "consultarUsuario.jsp";
-                                            });
-                                </script>
+                                                text: "${mensajeError}",
+                                                type: 'error',
+                                                confirmButtonClass: "btn-primary",
+                                                confirmButtonText: "OK",
+                                                closeOnConfirm: false
+                                        }
+                                    </script>
 
-                                <%} else if (request.getAttribute("mensajeExito") != null) {%>
-                                <script  type="text/javascript">
+                                    <%} else if (request.getAttribute("mensajeExito") != null) {%>
+                                    <script  type="text/javascript">
 
-                                    swal({
+                                        swal({
                                         title: "Correcto",
-                                        text: "${mensajeExito}",
-                                        type: 'success',
-                                        confirmButtonClass: "btn-primary",
-                                        confirmButtonText: "OK",
-                                        closeOnConfirm: false
-                                    },
-                                            function () {
-                                                window.location = "consultarUsuario.jsp";
-                                            });
-                                </script>
-                                <%}%>
-
+                                                text: "${mensajeExito}",
+                                                type: 'success',
+                                                confirmButtonClass: "btn-primary",
+                                                confirmButtonText: "OK",
+                                                closeOnConfirm: false
+                                        }
+                                    </script>
+                                    <%}%>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </section>
     </body>
 </html>
 

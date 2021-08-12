@@ -7,6 +7,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="ModeloDAO.NovedadDAO"%>
 <%@page import="ModeloVO.NovedadVO"%>
+<%@page import="ModeloVO.TipoNovedadVO"%>
+<%@page import="ModeloDAO.TipoNovedadDAO"%>
+<%@page import="ModeloDAO.AsistenciaDAO"%>
+<%@page import="ModeloVO.AsistenciaVO"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -116,12 +120,12 @@
                     scrollY: 400,
                     language: {
                         "sProcessing": "Procesando...",
-                        "sLengthMenu": "Mostrar _MENU_ registros",
+                        "sLengthMenu": "Mostrar MENU registros",
                         "sZeroRecords": "No se encontraron resultados",
                         "sEmptyTable": "NingÃºn dato disponible en esta tabla",
-                        "sInfo": "Mostrando usuarios del _START_ al _END_ de un total de _TOTAL_ usuarios",
+                        "sInfo": "Mostrando usuarios del START al END de un total de TOTAL usuarios",
                         "sInfoEmpty": "Mostrando usuarios del 0 al 0 de un total de 0 usuarios",
-                        "sInfoFiltered": "(filtrado de un total de _MAX_ usuarios)",
+                        "sInfoFiltered": "(filtrado de un total de MAX usuarios)",
                         "sInfoPostFix": "",
                         "sSearch": "Buscar:",
                         "sUrl": "",
@@ -160,15 +164,29 @@
                         <div class="selector">
                             <select name="txtTipoNovedad" class="estilo-selector">
                                 <option selected>Tipo de Novedad</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
+                                <%
+                                    TipoNovedadDAO NoveDAO = new TipoNovedadDAO();
+                                    for (TipoNovedadVO NoveVO : NoveDAO.listar()) {
+
+                                %>
+                                <option value="<%=NoveVO.getIdTipoNovedad()%>"><%=NoveVO.getTipoNovedad()%></option>
+                                <% }%>
                             </select>
                         </div>
                         <div class="selector">
                             <select name="txtAsistencia" class="estilo-selector">
                                 <option selected>Id Asistencia</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
+                                <%
+                                   AsistenciaVO AsisVO = new AsistenciaVO();
+                                   AsistenciaDAO AsisDAO = new AsistenciaDAO(AsisVO);
+                                    ArrayList<AsistenciaVO> listaAsistencia = AsisDAO.listar();
+                                    for (int i = 0; i < listaAsistencia.size(); i++) {
+
+                                        AsisVO = listaAsistencia.get(i);
+
+                                %>
+                                <option value="<%=AsisVO.getIdAsistencia()%>"><%=AsisVO.getIdAsistencia()%></option>
+                                <% }%>
                             </select>
                         </div>
                         <div class="boton">
@@ -182,4 +200,3 @@
         <script src="Js/consutarUsuario.js" type="text/javascript"></script>
     </body>
 </html>
-
