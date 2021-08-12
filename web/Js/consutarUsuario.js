@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 var btnAbrirRegistro = document.getElementById('abrir-registrar'),
     overlay = document.getElementById('overlay'),
     btnCerrarRegistro = document.getElementById('cerrar-registro');

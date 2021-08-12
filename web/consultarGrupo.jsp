@@ -14,7 +14,8 @@
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css"/>
-        <link rel="stylesheet" href="../Css/consultarClase.css"/>
+        <link rel="stylesheet" href="Css/consultarGrupo.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
@@ -48,7 +49,6 @@
                 border-radius:7px;
                 padding: 5px;
                 margin-bottom: 15px;
-                margin-top: 35px;
                 color: white;
             }
             h2:hover{
@@ -85,18 +85,13 @@
                         GrupoDAO GruDAO = new GrupoDAO(GruVO);
                         ArrayList<GrupoVO> listaGrupo = GruDAO.listar();
                         for (int i = 0; i < listaGrupo.size(); i++) {
-                            
-                             GruVO = listaGrupo.get(i);
+
+                            GruVO = listaGrupo.get(i);
                     %>               
                     <tr>
                         <td><%=GruVO.getIdGrupo()%></td>
                         <td><%=GruVO.getNombre()%></td>
-                        <%if (GruVO.getEstado()!="Inactivo") {
-                        %>
-                        <td class="verde text-center"><%=GruVO.getEstado()%></td>
-                        <%}else if(GruVO.getEstado()=="Inactivo"){%>
-                        <td class="rojo"><%=GruVO.getEstado()%></td>
-                        <%}%>  
+                        <td><%=GruVO.getEstado()%></td>
                         <td class="text-center"><%=GruVO.getFechaInicio()%></td> 
                         <td class="text-center"><%=GruVO.getFechaFin()%></td> 
                     </tr>
@@ -113,7 +108,7 @@
                 </tfoot>
             </table>
         </div>
-                
+
         <script>
             $(document).ready(function () {
                 $('#usuario').DataTable({
@@ -149,6 +144,28 @@
                 });
             });
         </script>
+        <button class="abrir-registrar" id="abrir-registrar">Registrar</button>
+        <div class="overlay" id="overlay">
+            <form method="POST" action="Grupo" class="form-registro">
+                <div class="tituloR">
+                    <a href="#" class="cerrar-registro" id="cerrar-registro"><i class="fas fa-times"></i></a>
+                    <h2>Registrar Grupo</h2>
+                </div>
+                <div class="cuerpo">
+                    <div class="formulario">
+                        <input type="text" name="txtNombre" placeholder="Nombre" required class="input-50">
+                        <input type="hidden" name="txtEstado" value="Activo">
+                        <input type="date" name="txtFechaInicio" placeholder="Fecha de Inicio" required class="input-50">
+                        <input type="date" name="txtFechaFin" placeholder="Fecha de Fin" required class="input-50">
+                        <div class="selector">
+                            <input type="submit" id="btn" value="Registrar" class="btn">
+                            <input type="hidden" value="1" name="opcion">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script src="Js/consutarUsuario.js" type="text/javascript"></script>
     </body>
 </html>
 

@@ -14,7 +14,7 @@
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css"/>
-        <link rel="stylesheet" href="../Css/consultarClase.css"/>
+        <link rel="stylesheet" href="Css/consultarAsistencia.css"/>
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
@@ -81,7 +81,7 @@
                     <%
                         AsistenciaVO AsisVO = new AsistenciaVO();
                         AsistenciaDAO AsisDAO = new AsistenciaDAO(AsisVO);
-                        ArrayList<AsistenciaVO> listaAsistencia=  AsisDAO.listar();
+                        ArrayList<AsistenciaVO> listaAsistencia = AsisDAO.listar();
                         for (int i = 0; i < listaAsistencia.size(); i++) {
 
                             AsisVO = listaAsistencia.get(i);
@@ -142,6 +142,46 @@
                 });
             });
         </script>
+        <button class="abrir-registrar" id="abrir-registrar">Registrar</button>
+        <div class="overlay" id="overlay">
+            <form method="POST" action="Asistencia" class="form-registro">
+                <div class="tituloR">
+                    <a href="#" class="cerrar-registro" id="cerrar-registro"><i class="fas fa-times"></i></a>
+                    <h2>Registrar Asistencia</h2>
+                </div>
+                <div class="cuerpo">
+                    <div class="formulario">
+                        <div class="selector">
+                            <select name="txtAsistencia" class="estilo-selector">
+                                <option selected>Asistencia</option>
+                                <option value="Si">Si</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <input type="date" name="txtFecha" required class="input-50">
+                        <div class="selector">
+                            <select name="txtIdUsuario" class="estilo-selector">
+                                <option selected>Usuario</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                        <div class="selector">
+                            <select name="txtIdGrupo" class="estilo-selector">
+                                <option selected>Grupo</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                        <div class="boton">
+                            <input type="submit" id="btn" value="Registrar" class="btn">
+                            <input type="hidden" value="1" name="opcion">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script src="Js/consutarUsuario.js" type="text/javascript"></script>
     </body>
 </html>
 

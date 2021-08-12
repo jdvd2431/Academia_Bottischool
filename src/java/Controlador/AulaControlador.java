@@ -8,13 +8,11 @@ package Controlador;
 import ModeloDAO.AulaDAO;
 import ModeloVO.AulaVO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,13 +37,14 @@ public class AulaControlador extends HttpServlet {
         String idAula = request.getParameter("txtId");     
         String nombre = request.getParameter("txtNomAula");
         String capacidad = request.getParameter("txtCapacidad");
-        String idGrupo = request.getParameter("txtIdGrupo");
+        String estado = request.getParameter("txtEstado");
+        
         
         
         int opcion = Integer.parseInt(request.getParameter("opcion"));
         
           //paso 2- instanciar VO
-          AulaVO auVO = new AulaVO(idAula,nombre, capacidad, idGrupo);
+          AulaVO auVO = new AulaVO(idAula,nombre,capacidad,estado);
           
           //instanciar DAO
          

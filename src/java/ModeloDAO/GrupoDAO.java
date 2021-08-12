@@ -26,7 +26,9 @@ public class GrupoDAO extends Conexion implements Crud{
     
     private boolean operacion = false;
     private String sql;
-    private  String idGrupo="", nombre="", estado="",  fechaInicio="",  fechaFin="";
+    private String idGrupo="", nombre="";
+    private String estado="",  fechaInicio="",  fechaFin="";
+    
         public GrupoDAO(GrupoVO grupoVO) {
         super();
         try {
@@ -75,6 +77,7 @@ public class GrupoDAO extends Conexion implements Crud{
     public boolean cambiarEstado() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
     public  ArrayList<GrupoVO> listar(){
         
         ArrayList<GrupoVO>listaGrupo = new ArrayList<>();

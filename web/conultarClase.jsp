@@ -14,7 +14,8 @@
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css"/>
-        <link rel="stylesheet" href="../Css/consultarClase.css"/>
+        <link rel="stylesheet" href="Css/consultarClase.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
@@ -48,7 +49,7 @@
                 border-radius:7px;
                 padding: 5px;
                 margin-bottom: 15px;
-                margin-top: 35px;
+                
                 color: white;
             }
             h2:hover{
@@ -88,11 +89,7 @@
                     <tr>
                         <td><%=ClaVO.getIdClase()%></td>
                         <td><%=ClaVO.getNombre()%></td>
-                        <%if (ClaVO.getEstado()!="Inactivo") {%>
-                        <td class="verde text-center"><%=ClaVO.getEstado()%></td>
-                        <%}else if(ClaVO.getEstado()=="Inactivo"){%>
-                        <td class="rojo"><%=ClaVO.getEstado()%></td>
-                        <%}%>  
+                        <td><%=ClaVO.getEstado()%></td>
                         <td class="text-center"><%=ClaVO.getCantidadSesiones()%></td> 
                     </tr>
                     <%}%>  
@@ -142,6 +139,27 @@
                 });
             });
         </script>
+        <button class="abrir-registrar" id="abrir-registrar">Registrar</button>
+        <div class="overlay" id="overlay">
+            <form method="POST" action="Clase" class="form-registro">
+                <div class="tituloR">
+                    <a href="#" class="cerrar-registro" id="cerrar-registro"><i class="fas fa-times"></i></a>
+                    <h2>Registrar Clase</h2>
+                </div>
+                <div class="cuerpo">
+                    <div class="formulario">
+                        <input type="text" name="txtNombre" placeholder="Nombre" required class="input-50">
+                        <input type="hidden" name="txtEstado" value="Activo">
+                        <input type="number" name="txtcantidadSesiones" placeholder="Cantidad de Sesiones" class="input-50">
+                        <div class="selector">
+                            <input type="submit" id="btn" value="Registrar" class="btn">
+                            <input type="hidden" value="1" name="opcion">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script src="Js/consutarUsuario.js" type="text/javascript"></script>
     </body>
 </html>
 

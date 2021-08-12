@@ -1,6 +1,6 @@
 .contenedor{
-    width: 90%;
-    max-width: 1400px;
+    width: 100%;
+    max-width: 1500px;
     display: flex;
     justify-content: center;
     margin: auto;
@@ -21,14 +21,26 @@ h2{
     background: #007bff;
     border-radius:7px;
     padding: 5px;
-    margin-bottom: 15px;
-    margin-top: 35px;
+    margin-bottom: 10px;
     color: white;
 }
-h2:hover{
+.modal-h2{
+    width:100%;
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+    background: #007bff;
+    border-radius:7px;
+    padding: 5px;
+    margin-bottom: 30px;
+    color: white;
+}
+/*h2:hover{
     background: #4CA3FF;
     color: white;
-}
+}*/
 .verde{
     background: green;
     color: white;
@@ -38,12 +50,20 @@ h2:hover{
     background:brown;
     color: white;
 }
-/*.table-striped{
-    background: #000;
-    color: white;
-}*/
+#ex1{
+    height: 100%;
+    max-height: 210px;
+}
+.modal2{
+    height: 100%;
+    max-height: 450px;
+}
+.modal a.close-modal{
+    top:1px;
+    right: 1px;
+}
 .overlay {
-    background-color: rgba(0,0,0,0.3);
+    background: rgb(0, 0, 0, .3);
     position: fixed;
     top: 0;
     bottom: 0;
@@ -84,7 +104,7 @@ h2 {
     border-bottom: 5px solid crimson;
 }
 
-.overlay .tituloR .cerrar-registro {
+.tituloR .cerrar-registro {
     font-size: 25px;
     line-height: 0px;
     display: block;
@@ -106,69 +126,50 @@ h2 {
     font-size: 15px;
 }
 
-.formulario input:hover {
-    padding: 5px;
-    font-size: 16px;
-    transition: 0.5s;
-}
-
 .formulario .input-50 {
     width: 45%;
 }
+
 .formulario .input-50:hover {
     width: 46%;
-    left: 5px;
+    transition: 0.5s;
+}
+
+.selector {
+    width: 45%;
 }
 
 .estilo-selector {
-    width: 217px;
+    width: 100%;
     height: 34px;
     overflow: hidden;
     background: #fff;
     border: 1px solid grey;
     font-size: 15px;
+    appearance: none; 
+    padding: 5px;
 }
 
 .estilo-selector:hover {
-    width: 45%;
+    width: 103%;
     height: 34px;
     overflow: hidden;
     background: #fff;
     border: 1px solid grey;
-    font-size: 17px;
+    font-size: 15px;
     transition: 0.5s;
 }
 
-.selector select {
-    display: block;
-    padding: 5px;
-    height: 38px;
-    width: 217px;
-    -webkit-appearance: none;
-}
-
-.selector select:hover {
-    display: block;
-    padding: 5px;
-    height: 40px;
-    width: 223px;
-    -webkit-appearance: none;
-}
-
 .btn {
-    margin: 15px auto;
-    width: 25%;
+    margin-left: 25%;
+    width: 50%;
+    color: white;
     background: #007bff;
-    color: #fff;
     border: solid 2px #fff;
     border-radius: 5px;
 }
 
 .btn:hover {
-    margin: 15px auto;
-    width: 25%;
-    background: #1769c0;
+    background: #4371A3;
     color: #fff;
-    border: solid 2px #fff;
-    border-radius: 5px;
 }

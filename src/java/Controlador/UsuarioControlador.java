@@ -49,7 +49,6 @@ public class UsuarioControlador extends HttpServlet {
         String estado = request.getParameter("txtEstado");
         String correo = request.getParameter("txtCorreo");
         String clave = request.getParameter("txtClave");
-        String idGrupo = request.getParameter("txtGrupo");
         String idTipoUsuario = request.getParameter("txtRol");
 
         int opcion = Integer.parseInt(request.getParameter("opcion"));
@@ -132,7 +131,7 @@ public class UsuarioControlador extends HttpServlet {
                          
         }
 
-    }
+        }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

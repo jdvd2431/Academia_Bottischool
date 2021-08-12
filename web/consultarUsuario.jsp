@@ -7,6 +7,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="ModeloDAO.UsuarioDAO"%>
 <%@page import="ModeloVO.UsuarioVO"%>
+<%@page import="ModeloVO.TipoUsuarioVO" %>
+<%@page import="ModeloDAO.TipoUsuarioDAO" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,7 +16,7 @@
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css"/>
-        <link rel="stylesheet" href="../Css/consultar.css"/>
+        <link rel="stylesheet" href="Css/consultar.css"/>
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 
@@ -30,7 +32,7 @@
         <script src="Js/sweetalert.js" type="text/javascript"></script>
         <script src="Js/sweetalert.min.js" type="text/javascript"></script>
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
- 
+
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar Usuario</title>
@@ -77,10 +79,10 @@
                 margin-bottom: 30px;
                 color: white;
             }
-            h2:hover{
+            /*h2:hover{
                 background: #4CA3FF;
                 color: white;
-            }
+            }*/
             .verde{
                 background: green;
                 color: white;
@@ -110,7 +112,7 @@
 
         <div class="contenedor">
 
-            <table id="usuario" class="table table-striped" style="width:100%">
+            <table id="usuario" class="table table-striped">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -249,14 +251,14 @@
                                     <input type="hidden" class="form-control" name="txtRol" placeholder="Clave" value="<%=UsuVO.getIdTipoUsuario()%>">
                                     <div class="col-12">
                                         <input type="submit" class="btn btn-primary  d-flex justify-conted-center m-auto" id="btn" value="Actualizar">
-                                    <input type="hidden" value="2" name="opcion">
+                                        <input type="hidden" value="2" name="opcion">
                                     </div>
                                 </form>
 
                             </div>
                             <p><a  class="btn btn-primary" href="#editar" rel="modal:open"><i class="fas fa-pen"></i></a></p>
                         </td>
-                        
+
                     </tr>
                     <%}%>  
                 </tbody>
@@ -316,6 +318,82 @@
             });
             });
         </script>
-        
+        <button class="abrir-registrar" id="abrir-registrar">Registrar</button>
+        <div class="overlay" id="overlay">
+            <form method="POST" action="Usuario" class="form-registro">
+                <div class="tituloR">
+                    <a href="#" class="cerrar-registro" id="cerrar-registro"><i class="fas fa-times"></i></a>
+                    <h2>Registrar Usuario</h2>
+                </div>
+                <div class="cuerpo">
+                    <div class="formulario">
+                        <input type="text" id="nombre" name="txtNombre" placeholder="Nombre" required class="input-50">
+                        <input type="text" id="apellido" name="txtApellido" placeholder="Apellido" required class="input-50">
+                        <div class="selector">
+                            <select id="TipoDocumento" name="txtTipoDocumento" class="estilo-selector">
+                                <option selected>Tipo de Documento</option>
+                                <option value="C.C">Cedula de Ciudadania</option>
+                                <option value="T.I">Tarjeta de Identidad</option>
+                                <option value="C.E">Cedula de Extranjeria</option>
+                            </select>
+                        </div>
+                        <input type="number" id="numeroDocumento" class="input-50" name="txtNumeroDocumento" required placeholder="Numero de Documento">
+                        <input type="number" id="celular" name="txtCelular" placeholder="Celular" required class="input-50">
+                        <input type="number" id="telefono" name="txtTelefono" placeholder="Telefono" class="input-50" >
+                        <input type="hidden" value="Activo" name="txtEstado" required>
+                        <input type="email" id="correo" name="txtCorreo" placeholder="Correo" required class="input-50">
+                        <input type="password" name="txtClave" placeholder="Contraseña" required class="input-50">
+                        <div class="selector">
+                            <select name="txtRol" class="estilo-selector">
+                                <option selected>Seleciona un opcion</option>
+                                <%
+                                    TipoUsuarioDAO TipDAO = new TipoUsuarioDAO();
+                                    for (TipoUsuarioVO TipVO : TipDAO.listar()) {
+                                %>
+                                <option value="<%=TipVO.getIdTipoUsuario()%>"><%=TipVO.getTipoUsuario()%></option>
+                                <% }%>
+                            </select>
+                        </div>
+                        <div class="selector">
+                            <input type="submit" class="btn" id="btn" value="Registrar">
+                            <input type="hidden" value="1" name="opcion">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <% if (request.getAttribute("mensajeError") != null) {%>
+        <script  type="text/javascript">
+
+            swal({
+            title: "Error",
+                    text: "${mensajeError}",
+                    type: 'error',
+                    confirmButtonClass: "btn-primary",
+                    confirmButtonText: "OK",
+                    closeOnConfirm: false
+            },
+                    function () {
+                    window.location = "consultarUsuario.jsp";
+                    });
+        </script>
+
+        <%} else if (request.getAttribute("mensajeExito") != null) {%>
+        <script  type="text/javascript">
+
+            swal({
+            title: "Correcto",
+                    text: "${mensajeExito}",
+                    type: 'success',
+                    confirmButtonClass: "btn-primary",
+                    confirmButtonText: "OK",
+                    closeOnConfirm: false
+            },
+                    function () {
+                    window.location = "consultarUsuario.jsp";
+                    });
+        </script>
+        <%}%>
+         <script src="Js/consutarUsuario.js" type="text/javascript"></script>
     </body>
 </html>

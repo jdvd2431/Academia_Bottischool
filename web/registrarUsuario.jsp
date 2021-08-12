@@ -36,7 +36,7 @@
                 <div class="container2">
                     <div class="form">
                         <div class="boton-volver">
-                        <a class="boton-volver" href="menu.jsp" style="font-size: 40px;"><i class="fa fa-chevron-circle-left" id="cancel"></i></a>
+                            <a class="boton-volver" href="menu.jsp" style="font-size: 40px;"><i class="fa fa-chevron-circle-left" id="cancel"></i></a>
                         </div>
                         <h2 for="usu">Registrar Usuario</h2>
                         <form method="POST" action="Usuario">
@@ -58,7 +58,7 @@
                             </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Numero Documento</p>
-                                <input type="text" class="form-control" name="txtNumeroDocumento"  placeholder="Numero de Documento" >
+                                <input type="number" class="form-control" name="txtNumeroDocumento"  placeholder="Numero de Documento" >
                             </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Celular</p>
@@ -68,11 +68,11 @@
                                 <p class="cuenta" for="usu">Telefono</p>
                                 <input type="text" class="form-control" name="txtTelefono"  placeholder="Telefono" >
                             </div>
-                            
+
                             <div class="inputb">
                                 <input type="hidden" name="txtEstado" value="Activo">
                             </div>
-                            
+
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Correo</p>
                                 <input type="text" class="form-control" name="txtCorreo" placeholder="Correo" >
@@ -81,16 +81,7 @@
                                 <p class="cuenta" for="usu">Clave</p>
                                 <input type="password" class="form-control" name="txtClave" placeholder="Clave" >
                             </div>
-                          
-                            <div class="inputb">
-                                <p class="cuenta" for="usu">Grupo</p>
-                                <select name="txtGrupo">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
 
-                            </div>
                             <div class="inputb">
                                 <p class="cuenta" for="usu">Tipo usuario</p>
                                 <select name="txtRol">
@@ -105,7 +96,6 @@
                                     <input type="submit" id="btn" value="Registrar">
                                     <input type="hidden" value="1" name="opcion">
                                 </div></center>
-
                         </form>
                     </div>
                     <div>
