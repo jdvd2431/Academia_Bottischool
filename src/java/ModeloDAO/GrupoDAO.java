@@ -67,16 +67,51 @@ public class GrupoDAO extends Conexion implements Crud{
         }
         return operacion;
     }
-
-    @Override
-    public boolean actualizarRegistro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     @Override
     public boolean cambiarEstado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            sql = "UPDATE `grupo` SET `estado`=? WHERE `idGrupo`=?";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, estado);
+            puente.setString(2, idGrupo);
+            puente.executeUpdate();
+            operacion = true;
+        } catch (SQLException e) {
+            Logger.getLogger(GrupoDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+
+            } catch (SQLException e) {
+            }
+        }
+        return operacion;
     }
+    @Override
+    public boolean actualizarRegistro() {
+        try {
+            sql = "UPDATE `grupo` SET `nombre`=?,`estado`=?,`fechaInicio`=?,`fechaFin`=? WHERE `idGrupo`=?";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, nombre);
+            puente.setString(2, estado);
+            puente.setString(3, fechaInicio);
+            puente.setString(4, fechaFin);
+            puente.setString(5, idGrupo);
+            puente.executeUpdate();
+            operacion = true;
+        } catch (SQLException e) {
+            Logger.getLogger(GrupoDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+
+            } catch (SQLException e) {
+            }
+        }
+        return operacion;
+    }
+
+    
     
     public  ArrayList<GrupoVO> listar(){
         

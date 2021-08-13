@@ -50,7 +50,7 @@ public class GrupoControlador extends HttpServlet {
                 } else {
                     request.setAttribute("mensajeError", "El Grupo no se registro corectamente");
                 }
-                request.getRequestDispatcher("registrarGrupo.jsp").forward(request, response);
+                request.getRequestDispatcher("consultarGrupo.jsp").forward(request, response);
                 break;
             case 2://Actualizar Registro
                 if (grupoDAO.actualizarRegistro()) {
@@ -59,6 +59,14 @@ public class GrupoControlador extends HttpServlet {
                     request.setAttribute("mensajeError", "El Grupo no se actualizo corectamente");
                 }
                 request.getRequestDispatcher("actualizarGrupo.jsp").forward(request, response);
+                break;
+                case 3://Actualizar Estado
+                if (grupoDAO.cambiarEstado()) {
+                    request.setAttribute("mensajeExito", "El estado se actualizo corectamente");
+                } else {
+                    request.setAttribute("mensajeError", "El usuario no se actualizo corectamente");
+                }
+                request.getRequestDispatcher("cambiarEstadoGrupo.jsp").forward(request, response);
                 break;
            
         }

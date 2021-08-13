@@ -12,14 +12,28 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css"/>
+        
         <link rel="stylesheet" href="Css/consultarGrupo.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
+         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css"/>
+         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
         <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
-        <script src="https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"></script>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+        <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+        <link href="Css/sweetalert.css" rel="stylesheet" type="text/css"/>
+        <script src="Js/sweetalert.js" type="text/javascript"></script>
+        <script src="Js/sweetalert.min.js" type="text/javascript"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar Grupo</title>
     </head>
@@ -48,7 +62,6 @@
                 background: #007bff;
                 border-radius:7px;
                 padding: 5px;
-                margin-bottom: 15px;
                 color: white;
             }
             h2:hover{
@@ -65,11 +78,15 @@
                 color: white;
             }
         </style>
-        <h2 class="text-center mt-20">Gestion de los Grupos</h2>
+        
+        <h2 class="text-center mt-3">Gestion de los Grupos</h2>
+        <div class="boton-volver">
+            <a class="boton-volver" href="menu.jsp" style="font-size: 40px; margin-left: 50px;"><i class="fa fa-chevron-circle-left" id="cancel"></i></a>
+        </div>
         <form method="post">
         </form>
         <div class="contenedor">
-            <table id="usuario" class="table table-striped" style="width:100%">
+            <table id="usuario" class=" table table-striped" style="width:100%">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -77,6 +94,8 @@
                         <th>Estado</th>
                         <th>Fecha de Inicio</th>
                         <th>Fecha de Fin</th>
+                        <th>Estado</th>
+                        <th>Actualizar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -91,9 +110,21 @@
                     <tr>
                         <td><%=GruVO.getIdGrupo()%></td>
                         <td><%=GruVO.getNombre()%></td>
-                        <td><%=GruVO.getEstado()%></td>
+                        <td>
+                            <a class="<%=GruVO.getEstado().equals("Activo") ? "btn btn-success  m-3": "btn btn-danger  m-3" %>" style="padding-right: 50px;">
+                                <%=GruVO.getEstado()%>
+                            </a>
+                        </td>
                         <td class="text-center"><%=GruVO.getFechaInicio()%></td> 
                         <td class="text-center"><%=GruVO.getFechaFin()%></td> 
+                        <td>
+                            <a  class="btn btn-primary edit m-2 p-2"href="cambiarEstadoGrupo.jsp?idgrupo=<%=GruVO.getIdGrupo()%>&estado=<%=GruVO.getEstado()%>"><i class="fas fa-pen"></i></a>
+
+                        </td>
+
+                        <td>
+                            <a class="btn btn-info edit m-2 p-2"href="actualizarGrupo.jsp?idgrupo=<%=GruVO.getIdGrupo()%>&nombre=<%=GruVO.getNombre()%>&estado=<%=GruVO.getEstado()%>&inicio=<%=GruVO.getFechaInicio()%>&fin=<%=GruVO.getFechaFin()%>"><i class="fas fa-pen"></i></a>
+                        </td>
                     </tr>
                     <%}%>  
                 </tbody>
@@ -104,7 +135,10 @@
                         <th>Estado</th>
                         <th>Fecha de Inicio</th>
                         <th>Fecha de Fin</th>
+                        <th>Estado</th>
+                        <th>Actualizar</th>
                     </tr>
+                    
                 </tfoot>
             </table>
         </div>
@@ -144,7 +178,7 @@
                 });
             });
         </script>
-        <button class="abrir-registrar" id="abrir-registrar">Registrar</button>
+        <button class="abrir-registrar btn btn-primary" id="abrir-registrar">Registrar</button>
         <div class="overlay" id="overlay">
             <form method="POST" action="Grupo" class="form-registro">
                 <div class="tituloR">
