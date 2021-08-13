@@ -7,6 +7,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="ModeloDAO.NovedadDAO"%>
 <%@page import="ModeloVO.NovedadVO"%>
+<%@page import="ModeloVO.TipoNovedadVO"%>
+<%@page import="ModeloDAO.TipoNovedadDAO"%>
+<%@page import="ModeloDAO.AsistenciaDAO"%>
+<%@page import="ModeloVO.AsistenciaVO"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -160,15 +164,29 @@
                         <div class="selector">
                             <select name="txtTipoNovedad" class="estilo-selector">
                                 <option selected>Tipo de Novedad</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
+                                <%
+                                    TipoNovedadDAO NoveDAO = new TipoNovedadDAO();
+                                    for (TipoNovedadVO NoveVO : NoveDAO.listar()) {
+
+                                %>
+                                <option value="<%=NoveVO.getIdTipoNovedad()%>"><%=NoveVO.getTipoNovedad()%></option>
+                                <% }%>
                             </select>
                         </div>
                         <div class="selector">
                             <select name="txtAsistencia" class="estilo-selector">
                                 <option selected>Id Asistencia</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
+                                <%
+                                   AsistenciaVO AsisVO = new AsistenciaVO();
+                                   AsistenciaDAO AsisDAO = new AsistenciaDAO(AsisVO);
+                                    ArrayList<AsistenciaVO> listaAsistencia = AsisDAO.listar();
+                                    for (int i = 0; i < listaAsistencia.size(); i++) {
+
+                                        AsisVO = listaAsistencia.get(i);
+
+                                %>
+                                <option value="<%=AsisVO.getIdAsistencia()%>"><%=AsisVO.getIdAsistencia()%></option>
+                                <% }%>
                             </select>
                         </div>
                         <div class="boton">
