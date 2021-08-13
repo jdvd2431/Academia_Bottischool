@@ -83,7 +83,27 @@ public class NovedadDAO extends Conexion implements Crud{
 
     @Override
     public boolean actualizarRegistro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            sql = "update `novedad` set `descripcion`=?,`fechaInicio`=?,`fechaFin`=?,`idTipoNovedad`=?,`idAsistencia`=? WHERE idNovedad=?";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, descripcion);
+            puente.setString(2, fechaInicio);
+            puente.setString(3, fechaFin);
+            puente.setString(4, idTipoNovedad);
+            puente.setString(5, idAsistencia);
+            puente.setString(6, idNovedad);
+            puente.executeUpdate();
+            operacion = true;
+        } catch (SQLException e) {
+            Logger.getLogger(NovedadDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+
+            } catch (SQLException e) {
+            }
+        }
+        return operacion;
     }
 
     @Override
@@ -121,5 +141,6 @@ public class NovedadDAO extends Conexion implements Crud{
         return listaNovedad;
         
     }
+     
       
 }

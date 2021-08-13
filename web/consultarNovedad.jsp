@@ -7,10 +7,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="ModeloDAO.NovedadDAO"%>
 <%@page import="ModeloVO.NovedadVO"%>
-<%@page import="ModeloVO.TipoNovedadVO"%>
-<%@page import="ModeloDAO.TipoNovedadDAO"%>
-<%@page import="ModeloDAO.AsistenciaDAO"%>
-<%@page import="ModeloVO.AsistenciaVO"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -30,8 +26,8 @@
     <body >
         <style>
             .contenedor{
-                width: 60%;
-                max-width: 1400px;
+                width: 80%;
+                max-width: 85%;
                 display: flex;
                 justify-content: center;
                 margin: auto;
@@ -71,7 +67,7 @@
         </style>
         <h2 class="text-center mt-20">Gestion de las Novedades</h2>
         <div class="contenedor">
-            <table id="usuario" class="table table-striped" style="width:100%">
+            <table id="usuario" class="table table-striped" style="width:150%">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -96,10 +92,15 @@
                         <td><%=NovVO.getDescripcion()%></td>
                         <td><%=NovVO.getFechaInicio()%></td>
                         <td><%=NovVO.getFechaFin()%></td>
-                        <td><%=NovVO.getIdTipoNovedad()%></td>
+                        <td><%=NovVO.getIdTipoNovedad().equals("1") ? "Problema personal" : "Cita medica" %></td>
                         <td><%=NovVO.getIdAsistencia()%></td>
+                         <td>
+                            <a class="btn btn-primary edit"href="actualizarNovedad.jsp?idnovedad=<%=NovVO.getIdNovedad()%>&descripcion=<%=NovVO.getDescripcion()%>&fechainicio=<%=NovVO.getFechaInicio()%>&fechafin=<%=NovVO.getFechaFin()%>&idtiponovedad=<%=NovVO.getIdTipoNovedad()%>&idasistencia=<%=NovVO.getIdAsistencia()%>"><i class="fas fa-pen"></i></a>
+                        </td>
                     </tr>
+                   
                     <%}%>  
+                    
                 </tbody>
                 <tfoot>
                     <tr>
@@ -120,12 +121,12 @@
                     scrollY: 400,
                     language: {
                         "sProcessing": "Procesando...",
-                        "sLengthMenu": "Mostrar MENU registros",
+                        "sLengthMenu": "Mostrar _MENU_ registros",
                         "sZeroRecords": "No se encontraron resultados",
                         "sEmptyTable": "NingÃºn dato disponible en esta tabla",
-                        "sInfo": "Mostrando usuarios del START al END de un total de TOTAL usuarios",
+                        "sInfo": "Mostrando usuarios del _START_ al _END_ de un total de _TOTAL_ usuarios",
                         "sInfoEmpty": "Mostrando usuarios del 0 al 0 de un total de 0 usuarios",
-                        "sInfoFiltered": "(filtrado de un total de MAX usuarios)",
+                        "sInfoFiltered": "(filtrado de un total de _MAX_ usuarios)",
                         "sInfoPostFix": "",
                         "sSearch": "Buscar:",
                         "sUrl": "",
@@ -149,7 +150,7 @@
                 });
             });
         </script>
-        <button class="abrir-registrar" id="abrir-registrar">Registrar</button>
+        <button class="abrir-registrar btn btn-primary" id="abrir-registrar">Registrar</button>
         <div class="overlay " id="overlay">
             <form method="POST" action="Novedad" class="form-registro">
                 <div class="tituloR">
@@ -164,29 +165,15 @@
                         <div class="selector">
                             <select name="txtTipoNovedad" class="estilo-selector">
                                 <option selected>Tipo de Novedad</option>
-                                <%
-                                    TipoNovedadDAO NoveDAO = new TipoNovedadDAO();
-                                    for (TipoNovedadVO NoveVO : NoveDAO.listar()) {
-
-                                %>
-                                <option value="<%=NoveVO.getIdTipoNovedad()%>"><%=NoveVO.getTipoNovedad()%></option>
-                                <% }%>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
                             </select>
                         </div>
                         <div class="selector">
                             <select name="txtAsistencia" class="estilo-selector">
                                 <option selected>Id Asistencia</option>
-                                <%
-                                   AsistenciaVO AsisVO = new AsistenciaVO();
-                                   AsistenciaDAO AsisDAO = new AsistenciaDAO(AsisVO);
-                                    ArrayList<AsistenciaVO> listaAsistencia = AsisDAO.listar();
-                                    for (int i = 0; i < listaAsistencia.size(); i++) {
-
-                                        AsisVO = listaAsistencia.get(i);
-
-                                %>
-                                <option value="<%=AsisVO.getIdAsistencia()%>"><%=AsisVO.getIdAsistencia()%></option>
-                                <% }%>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
                             </select>
                         </div>
                         <div class="boton">
@@ -195,8 +182,10 @@
                         </div>
                     </div>
                 </div>
+                
             </form>
         </div>
         <script src="Js/consutarUsuario.js" type="text/javascript"></script>
     </body>
 </html>
+

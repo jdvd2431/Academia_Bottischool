@@ -21,6 +21,8 @@ public class NovedadVO {
         this.idAsistencia = idAsistencia;
     }
 
+    
+    
     public String getIdNovedad() {
         return idNovedad;
     }

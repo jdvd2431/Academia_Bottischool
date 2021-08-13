@@ -41,8 +41,11 @@ public class NovedadControlador extends HttpServlet {
         String fechaFin = request.getParameter("txtFechaFin");
         String idTipoNovedad = request.getParameter("txtTipoNovedad");
         String idAsistencia = request.getParameter("txtAsistencia");
+        
         int opcion = Integer.parseInt(request.getParameter("opcion"));
+        
         NovedadVO NovVO= new NovedadVO(idGrupo,descripcion, fechaInicio, fechaFin, idTipoNovedad,idAsistencia);
+        
         NovedadDAO NovDAO = new NovedadDAO(NovVO);
         switch (opcion) {
             case 1://Agregar Registro
@@ -51,7 +54,7 @@ public class NovedadControlador extends HttpServlet {
                 } else {
                     request.setAttribute("mensajeError", "La novedad no se registro corectamente");
                 }
-                request.getRequestDispatcher("registrarNovedad.jsp").forward(request, response);
+                request.getRequestDispatcher("consultarNovedad.jsp").forward(request, response);
                 break;
             case 2://Actualizar Registro
                 if (NovDAO.actualizarRegistro()) {
@@ -61,6 +64,7 @@ public class NovedadControlador extends HttpServlet {
                 }
                 request.getRequestDispatcher("actualizarNovedad.jsp").forward(request, response);
                 break;
+                
            
         }
         
