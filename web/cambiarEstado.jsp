@@ -57,32 +57,38 @@
                                             <button class="btn btn-primary mt-3" type="submit" id="btn" >Cambiar</button>
                                             <input type="hidden" value="5" name="opcion">
                                         </div></center>
-                                        <% if (request.getAttribute("mensajeError") == null) {%>
-                                    <script  type="text/javascript">
+                                        <% if (request.getAttribute("mensajeError") != null) {%>
+                        <script  type="text/javascript">
 
-                                        swal({
-                                        title: "Error",
-                                                text: "${mensajeError}",
-                                                type: 'error',
-                                                confirmButtonClass: "btn-primary",
-                                                confirmButtonText: "OK",
-                                                closeOnConfirm: false
-                                        }
-                                    </script>
+                            swal({
+                                title: "Error",
+                                text: "${mensajeError}",
+                                type: 'error',
+                                confirmButtonClass: "btn-primary",
+                                confirmButtonText: "OK",
+                                closeOnConfirm: false
+                            },
+                                    function () {
+                                        window.location = "cambiarEstado.jsp";
+                                    });
+                        </script>
 
-                                    <%} else if (request.getAttribute("mensajeExito") != null) {%>
-                                    <script  type="text/javascript">
+                        <%} else if (request.getAttribute("mensajeExito") != null) {%>
+                        <script  type="text/javascript">
 
-                                        swal({
-                                        title: "Correcto",
-                                                text: "${mensajeExito}",
-                                                type: 'success',
-                                                confirmButtonClass: "btn-primary",
-                                                confirmButtonText: "OK",
-                                                closeOnConfirm: false
-                                        }
-                                    </script>
-                                    <%}%>
+                            swal({
+                                title: "Correcto",
+                                text: "${mensajeExito}",
+                                type: 'success',
+                                confirmButtonClass: "btn-primary",
+                                confirmButtonText: "OK",
+                                closeOnConfirm: false
+                            },
+                                    function () {
+                                        window.location = "consultarUsuario.jsp";
+                                    });
+                        </script>
+                        <%}%>
                                 </div>
                             </div>
                         </form>

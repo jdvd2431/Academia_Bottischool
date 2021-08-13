@@ -43,7 +43,7 @@
         <style>
             .contenedor{
                 width: 100%;
-                max-width: 1500px;
+                max-width: 1400px;
                 display: flex;
                 justify-content: center;
                 margin: auto;
@@ -80,22 +80,7 @@
                 margin-bottom: 30px;
                 color: white;
             }
-            /*h2:hover{
-                background: #4CA3FF;
-                color: white;
-            }*/
-            .verde{
-                background: green;
-                color: white;
-                border-radius:5px; 
-            }
-            .rojo{
-                background:brown;
-                color: white;
-            }
-            .edit{
-                padding: 4px;
-            }
+           
         </style>
         <div class="boton-volver">
             <a class="boton-volver" href="menu.jsp" style="font-size: 40px; margin-left: 50px;"><i class="fa fa-chevron-circle-left" id="cancel"></i></a>
@@ -141,7 +126,7 @@
                         <td><%=UsuVO.getCelular()%></td>
                         <td><%=UsuVO.getTelefono()%></td>
                         <td>
-                            <a class="<%=UsuVO.getEstado().equals("Activo") ? "btn btn-success p-3 m-3": "btn btn-danger p-2 m-3" %>">
+                            <a class="<%=UsuVO.getEstado().equals("Activo") ? "btn btn-success  m-3": "btn btn-danger  m-3" %>" style="padding-right: 50px;">
                                 <%=UsuVO.getEstado()%>
                             </a>
                         </td>
@@ -149,12 +134,12 @@
                         <td><%=UsuVO.getClave()%></td>
                         <td><%=UsuVO.getIdTipoUsuario().equals("1") ? "Profesor" : "Estudiante"%></td>  
                         <td>
-                            <a  class="btn btn-primary edit m-2 p-3"href="cambiarEstado.jsp?usuid=<%=UsuVO.getUsuId()%>&estado=<%=UsuVO.getEstado()%>"><i class="fas fa-pen"></i></a>
+                            <a  class="btn btn-primary edit m-2 p-2"href="cambiarEstado.jsp?usuid=<%=UsuVO.getUsuId()%>&estado=<%=UsuVO.getEstado()%>"><i class="fas fa-pen"></i></a>
 
                         </td>
 
                         <td>
-                            <a class="btn btn-info edit m-2 p-3"href="actualizarUsuario.jsp?usuid=<%=UsuVO.getUsuId()%>&nombre=<%=UsuVO.getNombre()%>&apellido=<%=UsuVO.getApellido()%>&tipodoc=<%=UsuVO.getTipoDocumento()%>&numdoc=<%=UsuVO.getNumDocumento()%>&celular=<%=UsuVO.getCelular()%>&telefono=<%=UsuVO.getTelefono()%>&estado=<%=UsuVO.getEstado()%>&correo=<%=UsuVO.getCorreo()%>&clave=<%=UsuVO.getClave()%>&tipousu=<%=UsuVO.getIdTipoUsuario()%>"><i class="fas fa-pen"></i></a>
+                            <a class="btn btn-info edit m-2 p-2"href="actualizarUsuario.jsp?usuid=<%=UsuVO.getUsuId()%>&nombre=<%=UsuVO.getNombre()%>&apellido=<%=UsuVO.getApellido()%>&tipodoc=<%=UsuVO.getTipoDocumento()%>&numdoc=<%=UsuVO.getNumDocumento()%>&celular=<%=UsuVO.getCelular()%>&telefono=<%=UsuVO.getTelefono()%>&estado=<%=UsuVO.getEstado()%>&correo=<%=UsuVO.getCorreo()%>&clave=<%=UsuVO.getClave()%>&tipousu=<%=UsuVO.getIdTipoUsuario()%>"><i class="fas fa-pen"></i></a>
                         </td>
 
                     </tr>

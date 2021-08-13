@@ -50,7 +50,7 @@
                         <div class="boton-volver">
                             <a class="boton-volver" href="consultarUsuario.jsp" style="font-size: 40px;"><i class="fa fa-chevron-circle-left" id="cancel"></i></a>
                         </div>
-                        <h2 for="usu">Registrar Usuario</h2>
+                        <h2 for="usu">Actualizar Usuario</h2>
                      <form class="row g-3" method="POST" action="Usuario">
                                     <input type="hidden" name="txtId" placeholder="Nombre" value="<%=usuid%>">
                                     <div class="col-md-6">
